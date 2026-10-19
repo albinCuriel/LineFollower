@@ -26,5 +26,4 @@ static const uint8_t PIN_ENC_R_A = 41, PIN_ENC_R_B = 42;
 
 // --- Bediening en weergave ---
 static const uint8_t PIN_BTN = 21;   // start/stop naar GND, interne pull-up
-static const uint8_t PIN_RGB = 47;   // WS2812 8 leds (DIN)
-static const uint8_t RGB_AANTAL = 8;
+static const uint8_t PIN_RGB = 48;   // ingebouwde RGB-led van de devkit (= RGB_BUILTIN; op sommige klonen 38)

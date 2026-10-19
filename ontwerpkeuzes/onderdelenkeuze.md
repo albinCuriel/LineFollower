@@ -154,9 +154,9 @@ Rood (onbeveiligde batterijspanning) gaat enkel naar de H-brug, de buck en de sp
 | Gyro I²C SDA / SCL | 10 / 44 | GPIO35–37 zijn bezet door PSRAM op de N8R8 |
 | Encoder L A / B | 39 / 40 | PCNT, volledige kwadratuur |
 | Encoder R A / B | 41 / 42 | PCNT, volledige kwadratuur |
-| 8× RGB-led (data) | 47 | WS2812/SK6812 |
+| Status-led | 48 | ingebouwde RGB-led van de devkit (de WS2812-strip is niet besteld) |
 
-Niet gebruiken: 0, 3, 45, 46 (strapping; GPIO3 enkel als analoge ingang), 26–32 (flash), 33–37 (PSRAM op R8), 38 en 48 (ingebouwde RGB-led op DevKitC-1), 43 (opstartlog).
+Niet gebruiken: 0, 3, 45, 46 (strapping; GPIO3 enkel als analoge ingang), 26–32 (flash), 33–37 (PSRAM op R8), 38 (RGB-led op sommige DevKitC-1-versies), 43 (opstartlog).
 
 ### Stroombudget 3,3V
 
@@ -180,7 +180,7 @@ Niet gebruiken: 0, 3, 45, 46 (strapping; GPIO3 enkel als analoge ingang), 26–3
 - **Plan A:** de PCB is zelf het chassis. De motoren zitten met beugels op de print, de sensoren staan vooraan op dezelfde print (of op een tweede printje met een vaste connector).
 - **Wielen:** 32–34 mm met zachte siliconen banden, voor grip in de 10 cm-bochten.
 - **Doelgewicht: ±100–120 g** (vorig jaar 200–265 g voor de snelle robots; wedstrijdrobots 70–100 g). Kleine lipo (300–450 mAh, ±20–25 g).
-- Spoiler: niet vergeten (specs).
+- Spoiler: niet vergeten (specs). Uitgewerkt: het afgezaagde stuk gaatjesprint op 2× M3×30 achteraan (zie [mechanisch](../technische%20tekeningen/mechanisch/readme.md)).
 
 ## 5. Richtbudget plan A
 

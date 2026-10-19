@@ -10,3 +10,12 @@ Een proof of concept bestaat uit
 * minimale uitleg / aandachtspunten
 <br />
 De elektronische schakelingen van de proof of concepts komen bij voorkeur overeen met deze van de uiteindelijke linefollower, zodat de code zonder aanpassingen op het finale project kan draaien.
+
+| Proof of concept | Test | Sketch |
+|---|---|---|
+| [sensor](sensor/readme.md) | 8 sensoren apart uitlezen, met en zonder IR-licht | `sensor/poc_sensor` |
+| [H-brug](hbridge/readme.md) | 2 motoren traploos, beide richtingen | `hbridge/poc_hbridge` |
+| [start/stop-interrupt](interrupt/readme.md) | drukknop via interrupt met ontdendering | `interrupt/poc_interrupt` |
+| [draadloze communicatie](wireless%20communication/readme.md) | duplex tussen robot en gsm via wifi | `wireless communication/poc_wifi` |
+
+Alle sketches compileren voor de ESP32-S3 (`esp32:esp32:esp32s3`) en gebruiken dezelfde pinnen als de robot (`board.h`). Ze draaien dus zonder aanpassing op de afgewerkte robot.

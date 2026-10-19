@@ -6,11 +6,11 @@
 	(paper "A4")
 	(title_block
 		(title "Linefollower - elektrisch schema (plan B, gaatjesprint)")
-		(date "2026-10-08")
-		(rev "1.0")
+		(date "2026-10-19")
+		(rev "1.1")
 		(company "HOGENT Elektromechanica - Albin")
 		(comment 1 "ESP32-S3 + QTR-8A + TB6612FNG + 2x N20 10:1 met encoder, 2S LiPo")
-		(comment 2 "Pinverdeling: zie ontwerpkeuzes/onderdelenkeuze.md")
+		(comment 2 "Onderdelen = bestelling 19/10/2026; status-led = RGB op devkit (GPIO48)")
 	)
 	(lib_symbols
 		(symbol "Device:Battery"
@@ -2935,141 +2935,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "lf_modules:WS2812_Stick_8"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "D"
-				(at 2.54 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "WS2812_Stick_8"
-				(at 0 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-				(hide yes)
-			)
-			(property "Datasheet" "~"
-				(at 0 -7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-				(hide yes)
-			)
-			(property "Description" "WS2812B strip 8 leds (sensorweergave/status)"
-				(at 0 -10.16 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-				(hide yes)
-			)
-			(symbol "WS2812_Stick_8_0_1"
-				(rectangle
-					(start -7.62 5.08)
-					(end 7.62 -5.08)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-			)
-			(symbol "WS2812_Stick_8_1_1"
-				(pin power_in line
-					(at -10.16 2.54 0)
-					(length 2.54)
-					(name "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -10.16 -2.54 0)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -10.16 0 0)
-					(length 2.54)
-					(name "DIN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "DIN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 10.16 0 180)
-					(length 2.54)
-					(name "DOUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "DOUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "power:PWR_FLAG"
 			(power global)
 			(pin_numbers
@@ -3208,8 +3073,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2S LiPo 7,4V 450mAh"
-			(at 27.94 44.45 0)
+		(property "Value" "DOGCOM 2S 450mAh 100C"
+			(at 25.4 58.42 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3269,7 +3134,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
-		(at 41.91 59.69 0)
+		(at 41.91 74.93 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3279,7 +3144,7 @@
 		(dnp no)
 		(uuid "8b5c16ce-da3a-4954-9984-d5422d18c014")
 		(property "Reference" "J1"
-			(at 39.37 59.69 0)
+			(at 46.99 73.66 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3288,8 +3153,8 @@
 				)
 			)
 		)
-		(property "Value" "XT30"
-			(at 44.449999999999996 59.69 0)
+		(property "Value" "XT30 male pigtail"
+			(at 53.34 76.2 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3299,7 +3164,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 41.91 59.69 0)
+			(at 41.91 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3310,7 +3175,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 41.91 59.69 0)
+			(at 41.91 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3321,7 +3186,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 41.91 59.69 0)
+			(at 41.91 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4175,7 +4040,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 100.33 160.02 0)
+		(at 100.33 144.78 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4185,7 +4050,7 @@
 		(dnp no)
 		(uuid "7a555ddc-1d9e-47be-a68c-e6305fb7c5b0")
 		(property "Reference" "SW2"
-			(at 100.33 157.48 0)
+			(at 100.33 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4196,7 +4061,7 @@
 			)
 		)
 		(property "Value" "Start/Stop"
-			(at 100.33 162.56 0)
+			(at 100.33 147.32 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4206,7 +4071,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 100.33 165.1 0)
+			(at 100.33 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4217,7 +4082,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 100.33 165.1 0)
+			(at 100.33 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4228,7 +4093,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 100.33 160.02 0)
+			(at 100.33 144.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4473,7 +4338,7 @@
 				)
 			)
 		)
-		(property "Value" "N20 10:1 encoder (links)"
+		(property "Value" "GA12-N20 10:1 1500rpm enc. (links)"
 			(at 265.43 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4564,7 +4429,7 @@
 				)
 			)
 		)
-		(property "Value" "N20 10:1 encoder (rechts)"
+		(property "Value" "GA12-N20 10:1 1500rpm enc. (rechts)"
 			(at 265.43 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4717,7 +4582,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 255.27 160.02 0)
+		(at 270.51 160.02 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4727,7 +4592,7 @@
 		(dnp no)
 		(uuid "fc3fe1ba-968b-47d2-8309-467279d97e76")
 		(property "Reference" "C4"
-			(at 252.73 160.02 0)
+			(at 267.97 160.02 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4738,7 +4603,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 257.81 160.02 0)
+			(at 273.05 160.02 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4749,7 +4614,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 256.235 156.21 0)
+			(at 271.48 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4760,7 +4625,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 255.27 160.02 0)
+			(at 270.51 160.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4771,7 +4636,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 255.27 160.02 0)
+			(at 270.51 160.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4797,93 +4662,8 @@
 		)
 	)
 	(symbol
-		(lib_id "lf_modules:WS2812_Stick_8")
-		(at 209.55 149.86 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "4b637419-8c18-4fa1-a2ed-9b7967ab360b")
-		(property "Reference" "D2"
-			(at 209.55 144.78 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "WS2812B x8"
-			(at 209.55 154.94 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 209.55 144.78 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 209.55 142.24 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "WS2812B strip 8 leds (sensorweergave/status)"
-			(at 209.55 139.7 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "DIN"
-			(uuid "56fa3e8f-de27-4053-97e8-da8dad032bef")
-		)
-		(pin "DOUT"
-			(uuid "3d5e1a22-9a72-440e-88ea-b13451200de8")
-		)
-		(pin "GND"
-			(uuid "ab81f1b4-003f-4cb3-b935-a1c77e5e4cf4")
-		)
-		(pin "VCC"
-			(uuid "6a8f2863-80ab-42c5-90b8-262ac3a18e36")
-		)
-		(instances
-			(project "linefollower"
-				(path "/82139a58-5523-4d04-8a5f-a6de3939ef82"
-					(reference "D2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 39.37 64.77 0)
+		(at 26.67 87.63 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4893,7 +4673,7 @@
 		(dnp no)
 		(uuid "1ea41622-d005-44bc-afe5-e5b3cd28d1c0")
 		(property "Reference" "#FLG01"
-			(at 39.37 62.23 0)
+			(at 26.67 94.62 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4903,7 +4683,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 39.37 67.31 0)
+			(at 26.67 91.44 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4913,7 +4693,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 39.37 64.77 0)
+			(at 26.67 91.44 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4924,7 +4704,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 39.37 64.77 0)
+			(at 26.67 91.44 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4935,7 +4715,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 39.37 64.77 0)
+			(at 26.67 91.44 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5130,7 +4910,7 @@
 		(uuid "ae0f1405-a5bb-4f33-984b-49278a1a45e9")
 	)
 	(label "BATT+"
-		(at 36.83 59.69 180)
+		(at 36.83 74.93 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5140,7 +4920,7 @@
 		(uuid "a1edcabb-001a-4297-9796-94642c7a0494")
 	)
 	(label "GND"
-		(at 36.83 62.23 180)
+		(at 36.83 77.47 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5549,16 +5329,6 @@
 		)
 		(uuid "b1130f23-9f6b-4327-a560-3f71ebbe715a")
 	)
-	(label "RGB_DIN"
-		(at 167.64000000000001 118.11 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "3c3b8287-606b-4b18-9680-b671b032948d")
-	)
 	(label "S1"
 		(at 90.17 106.67999999999999 0)
 		(effects
@@ -5670,7 +5440,7 @@
 		(uuid "f36f1599-b544-4b40-95ba-6ae15dd93f2b")
 	)
 	(label "BTN"
-		(at 95.25 160.02 180)
+		(at 95.25 144.78 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5680,7 +5450,7 @@
 		(uuid "d4141690-2cfe-46ff-9e77-19dbb89db6a4")
 	)
 	(label "GND"
-		(at 105.41 160.02 0)
+		(at 105.41 144.78 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6000,7 +5770,7 @@
 		(uuid "e1821a1d-96df-4093-9794-0998f1b2a569")
 	)
 	(label "MOT_R+"
-		(at 255.27 156.21 90)
+		(at 270.51 156.21 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6010,7 +5780,7 @@
 		(uuid "4d2c6ac6-fd0e-4698-93c7-61877209967a")
 	)
 	(label "MOT_R-"
-		(at 255.27 163.83 270)
+		(at 270.51 163.83 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6019,38 +5789,8 @@
 		)
 		(uuid "b7f29652-c218-4590-8985-24519e74e85c")
 	)
-	(label "3V3"
-		(at 199.39000000000001 147.32000000000002 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "c3159bf2-f102-4da3-8d77-9d908c40642a")
-	)
 	(label "GND"
-		(at 199.39000000000001 152.4 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "7152a0d8-d1fa-4fdf-8af1-c9e3478a8150")
-	)
-	(label "RGB_DIN"
-		(at 199.39000000000001 149.86 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "cd1a6b9e-4dc0-4c6e-aa11-18527b696ed8")
-	)
-	(label "GND"
-		(at 39.37 64.77 270)
+		(at 26.67 87.63 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6080,6 +5820,10 @@
 		(uuid "d9896bb0-f17f-4c3e-a33f-eb19628c8f1a")
 	)
 	(no_connect
+		(at 167.64 118.11)
+		(uuid "58bb9619-3226-4a2c-a332-7d12acf98e68")
+	)
+	(no_connect
 		(at 64.77 41.91)
 		(uuid "86312c95-8369-45d4-a995-f0dd7120b7f2")
 	)
@@ -6095,11 +5839,7 @@
 		(at 167.64000000000001 125.72999999999999)
 		(uuid "341e0388-596d-4287-9bac-f353fcb42046")
 	)
-	(no_connect
-		(at 219.71 149.86)
-		(uuid "ad036a08-268e-4050-8e27-7f2281965912")
-	)
-	(text "BOUWNOTITIES\n1. QTR-8A op 3,3V: soldeer de jumper '3.3V BYPASS' op de QTR-8A dicht (anders zwakke IR-leds).\n2. C3/C4 (100nF) rechtstreeks op de motorklemmen solderen (ontstoring).\n3. C1 (100uF) zo dicht mogelijk bij VM/GND van de TB6612; C2 (100uF) bij 3V3/GND van de ESP32.\n4. Encoder A/B: interne pull-ups van de ESP32 inschakelen in software.\n5. Batterijmeting: VBAT_SENSE = VBAT x 33/133 (8,4V -> 2,08V).\n6. TB6612: 1 module stuurt beide motoren (Imotor < 1,2A); 2e module = reserve.\n7. Robot uit = SW1 open: BATT+ ligt enkel nog aan de schakelaar."
+	(text "BOUWNOTITIES\n1. QTR-8A op 3,3V: soldeer de jumper '3.3V BYPASS' op de QTR-8A dicht (anders zwakke IR-leds).\n2. C3/C4 (100nF) rechtstreeks op de motorklemmen solderen (ontstoring).\n3. C1 (100uF) zo dicht mogelijk bij VM/GND van de TB6612; C2 (100uF) bij 3V3/GND van de ESP32.\n4. Encoder A/B: interne pull-ups van de ESP32 inschakelen in software.\n5. Batterijmeting: VBAT_SENSE = VBAT x 33/133 (8,4V -> 2,08V).\n6. TB6612: 1 module stuurt beide motoren (Imotor < 1,2A); 2e module = reserve.\n7. Robot uit = SW1 open: BATT+ ligt enkel nog aan de schakelaar.\n8. Statusweergave: ingebouwde RGB-led van de devkit (GPIO48), GPIO47 blijft vrij."
 		(exclude_from_sim no)
 		(at 20 175 0)
 		(effects

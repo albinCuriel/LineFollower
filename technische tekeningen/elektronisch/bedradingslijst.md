@@ -1,7 +1,8 @@
 # Bedradingslijst (plan B, gaatjesprint)
 
 Zelfde netten als `kicad/linefollower.kicad_sch` (ERC: 0 fouten). Schema als PDF: [elektrisch_schema.pdf](elektrisch_schema.pdf).
-Draad: 24AWG silicone. Rood = VBAT/BATT+, oranje = 3V3, zwart = GND, overige kleuren = signalen.
+Waar elke draad ligt op de gaatjesprint: [bekabelingsplan.pdf](bekabelingsplan.pdf) en [draadlijst.md](draadlijst.md) (genummerd per bouwstap).
+Draad: dupont-draadjes (stekkers eraf), voeding liefst dikker (pigtail 20AWG). Rood = VBAT/BATT+, oranje = 3V3, zwart = GND, overige kleuren = signalen.
 
 ## Voeding
 
@@ -10,7 +11,7 @@ Draad: 24AWG silicone. Rood = VBAT/BATT+, oranje = 3V3, zwart = GND, overige kle
 | LiPo + (XT30) | SW1 midden (pin 2) | BATT+ | XT30-pigtail op de print |
 | SW1 pin 1 | TB6612 **VM**, buck **IN+**, R1, C1 + | VBAT | 6,4–8,4 V |
 | LiPo − (XT30) | alle GND | GND | één sterpunt bij de XT30 |
-| Buck **OUT+** | ESP32 **3V3**, QTR **VCC**, TB6612 **VCC**, encoders VCC (2×), WS2812 **VCC**, R3, C2 + | 3V3 | buck vooraf op 3,3 V meten! |
+| Buck **OUT+** | ESP32 **3V3**, QTR **VCC**, TB6612 **VCC**, encoders VCC (2×), R3, C2 + | 3V3 | buck vooraf op 3,3 V meten! |
 | C1 100 µF | VM ↔ GND, vlak bij de TB6612 | | let op polariteit |
 | C2 100 µF | 3V3 ↔ GND, vlak bij de ESP32 | | let op polariteit |
 | R3 330 Ω + D1 (power-led) | 3V3 → R3 → led anode, kathode → GND | LED_PWR | |
@@ -62,10 +63,10 @@ Draaien de motoren of encoders verkeerd om: AO1/AO2 (of A/B) omwisselen, of het 
 | Onderdeel | Aansluiting |
 |---|---|
 | Start/stop-knop SW2 | GPIO21 ↔ GND (interne pull-up) |
-| WS2812-strip | DIN → GPIO47, VCC → 3V3, GND → GND |
+| Status-led | ingebouwde RGB-led van de devkit (GPIO48), geen draad nodig |
 | Gyro (optioneel, later) | SDA GPIO10, SCL GPIO44 |
 
 ## Controle vóór de eerste keer inschakelen
-1. Zonder ESP32 in de headers: buck-uitgang meten (3,25–3,35 V).
+1. Nog vóór de ESP32 erop gesoldeerd is: buck-uitgang meten (3,25–3,35 V).
 2. Weerstand VBAT ↔ GND en 3V3 ↔ GND meten: geen kortsluiting.
 3. Pas dan de ESP32 inpluggen en via USB een testsketch laden.
