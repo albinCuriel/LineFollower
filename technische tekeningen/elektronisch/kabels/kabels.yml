@@ -1,0 +1,84 @@
+# Kabels van de linefollower (alles wat NIET op de gaatjesprint zelf ligt).
+# Maak de tekening:  wireviz kabels.yml   (vereist Graphviz)
+# Gaten (E17, N2, ...) = gatcoordinaten van ../bekabelingsplan.pdf
+
+metadata:
+  title: Linefollower - kabels
+  description: Batterij, motoren met encoder en sensor naar de gaatjesprint
+
+options:
+  fontname: arial
+  bgcolor: WH
+  color_mode: full
+
+connectors:
+  PIG:
+    type: Flywoo XT30UP-M pigtail
+    subtype: XT30 male, hier gaat de batterij in (DOGCOM 2S 450 mAh, XT30 female)
+    pinlabels: [+, -]
+  PRINT_BAT:
+    type: gaatjesprint
+    subtype: gaten
+    pinlabels: [E17 XT30+, G17 XT30-]
+  ML:
+    type: motor LINKS - encoderprintje
+    subtype: ZH1.5 6-pin (opdruk controleren!)
+    pinlabels: [M1, GND, A, B, VCC, M2]
+    notes: 100 nF over M1/M2 solderen
+  PRINT_ML:
+    type: gaatjesprint
+    subtype: aansluitpunten motor L
+    pinlabels: [N2 M1, N3 GND, N4 A, N5 B, N6 VCC, N7 M2]
+  MR:
+    type: motor RECHTS - encoderprintje
+    subtype: ZH1.5 6-pin (opdruk controleren!)
+    pinlabels: [M1, GND, A, B, VCC, M2]
+    notes: 100 nF over M1/M2 solderen
+  PRINT_MR:
+    type: gaatjesprint
+    subtype: aansluitpunten motor R
+    pinlabels: [V2 M1, V3 GND, V4 A, V5 B, V6 VCC, V7 M2]
+  QTR:
+    type: Pololu QTR-8A
+    subtype: header (volgens opdruk), sensor 1 = robot links
+    pinlabels: [OUT1, OUT2, OUT3, OUT4, OUT5, OUT6, OUT7, OUT8, LEDON, VCC, GND]
+    notes: jumper 3.3V BYPASS dicht
+  PRINT_QTR:
+    type: gaatjesprint
+    subtype: aansluitpunten sensor (kolom 46)
+    pinlabels: [Y46 S1, Z46 S2, AA46 S3, AB46 S4, AC46 S5, AD46 S6, AE46 S7, AF46 S8, AG46 LEDON, AH46 VCC, AI46 GND]
+
+cables:
+  W_BAT:
+    type: pigtail (aan de XT30)
+    gauge: 20 AWG
+    length: 0.1
+    colors: [RD, BK]
+  W_ML:
+    type: meegeleverde motorkabel, op lengte knippen
+    length: 0.06
+    wirecount: 6
+    notes: kleuren verschillen per verkoper, volg de opdruk M1/GND/A/B/VCC/M2
+  W_MR:
+    type: meegeleverde motorkabel, op lengte knippen
+    length: 0.06
+    wirecount: 6
+    notes: kleuren verschillen per verkoper, volg de opdruk M1/GND/A/B/VCC/M2
+  W_QTR:
+    type: dupont-draadjes (stekkers eraf)
+    length: 0.06
+    colors: [WH, GY, VT, BU, GN, YE, OG, BN, PK, RD, BK]
+
+connections:
+  - - PIG: [1-2]
+    - W_BAT: [1-2]
+    - PRINT_BAT: [1-2]
+  - - ML: [1-6]
+    - W_ML: [1-6]
+    - PRINT_ML: [1-6]
+  - - MR: [1-6]
+    - W_MR: [1-6]
+    - PRINT_MR: [1-6]
+  - - QTR: [1-11]
+    - W_QTR: [1-11]
+    - PRINT_QTR: [1-11]

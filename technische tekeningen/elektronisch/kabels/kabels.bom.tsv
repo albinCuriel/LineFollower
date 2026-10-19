@@ -1,0 +1,12 @@
+Id	Description	Qty	Unit	Designators
+1	Cable, dupont-draadjes (stekkers eraf), 11 wires	0.06	m	W_QTR
+2	Cable, meegeleverde motorkabel, op lengte knippen, 6 wires	0.12	m	W_ML, W_MR
+3	Cable, pigtail (aan de XT30), 2 x 20 AWG	0.1	m	W_BAT
+4	Connector, Flywoo XT30UP-M pigtail, XT30 male, hier gaat de batterij in (DOGCOM 2S 450 mAh, XT30 female), 2 pins	1		PIG
+5	Connector, Pololu QTR-8A, header (volgens opdruk), sensor 1 = robot links, 11 pins	1		QTR
+6	Connector, gaatjesprint, aansluitpunten motor L, 6 pins	1		PRINT_ML
+7	Connector, gaatjesprint, aansluitpunten motor R, 6 pins	1		PRINT_MR
+8	Connector, gaatjesprint, aansluitpunten sensor (kolom 46), 11 pins	1		PRINT_QTR
+9	Connector, gaatjesprint, gaten, 2 pins	1		PRINT_BAT
+10	Connector, motor LINKS - encoderprintje, ZH1.5 6-pin (opdruk controleren!), 6 pins	1		ML
+11	Connector, motor RECHTS - encoderprintje, ZH1.5 6-pin (opdruk controleren!), 6 pins	1		MR

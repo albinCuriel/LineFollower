@@ -1,7 +1,7 @@
 # Bedradingslijst (plan B, gaatjesprint)
 
 Zelfde netten als `kicad/linefollower.kicad_sch` (ERC: 0 fouten). Schema als PDF: [elektrisch_schema.pdf](elektrisch_schema.pdf).
-Waar elke draad ligt op de gaatjesprint: [bekabelingsplan.pdf](bekabelingsplan.pdf) en [draadlijst.md](draadlijst.md) (genummerd per bouwstap).
+Waar elke draad ligt op de gaatjesprint: [bekabelingsplan.pdf](bekabelingsplan.pdf) en [bekabelingsplan_draadlijst.md](bekabelingsplan_draadlijst.md) (genummerd per bouwstap, met gatcoördinaten).
 Draad: dupont-draadjes (stekkers eraf), voeding liefst dikker (pigtail 20AWG). Rood = VBAT/BATT+, oranje = 3V3, zwart = GND, overige kleuren = signalen.
 
 ## Voeding

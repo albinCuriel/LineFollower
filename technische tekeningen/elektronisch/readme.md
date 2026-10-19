@@ -6,12 +6,15 @@
 |---|---|---|
 | [elektrisch_schema.pdf](elektrisch_schema.pdf) | volledig schema (A4) | PDF, opent op GitHub |
 | [elektrisch_schema.svg](elektrisch_schema.svg) | hetzelfde schema als afbeelding | browser |
-| [boormal_1op1.pdf](boormal_1op1.pdf) / [png](boormal_1op1.png) | bovenzijde op schaal 1:1: plaats van elk onderdeel en elk boorgat | afdrukken op 100 % (A4) |
-| [bekabelingsplan.pdf](bekabelingsplan.pdf) / [png](bekabelingsplan.png) | soldeerkant op schaal 2:1 met alle 48 draden genummerd | A3 |
-| [draadlijst.md](draadlijst.md) | dezelfde 48 draden als afvinklijst per bouwstap | GitHub |
+| [bekabelingsplan.pdf](bekabelingsplan.pdf) | **9 pagina's A3**: plaatsing, 1 pagina per bouwstap (nieuwe draden dik en genummerd, vorige grijs), controleblad | PDF |
+| `bekabelingsplan_pNN_*.png` | dezelfde pagina's als afbeelding, ook ingevoegd in de [instructable](../../instructable/readme.md) | afbeelding |
+| [bekabelingsplan_boormal_1op1.pdf](bekabelingsplan_boormal_1op1.pdf) | bovenzijde op ware grootte: plaats van elk onderdeel en boorgat | afdrukken op 100 % (A4) |
+| [bekabelingsplan_draadlijst.md](bekabelingsplan_draadlijst.md) | alle 52 draden als afvinklijst: van gat, naar gat, kleur, lengte | GitHub |
+| [kabels/](kabels/readme.md) | batterij-, motor- en sensorkabels (WireViz) | afbeelding |
 | [bedradingslijst.md](bedradingslijst.md) | verbindingen per onderdeel + controles vóór inschakelen | GitHub |
 | [kicad/](kicad/readme.md) | KiCad 10-project van het schema | KiCad |
-| [bekabelingsplan.py](bekabelingsplan.py) | maakt boormal, bekabelingsplan en draadlijst | `py -3 bekabelingsplan.py` |
+| [bekabeling_config.py](bekabeling_config.py) | **de gegevens**: plaats van elk onderdeel (gat per pin), boorgaten, verboden zones, alle draden per stap | aanpassen |
+| [perfplan.py](perfplan.py) | **de motor**: routeert de draden door vrije gaten en tekent alle pagina's | `py -3 perfplan.py bekabeling_config.py` |
 | [easyeda_linefollower_planB.json](easyeda_linefollower_planB.json) | voorbeeldschema van de docent (Pro Micro, DRV8833), enkel ter referentie | EasyEDA |
 
 ## Overzicht
@@ -28,3 +31,16 @@
 | Status | ingebouwde RGB-led van de devkit | GPIO48 |
 
 Dezelfde pinverdeling staat in [code/board.h](../../code/board.h).
+
+## Bekabelingsplan lezen
+
+![stap 8](bekabelingsplan_p04_stap08.png)
+
+- Elk gat heeft een naam: **rij (letter) + kolom (nummer)**, bv. **T10**. De letters en nummers staan op alle 4 randen.
+- Kolom 1 = achterkant, kolom 47 = voorkant. Rij A = robot links.
+- De stappagina's tonen de **soldeerkant**, gespiegeld: rij A ligt daar onderaan. Zo zie je het als je de print omdraait rond de lange as.
+- Nieuwe draden van de stap: dik, in kleur, met een nummer. Vorige stappen: grijs. Rood kader = onderdeel dat je in deze stap plaatst.
+- Gestreept grijs = onderdelen aan de onderkant (motoren, beugels, caster): daar loopt geen draad.
+- De draden lopen langs de gatenrijen en gaan nooit door een pin van een ander onderdeel. Liggen er meerdere draden in dezelfde rij, dan staan ze naast elkaar getekend (bundel).
+
+Iets verplaatsen of een draad toevoegen? Pas `bekabeling_config.py` aan en draai `py -3 perfplan.py bekabeling_config.py`. Alle pagina's, de boormal en de draadlijst worden opnieuw gemaakt (±10 s).

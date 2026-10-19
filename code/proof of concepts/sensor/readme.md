@@ -9,7 +9,7 @@ minimale hard- en software die aantoont dat minimaal 6 sensoren onafhankelijk va
 | LEDON | GPIO11 |
 | VCC / GND | 3V3 / GND |
 
-Soldeer de jumper **3.3V BYPASS** op de QTR-8A dicht. Volledige bedrading: [draadlijst stap 10](../../../technische%20tekeningen/elektronisch/draadlijst.md).
+Soldeer de jumper **3.3V BYPASS** op de QTR-8A dicht. Volledige bedrading: [draadlijst stap 10](../../../technische%20tekeningen/elektronisch/bekabelingsplan_draadlijst.md).
 
 ### werking
 Elke cyclus meet [poc_sensor.ino](poc_sensor/poc_sensor.ino) alle 8 sensoren twee keer: één keer met de IR-leds aan en één keer met de leds uit. Het verschil is de echte reflectie, zonder zonlicht of tl-licht.

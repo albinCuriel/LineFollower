@@ -11,7 +11,7 @@ minimale hard- & software + stappenplan dat aantoont dat 2 motoren onafhankelijk
 | AO1/AO2 · BO1/BO2 | motor links · motor rechts |
 | VM / VCC | VBAT (2S lipo) / 3V3 |
 
-Volledige bedrading: [draadlijst stap 8 en 9](../../../technische%20tekeningen/elektronisch/draadlijst.md).
+Volledige bedrading: [draadlijst stap 8 en 9](../../../technische%20tekeningen/elektronisch/bekabelingsplan_draadlijst.md).
 
 ### werking
 [poc_hbridge.ino](poc_hbridge/poc_hbridge.ino) stuurt PWM op 20 kHz (niet hoorbaar) met een resolutie van 10 bit (0–1023). Het teken van de snelheid bepaalt de draairichting via AIN1/AIN2. Beide motoren versnellen en vertragen traploos (ramp), eerst links, dan rechts, dan samen.
