@@ -59,13 +59,4 @@ Goedkope losse onderdelen zijn daarom geschrapt of worden lokaal gekocht.
 | Flywoo XT30UP-M pigtail 20AWG (2 st.) | 1 | €4,95 |
 | Droneshop LiPo Safe Bag medium | 1 | €5,95 |
 
-### Bewust niet besteld
-| Onderdeel | Waarom |
-|---|---|
-| WS2812 8 leds | enkel debug-luxe; status via de ingebouwde RGB-led van de devkit. Optioneel later. |
-| N20 750 rpm (terugval) | kleine kans dat 10:1 te snel is; bijbestellen indien nodig |
-| Vrouwelijke headers | modules worden rechtstreeks op de gaatjesprint gesoldeerd |
-| Silicone draad, elco's, drukknoppen | al in huis (Arduino-kits) |
-| Boutenset | M2/M3-boutjes lokaal kopen (Brico/ijzerwinkel) |
-
 Zelf al in huis (Arduino-kit): weerstanden (100 kΩ, 33 kΩ, 330 Ω), led, drukknoppen, elco's, breadboard, dupont-draadjes, 100 nF condensatoren.
