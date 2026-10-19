@@ -51,7 +51,9 @@ Meet na met een schuifmaat. Wijkt een maat meer dan 1 mm af, pas dan `MATEN` aan
 4. Boor 4× 2,2 mm (motorbeugels), 2× 2,2 mm (caster, dwars), 2× 2,2 mm (QTR, voorrand) en 2× 3,2 mm (spoiler, achteraan).
 5. Spoiler: zaag het reststuk op 25 × 86 mm en boor er 2 gaten van 3,2 mm in, 68 mm uit elkaar.
 
-**Test:** beugels en caster passen zonder forceren op hun gaten.
+6. **Monteer de ball caster nu al**, vóór de ESP32 erop komt: hij zit onder de ESP32 (op 84 mm voor de wielas, vlak achter de sensor). Steek 2× M2-bout **met lage kop** (≤ 1,5 mm) van boven door de print. Onderaan: de 2 meegeleverde afstandsringen + M2-moeren tot 12,4 mm, dan de caster. De print moet waterpas staan.
+
+**Test:** beugels en caster passen zonder forceren; de boutkoppen steken minder dan 2,5 mm uit (de ESP32 staat 2,5 mm hoog op zijn pinheader).
 
 ### stap 5: voeding
 Plaats SW1, de XT30-pigtail, de buck, R3 en de power-led D1. Draden **1–6**.
@@ -122,7 +124,7 @@ Knop aan de linkerrand, pootjes in **B32** en **D34** (schuin tegenover elkaar =
 **Test:** poc_interrupt: elke druk wisselt de led rood/groen.
 
 ### stap 12: afwerking
-1. Ball caster met beide meegeleverde afstandsringen + M2-moeren tot 12,4 mm tegen de onderkant van de print. De print moet waterpas staan.
+1. Controleer dat de print waterpas staat op de wielen en de caster (stap 4). Sensorhoogte 3 mm.
 2. Batterij met klittenband **dwars boven de wielas**.
 3. Spoiler: 2× M3×30 van onderen door de print, moer erop, dan met 2 moeren de spoiler op **20 mm** boven de print klemmen.
 4. Draden samenbinden, niets onder de QTR laten hangen.
@@ -143,5 +145,7 @@ Knop aan de linkerrand, pootjes in **B32** en **D34** (schuin tegenover elkaar =
    ```
    arduino-cli compile --fqbn esp32:esp32:esp32s3 "code/proof of concepts/sensor/poc_sensor"
    arduino-cli upload  --fqbn esp32:esp32:esp32s3 -p COM5 "code/proof of concepts/sensor/poc_sensor"
+   arduino-cli compile --fqbn esp32:esp32:esp32s3 --library code/lib/lf_core --library code/lib/lf_esp32 code/finaal/linefollower
+   arduino-cli upload  --fqbn esp32:esp32:esp32s3 -p COM5 code/finaal/linefollower
    ```
    De COM-poort vind je met `arduino-cli board list`.

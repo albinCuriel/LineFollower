@@ -8,7 +8,8 @@
 | [3d_iso_voor_links.png](3d_iso_voor_links.png), [3d_iso_achter_rechts.png](3d_iso_achter_rechts.png), [3d_iso_onder.png](3d_iso_onder.png) | 3D-renders | afbeelding |
 | [3d/](3d/readme.md) | 3D-model per onderdeel (STL) + volledige samenstelling (STEP) | GitHub toont STL in 3D |
 | [model_linefollower.py](model_linefollower.py) | maakt het 3D-model (build123d) | zie onderaan |
-| [teken_aanzichten.py](teken_aanzichten.py) | maakt de tekening en de renders uit de STL's | `py -3 teken_aanzichten.py` |
+| [teken_aanzichten.py](teken_aanzichten.py) | maakt de tekening (schaal 1:1, positienummers, stuklijst met massa, zwaartepunt) en de renders uit de STL's | `py -3 teken_aanzichten.py` |
+| [massa_zwaartepunt.txt](massa_zwaartepunt.txt) | berekende massa en gewichtsverdeling, ingelezen door de [simulatie](../../simulatie/readme.md) | tekst |
 
 ## Kernmaten
 
@@ -20,7 +21,10 @@
 | Wielas | 16 mm boven de grond (wiel Ø32) |
 | Bodemvrijheid print | 22,5 mm |
 | Sensorlijn | 98,7 mm voor de wielas, 3 mm boven de grond |
-| Ball caster | 34 mm voor de wielas, net achter de ESP32 |
+| Ball caster | 84 mm voor de wielas, vlak achter de sensor (onder de ESP32) |
+| Massa (schatting) | 123 g, zwaartepunt 22 mm voor de as en 25 mm hoog |
+| Gewicht op de aandrijfwielen | 73 % (met de caster op 34 mm was dat maar 37 %) |
+| Neus komt los | boven 8,9 m/s² versnelling |
 | Batterij | dwars boven de wielas |
 | Spoiler | afgezaagd stuk print 25 × 86 mm, 20 mm boven de print op 2× M3×30 |
 

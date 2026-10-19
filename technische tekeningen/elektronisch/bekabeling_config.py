@@ -109,13 +109,13 @@ KEEPOUTS = [
     (22, 2, 34, 7, "motor R"),
     (0, 0, 3, 9, ""),            # beugel links
     (31, 0, 34, 9, ""),          # beugel rechts
-    (14, 17, 20, 21, "caster"),
+    (14, 36, 20, 40, "caster"),   # caster x=84 mm (onder de ESP32, bouten voor het solderen van de ESP)
 ]
 # Boorgaten (r, c, diameter mm, label) - mogen tussen de rastergaten liggen
 BOORGATEN = [
     (1.84, 1.86, 2.2, "beugel"), (1.84, 8.95, 2.2, "beugel"),
     (32.3, 1.86, 2.2, "beugel"), (32.3, 8.95, 2.2, "beugel"),
-    (14.34, 18.8, 2.2, "caster"), (19.66, 18.8, 2.2, "caster"),
+    (14.34, 38.5, 2.2, "caster"), (19.66, 38.5, 2.2, "caster"),
     (3.24, 42.75, 2.2, "QTR"), (30.76, 42.75, 2.2, "QTR"),
     (3.6, 0.68, 3.2, "spoiler"), (30.4, 0.68, 3.2, "spoiler"),
 ]

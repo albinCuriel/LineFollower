@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle
+from matplotlib.patches import Rectangle, Circle
 from matplotlib.collections import PolyCollection
 
 HIER = pathlib.Path(__file__).parent
@@ -107,70 +107,153 @@ VOOR = np.array([[0, -1, 0], [0, 0, 1], [1, 0, 0]], float)   # kijk tegen de rij
 ZIJ = np.array([[1, 0, 0], [0, 0, 1], [0, -1, 0]], float)    # linkerzijde: x -> rechts, z -> boven
 ISO = Rx(np.radians(-60)) @ Rz(np.radians(-135))
 
-fig = plt.figure(figsize=(16.54, 11.69))  # A3 liggend
+# ---------------------------------------------------------------- massa en zwaartepunt
+# Massa per onderdeel (g): datasheet/winkel, of geschat uit afmetingen (FR4 1,85 g/cm3, -20 % gaten).
+MASSA_G = {
+    "gaatjesprint": 25.6, "ESP32-S3_devkit": 9.0, "QTR-8A": 3.1, "M2_bevestiging_sensor": 1.5,
+    "TB6612FNG": 2.0, "buck_CN3903_3V3": 2.0, "LiPo_2S_450mAh": 28.0, "XT30": 3.0,
+    "motor_links": 11.0, "motor_rechts": 11.0, "beugel_links": 1.2, "beugel_rechts": 1.2,
+    "wiel_links": 1.8, "wiel_rechts": 1.8, "ball_caster": 1.1, "caster_afstandsstukken": 1.5,
+    "aan_uit_schakelaar": 0.5, "start_stop_knop": 0.5, "elco_100uF": 2.0, "spoiler": 6.0, "spoiler_bouten": 3.0,
+}
+DRAAD_TIN_G = 6.0          # draadjes + soldeer, verdeeld over de print
+zw = {n: mesh[n].reshape(-1, 3).mean(0) for n in ONDERDELEN}
+m_tot = sum(MASSA_G.values()) + DRAAD_TIN_G
+cg = (sum(MASSA_G[n] * zw[n] for n in ONDERDELEN) + DRAAD_TIN_G * zw["gaatjesprint"]) / m_tot
+X_CASTER = 84.0
+aandeel_wielen = 1 - cg[0] / X_CASTER          # momentenevenwicht rond de wielas
+a_steiger = 9.81 * cg[0] / cg[2]               # boven deze versnelling komt de neus (caster) los
+with open(HIER / "massa_zwaartepunt.txt", "w", encoding="utf-8") as f:
+    f.write(f"massa_g={m_tot:.1f}\ncg_x_mm={cg[0]:.1f}\ncg_z_mm={cg[2]:.1f}\naandeel_wielen={aandeel_wielen:.3f}\n"
+            f"a_steiger={a_steiger:.2f}\n")
+
+# ---------------------------------------------------------------- blad A3, aanzichten op schaal 1:1
+MMP = 1 / 25.4
+fig = plt.figure(figsize=(420 * MMP, 297 * MMP))
 fig.patch.set_facecolor("white")
-gs = fig.add_gridspec(2, 3, width_ratios=[1.25, 1.0, 0.75], height_ratios=[1, 1],
-                      left=0.03, right=0.98, top=0.93, bottom=0.05, wspace=0.12, hspace=0.18)
-fig.suptitle("LINEFOLLOWER - SAMENSTELLINGSTEKENING (plan B, gaatjesprint)", fontsize=16, fontweight="bold", x=0.03, ha="left")
+fig.add_artist(Rectangle((5 / 420, 5 / 297), 410 / 420, 287 / 297, fill=False, lw=1.2, transform=fig.transFigure))
+fig.text(12 / 420, 280 / 297, "LINEFOLLOWER - SAMENSTELLINGSTEKENING (plan B, gaatjesprint)", fontsize=15, fontweight="bold")
 
-ax = fig.add_subplot(gs[0, 0]); teken(ax, BOVEN, "BOVENAANZICHT")
-maat(ax, (mn[0], mn[1]), (mx[0], mn[1]), f"{mx[0]-mn[0]:.0f}", off=(0, -10))
-maat(ax, (mx[0], mn[1]), (mx[0], mx[1]), f"{mx[1]-mn[1]:.0f}", off=(10, 0))
-maat(ax, (0, 0), (98.7, 0), "98,7 (as -> sensor)", off=(0, 0), kleur="#b71c1c")
-maat(ax, (-15, 45), (105, 45), "120 (print)", off=(0, 18))
-ax.plot(0, 0, "+", color="k", ms=12); ax.text(2, 3, "wielas", fontsize=7)
-ax.set_xlim(mn[0] - 15, mx[0] + 22); ax.set_ylim(mn[1] - 20, mx[1] + 28)
 
-ax = fig.add_subplot(gs[0, 1]); teken(ax, ZIJ, "ZIJAANZICHT (links)")
-maat(ax, (mn[0], 0), (mx[0], 0), f"{mx[0]-mn[0]:.0f}", off=(0, -8))
+def as_mm(x, y, xlim, ylim):
+    """As waarvan 1 data-mm exact 1 mm papier is (schaal 1:1). x, y = linkeronderhoek op het blad (mm)."""
+    w, h = xlim[1] - xlim[0], ylim[1] - ylim[0]
+    a = fig.add_axes([x / 420, y / 297, w / 420, h / 297])
+    return a
+
+
+def aanzicht(x, y, xlim, ylim, titel, R):
+    ax = as_mm(x, y, xlim, ylim)
+    teken(ax, R, "")
+    ax.set_aspect("auto"); ax.set_xlim(*xlim); ax.set_ylim(*ylim)
+    ax.text(0, 1.0, titel, transform=ax.transAxes, fontsize=10, fontweight="bold", va="bottom")
+    return ax
+
+
+ZP = dict(marker="$\\odot$", ms=11, color="#d50000")
+
+# BOVENAANZICHT (1:1)
+ax = aanzicht(14, 142, (-28, 140), (-62, 66), "BOVENAANZICHT  1:1", BOVEN)
+maat(ax, (mn[0], mn[1]), (mx[0], mn[1]), f"{mx[0]-mn[0]:.0f}", off=(0, -6))
+maat(ax, (mx[0], mn[1]), (mx[0], mx[1]), f"{mx[1]-mn[1]:.0f}", off=(9, 0))
+maat(ax, (0, -2), (98.7, -2), "98,7", kleur="#b71c1c")
+maat(ax, (0, 12), (84, 12), "84 (caster)", kleur="#b71c1c")
+maat(ax, (98.7, -37.45), (98.7, 37.45), "74,9 (QTR)", off=(-6, 0), kleur="#b71c1c")
+maat(ax, (0, -49.5), (0, 49.5), "99", off=(-14, 0), kleur="#b71c1c")
+ax.plot(0, 0, "+", color="k", ms=10); ax.text(1.5, 2, "wielas", fontsize=6.5)
+ax.plot(cg[0], cg[1], **ZP)
+
+# ZIJAANZICHT (1:1), onder het bovenaanzicht en even breed
+ax = aanzicht(14, 62, (-28, 140), (-14, 62), "ZIJAANZICHT (links)  1:1", ZIJ)
+ax.axhline(0, color="#795548", lw=1.0); ax.text(-26, -4, "grond", fontsize=6.5, color="#795548")
+maat(ax, (mn[0], 0), (mx[0], 0), f"{mx[0]-mn[0]:.0f}", off=(0, -9))
 maat(ax, (mx[0], 0), (mx[0], mx[2]), f"{mx[2]:.0f}", off=(9, 0))
-maat(ax, (60, 0), (60, 22.5), "22,5", off=(0, 0), kleur="#b71c1c")
-maat(ax, (98.7, 0), (98.7, 3), "3", off=(-8, 0), kleur="#b71c1c")
-ax.axhline(0, color="#795548", lw=1.2); ax.text(mn[0], -3.5, "grond / parcours", fontsize=7, color="#795548")
-ax.set_xlim(mn[0] - 8, mx[0] + 18); ax.set_ylim(-16, mx[2] + 8)
+maat(ax, (60, 0), (60, 22.5), "22,5", kleur="#b71c1c")
+maat(ax, (112, 0), (112, 3), "3", kleur="#b71c1c")
+maat(ax, (-22, 24.1), (-22, 44.1), "20", kleur="#b71c1c")
+ax.plot(cg[0], cg[2], **ZP)
+ax.annotate(f"zwaartepunt ({cg[0]:.0f}; {cg[2]:.0f})", xy=(cg[0], cg[2]), xytext=(cg[0] - 10, 56), fontsize=6.5,
+            color="#d50000", fontweight="bold", arrowprops=dict(arrowstyle="-", color="#d50000", lw=0.6))
 
-ax = fig.add_subplot(gs[1, 1]); teken(ax, VOOR, "VOORAANZICHT")
-maat(ax, (-mx[1], 0), (-mn[1], 0), f"{mx[1]-mn[1]:.0f}  (chronobrug: max. 120)", off=(0, -8))
-maat(ax, (53, 0), (53, 32), "Ø32", off=(8, 0))
-maat(ax, (-mx[1], 0), (-mx[1], mx[2]), f"{mx[2]:.0f}", off=(-9, 0))
-ax.axhline(0, color="#795548", lw=1.2)
+# VOORAANZICHT (1:1)
+ax = aanzicht(196, 62, (-72, 72), (-14, 62), "VOORAANZICHT  1:1", VOOR)
+ax.axhline(0, color="#795548", lw=1.0)
+maat(ax, (-mx[1], 0), (-mn[1], 0), f"{mx[1]-mn[1]:.0f} (max. 110)", off=(0, -9))
+maat(ax, (56, 0), (56, 32), "Ø32", off=(6, 0))
 ax.add_patch(Rectangle((-60, 0), 120, 120, fill=False, ls="--", ec="#9e9e9e", lw=0.8))
-ax.text(-58, 116, "binnenmaat chronobrug 120 x 120", fontsize=7, color="#757575")
-ax.set_xlim(-75, 75); ax.set_ylim(-16, 125)
+ax.text(-58, 55, "chronobrug 120 x 120", fontsize=6, color="#757575")
 
-ax = fig.add_subplot(gs[1, 0]); teken(ax, ISO, "ISOMETRISCH AANZICHT")
-
-# stuklijst + titelblok
-ax = fig.add_subplot(gs[:, 2]); ax.axis("off"); ax.set_xlim(0, 1); ax.set_ylim(0, 1)
-ax.text(0, 0.985, "STUKLIJST", fontsize=11, fontweight="bold")
-gezien = {}
+# ISOMETRIE met positienummers (niet op schaal)
+ax = fig.add_axes([182 / 420, 150 / 297, 140 / 420, 122 / 297])
+teken(ax, ISO, "")
+ax.text(0, 1.0, "ISOMETRIE (niet op schaal)", transform=ax.transAxes, fontsize=10, fontweight="bold", va="bottom")
+proj = {n: zw[n] @ ISO.T for n in ONDERDELEN}
+gezien_nr = {}
 for n, (kl, nr, oms) in ONDERDELEN.items():
-    gezien.setdefault(nr, (kl, oms))
-y = 0.95
-for nr in sorted(gezien):
-    kl, oms = gezien[nr]
-    ax.add_patch(Rectangle((0, y - 0.012), 0.05, 0.024, fc=kl, ec="k", lw=0.4))
-    ax.text(0.07, y, f"{nr:>2}  {oms}", fontsize=8.5, va="center")
-    y -= 0.032
-y -= 0.02
+    gezien_nr.setdefault(nr, n)
+x0, x1 = ax.get_xlim(); y0, y1 = ax.get_ylim()
+midden = np.array([(x0 + x1) / 2, (y0 + y1) / 2])
+rx, ry = 0.62 * (x1 - x0), 0.62 * (y1 - y0)
+items = sorted(gezien_nr.items(), key=lambda kv: np.arctan2(proj[kv[1]][1] - midden[1], proj[kv[1]][0] - midden[0]))
+hoek0 = np.arctan2(proj[items[0][1]][1] - midden[1], proj[items[0][1]][0] - midden[0])
+r_bal = 0.035 * (x1 - x0)
+for k, (nr, n) in enumerate(items):
+    hoek = hoek0 + 2 * np.pi * k / len(items)
+    lx, ly = midden[0] + rx * np.cos(hoek), midden[1] + ry * np.sin(hoek)
+    px, py = proj[n][:2]
+    ax.plot([px, lx], [py, ly], color="#424242", lw=0.5, zorder=9)
+    ax.plot(px, py, "o", ms=2, color="#424242", zorder=9)
+    ax.add_patch(Circle((lx, ly), r_bal, fc="white", ec="#212121", lw=0.8, zorder=10))
+    ax.text(lx, ly, str(nr), ha="center", va="center", fontsize=6.5, fontweight="bold", zorder=11)
+ax.set_xlim(midden[0] - rx - 2 * r_bal, midden[0] + rx + 2 * r_bal)
+ax.set_ylim(midden[1] - ry - 2 * r_bal, midden[1] + ry + 2 * r_bal)
+ax.set_aspect("equal")
+
+# STUKLIJST met massa
+ax = fig.add_axes([330 / 420, 12 / 297, 82 / 420, 262 / 297]); ax.axis("off"); ax.set_xlim(0, 1); ax.set_ylim(0, 1)
+ax.text(0, 0.99, "STUKLIJST", fontsize=10, fontweight="bold", va="top")
+ax.text(0.97, 0.99, "g", fontsize=8, fontweight="bold", va="top", ha="right")
+massa_per_nr = {}
+for n, (kl, nr, oms) in ONDERDELEN.items():
+    massa_per_nr[nr] = massa_per_nr.get(nr, 0) + MASSA_G[n]
+y = 0.955
+for nr, n in sorted(gezien_nr.items()):
+    kl, _, oms = ONDERDELEN[n]
+    ax.add_patch(Rectangle((0, y - 0.009), 0.05, 0.018, fc=kl, ec="k", lw=0.4))
+    ax.text(0.07, y, f"{nr:>2} {oms}", fontsize=6.4, va="center")
+    ax.text(0.99, y, f"{massa_per_nr[nr]:.1f}", fontsize=6.4, va="center", ha="right")
+    y -= 0.026
+ax.text(0.07, y, "    draad + soldeer", fontsize=6.4, va="center")
+ax.text(0.99, y, f"{DRAAD_TIN_G:.1f}", fontsize=6.4, va="center", ha="right")
+y -= 0.03
+ax.plot([0, 1], [y + 0.013, y + 0.013], color="k", lw=0.6)
+ax.text(0.07, y, "TOTAAL (schatting)", fontsize=7.2, fontweight="bold", va="center")
+ax.text(0.99, y, f"{m_tot:.0f}", fontsize=7.2, fontweight="bold", va="center", ha="right")
+y -= 0.05
 for regel in [
     "KERNMATEN",
-    f"Totaal L x B x H: {mx[0]-mn[0]:.0f} x {mx[1]-mn[1]:.0f} x {mx[2]:.0f} mm",
-    "Spoorbreedte (wielmidden): 99 mm",
-    "Sensor 98,7 mm voor de wielas, 3 mm boven grond",
-    "Bodemvrijheid print: 22,5 mm",
-    "Wielas 16 mm boven grond (wiel Ø32)",
-    "Batterij dwars boven de wielas",
+    f"L x B x H  {mx[0]-mn[0]:.0f} x {mx[1]-mn[1]:.0f} x {mx[2]:.0f} mm",
+    "spoor 99 mm, wiel Ø32 x 7",
+    "sensor 98,7 voor de as, 3 boven grond",
+    "print 22,5 boven grond, caster op 84",
+    "",
+    "ZWAARTEPUNT Z (berekend)",
+    f"{cg[0]:.1f} mm voor de as, {cg[2]:.1f} mm hoog",
+    f"{aandeel_wielen * 100:.0f} % gewicht op de aandrijfwielen",
+    f"neus komt los boven {a_steiger:.1f} m/s2",
 ]:
-    ax.text(0, y, regel, fontsize=8.5, fontweight="bold" if regel == "KERNMATEN" else "normal"); y -= 0.025
-ax.add_patch(Rectangle((0, 0.0), 1, 0.13, fill=False, lw=1))
-ax.text(0.02, 0.105, "HOGENT - Elektromechanica", fontsize=9, fontweight="bold")
-ax.text(0.02, 0.075, "Linefollower - samenstelling plan B", fontsize=9)
-ax.text(0.02, 0.045, "Maten in mm  |  schaal: n.v.t. (gerenderd)", fontsize=8)
-ax.text(0.02, 0.015, "Getekend: Albin  |  rev 1.1  |  2026-10-19", fontsize=8)
-
+    vet = regel in ("KERNMATEN", "ZWAARTEPUNT Z (berekend)")
+    ax.text(0, y, regel, fontsize=6.8, fontweight="bold" if vet else "normal", va="center")
+    y -= 0.023
+ax.add_patch(Rectangle((0, 0.0), 1, 0.11, fill=False, lw=1))
+ax.text(0.03, 0.088, "HOGENT - Elektromechanica", fontsize=7.5, fontweight="bold")
+ax.text(0.03, 0.062, "Linefollower - samenstelling plan B", fontsize=7.5)
+ax.text(0.03, 0.036, "Maten in mm | schaal 1:1 (A3) | ISO E", fontsize=7)
+ax.text(0.03, 0.011, "Getekend: Albin | rev 1.2 | 2026-10-19", fontsize=7)
 for ext in ("pdf", "png"):
     fig.savefig(HIER / f"tekening_linefollower.{ext}", dpi=170)
+print(f"massa {m_tot:.0f} g, zwaartepunt x={cg[0]:.1f} z={cg[2]:.1f} mm, "
+      f"{aandeel_wielen * 100:.0f} % op de wielen, neus los boven {a_steiger:.1f} m/s2")
 
 # losse 3D-renders vanuit 4 hoeken
 for naam, R in {"iso_voor_links": ISO, "iso_achter_rechts": Rx(np.radians(-60)) @ Rz(np.radians(45)),

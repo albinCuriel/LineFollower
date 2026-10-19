@@ -35,7 +35,7 @@ Plaatsen: R1 100k, R2 33k
 
 | ✓ | nr | van | gat | naar | gat | kleur | lengte | opmerking |
 |---|---|---|---|---|---|---|---|---|
-| ☐ | 7 | buck IN+ | **J9** | R1 a | **Z31** | rood | 112 mm |  |
+| ☐ | 7 | buck IN+ | **J9** | R1 a | **Z31** | rood | 107 mm |  |
 | ☐ | 8 | R1 b | **Z35** | R2 a | **Z36** | soldeer/blank draadje | 3 mm | soldeerbrug = meetpunt |
 | ☐ | 9 | R2 b | **Z40** | buck IN- | **P9** | zwart | 114 mm |  |
 
@@ -72,19 +72,19 @@ Plaatsen: TB6612FNG, C1
 
 | ✓ | nr | van | gat | naar | gat | kleur | lengte | opmerking |
 |---|---|---|---|---|---|---|---|---|
-| ☐ | 15 | buck IN+ | **J9** | TB6612 VM | **AA10** | rood | 66 mm | motorvoeding |
+| ☐ | 15 | buck IN+ | **J9** | TB6612 VM | **AA10** | rood | 61 mm | motorvoeding |
 | ☐ | 16 | buck IN- | **P9** | TB6612 GND2 (GND) | **AA12** | zwart | 46 mm | motorstroom terug |
 | ☐ | 17 | TB6612 VM | **AA10** | C1 + | **AD10** | rood | 18 mm | C1 vlak bij VM |
 | ☐ | 18 | C1 - | **AD11** | TB6612 GND2 (GND) | **AA12** | zwart | 20 mm |  |
-| ☐ | 19 | ESP J1-2 (3V3) | **W24** | TB6612 VCC | **AA11** | oranje | 53 mm | logica TB6612 |
+| ☐ | 19 | ESP J1-2 (3V3) | **W24** | TB6612 VCC | **AA11** | oranje | 58 mm | logica TB6612 |
 | ☐ | 20 | TB6612 GND | **T17** | buck OUT- | **P17** | zwart | 20 mm |  |
 | ☐ | 21 | TB6612 PWMA | **T10** | ESP J1-18 (IO12) | **W40** | geel | 99 mm |  |
-| ☐ | 22 | TB6612 AIN1 | **T12** | ESP J1-19 (IO13) | **W41** | groen | 122 mm |  |
-| ☐ | 23 | TB6612 AIN2 | **T11** | ESP J1-20 (IO14) | **W42** | groen | 122 mm |  |
+| ☐ | 22 | TB6612 AIN1 | **T12** | ESP J1-19 (IO13) | **W41** | groen | 117 mm |  |
+| ☐ | 23 | TB6612 AIN2 | **T11** | ESP J1-20 (IO14) | **W42** | groen | 127 mm |  |
 | ☐ | 24 | TB6612 PWMB | **T16** | ESP J1-8 (IO15) | **W30** | geel | 53 mm |  |
-| ☐ | 25 | TB6612 BIN1 | **T14** | ESP J1-9 (IO16) | **W31** | groen | 66 mm |  |
-| ☐ | 26 | TB6612 BIN2 | **T15** | ESP J1-10 (IO17) | **W32** | groen | 91 mm |  |
-| ☐ | 27 | TB6612 STBY | **T13** | ESP J1-11 (IO18) | **W33** | groen | 104 mm | laag = motoren uit |
+| ☐ | 25 | TB6612 BIN1 | **T14** | ESP J1-9 (IO16) | **W31** | groen | 71 mm |  |
+| ☐ | 26 | TB6612 BIN2 | **T15** | ESP J1-10 (IO17) | **W32** | groen | 76 mm |  |
+| ☐ | 27 | TB6612 STBY | **T13** | ESP J1-11 (IO18) | **W33** | groen | 74 mm | laag = motoren uit |
 
 Let op:
 - Pinvolgorde volgens de OPDRUK van jouw module.
@@ -103,11 +103,11 @@ Plaatsen: kabel motor L, kabel motor R
 | ☐ | 28 | motor L M1 | **N2** | TB6612 AO1 | **AA13** | bruin | 71 mm |  |
 | ☐ | 29 | motor L M2 | **N7** | TB6612 AO2 | **AA14** | bruin | 66 mm |  |
 | ☐ | 30 | motor R M1 | **V2** | TB6612 BO1 | **AA16** | bruin | 63 mm |  |
-| ☐ | 31 | motor R M2 | **V7** | TB6612 BO2 | **AA15** | bruin | 53 mm |  |
+| ☐ | 31 | motor R M2 | **V7** | TB6612 BO2 | **AA15** | bruin | 43 mm |  |
 | ☐ | 32 | motor L A | **N4** | ESP J3-9 (IO39) | **M31** | blauw | 96 mm |  |
 | ☐ | 33 | motor L B | **N5** | ESP J3-8 (IO40) | **M30** | blauw | 112 mm |  |
-| ☐ | 34 | motor R A | **V4** | ESP J3-7 (IO41) | **M29** | blauw | 122 mm |  |
-| ☐ | 35 | motor R B | **V5** | ESP J3-6 (IO42) | **M28** | blauw | 96 mm |  |
+| ☐ | 34 | motor R A | **V4** | ESP J3-7 (IO41) | **M29** | blauw | 96 mm |  |
+| ☐ | 35 | motor R B | **V5** | ESP J3-6 (IO42) | **M28** | blauw | 117 mm |  |
 | ☐ | 36 | motor L VCC | **N6** | buck OUT+ | **J17** | oranje | 53 mm | encoder L |
 | ☐ | 37 | motor L GND | **N3** | buck OUT- | **P17** | zwart | 56 mm | encoder L |
 | ☐ | 38 | motor R VCC | **V6** | motor L VCC | **N6** | oranje | 30 mm | encoder R |
@@ -130,16 +130,16 @@ Plaatsen: kabel QTR-8A
 | ✓ | nr | van | gat | naar | gat | kleur | lengte | opmerking |
 |---|---|---|---|---|---|---|---|---|
 | ☐ | 40 | QTR S1 | **Y46** | ESP J3-4 (IO1) | **M26** | paars/wit | 91 mm |  |
-| ☐ | 41 | QTR S2 | **Z46** | ESP J3-5 (IO2) | **M27** | paars/wit | 91 mm |  |
+| ☐ | 41 | QTR S2 | **Z46** | ESP J3-5 (IO2) | **M27** | paars/wit | 96 mm |  |
 | ☐ | 42 | QTR S3 | **AA46** | ESP J1-13 (IO3) | **W35** | paars/wit | 53 mm |  |
-| ☐ | 43 | QTR S4 | **AB46** | ESP J1-4 (IO4) | **W26** | paars/wit | 89 mm |  |
-| ☐ | 44 | QTR S5 | **AC46** | ESP J1-5 (IO5) | **W27** | paars/wit | 74 mm |  |
-| ☐ | 45 | QTR S6 | **AD46** | ESP J1-6 (IO6) | **W28** | paars/wit | 74 mm |  |
-| ☐ | 46 | QTR S7 | **AE46** | ESP J1-7 (IO7) | **W29** | paars/wit | 79 mm |  |
-| ☐ | 47 | QTR S8 | **AF46** | ESP J1-12 (IO8) | **W34** | paars/wit | 84 mm |  |
+| ☐ | 43 | QTR S4 | **AB46** | ESP J1-4 (IO4) | **W26** | paars/wit | 84 mm |  |
+| ☐ | 44 | QTR S5 | **AC46** | ESP J1-5 (IO5) | **W27** | paars/wit | 84 mm |  |
+| ☐ | 45 | QTR S6 | **AD46** | ESP J1-6 (IO6) | **W28** | paars/wit | 84 mm |  |
+| ☐ | 46 | QTR S7 | **AE46** | ESP J1-7 (IO7) | **W29** | paars/wit | 84 mm |  |
+| ☐ | 47 | QTR S8 | **AF46** | ESP J1-12 (IO8) | **W34** | paars/wit | 68 mm |  |
 | ☐ | 48 | QTR LEDON | **AG46** | ESP J1-17 (IO11) | **W39** | paars/wit | 58 mm |  |
 | ☐ | 49 | QTR VCC | **AH46** | ESP J1-2 (3V3) | **W24** | oranje | 99 mm |  |
-| ☐ | 50 | QTR GND | **AI46** | ESP J1-22 (GND) | **W44** | zwart | 56 mm |  |
+| ☐ | 50 | QTR GND | **AI46** | ESP J1-22 (GND) | **W44** | zwart | 51 mm |  |
 
 Let op:
 - Jumper 3.3V BYPASS op de QTR dicht.

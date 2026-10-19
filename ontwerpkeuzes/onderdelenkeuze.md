@@ -48,7 +48,7 @@ De snelste HOGENT-robot die we terugvonden (0,906 m/s) gebruikte al **snelle mot
 Het patroon bij alle snelle robots: **licht (70–120 g), motoren 10:1, parallelle H-brugkanalen, encoders, grippy siliconen banden, snelheidsprofiel of parcours in kaart brengen.**
 
 ### Parcours doorgerekend (parcours3.svg uit de template)
-- Lijnlengte **±7,8 m**: **5,6 m recht (71%)** en 2,2 m bocht.
+- Lijnlengte **±7,8 m**: **5,6 m recht (71%)** en 2,2 m bocht. *(Correctie 19/10: de [simulatie](../simulatie/readme.md) meet ±7,0 m.)*
 - **Alle bochten hebben een straal van ±10 cm** (28 stukken van 45°).
 
 Theoretische rondetijd (perfect volgen, geen fouten):

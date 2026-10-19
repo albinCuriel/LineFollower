@@ -48,7 +48,7 @@ Y_RAND = M["print"]["B"] / 2
 Y_WIEL_IN = Y_RAND + 1.0                          # 1 mm speling print <-> wiel
 Y_TANDWIEL = Y_WIEL_IN - 3.0                      # as steekt 3 mm vrij voor de naaf
 X_SENSOR = P_VOOR - M["qtr"]["B"] / 2             # sensorlijn = midden QTR
-X_CASTER = 34.0                                   # net achter de ESP32 (bouten niet onder de devkit)
+X_CASTER = 84.0                                   # vlak achter de QTR: 75 % gewicht op de wielen (zie tekening)
 
 
 def box(lx, ly, lz, x, y, z):

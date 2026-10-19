@@ -1,0 +1,8 @@
+
+# simulatie: build- en cachebestanden
+simulatie/lf_sim.dll
+simulatie/*.exe
+simulatie/*.pdb
+simulatie/*.lib
+simulatie/baan_*.npz
+__pycache__/

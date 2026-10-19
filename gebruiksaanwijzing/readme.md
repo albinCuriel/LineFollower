@@ -22,22 +22,29 @@ debug [on/off]
 start  
 stop  
 set cycle [µs]  
-set power [0..255]  
-set diff [0..1]  
-set kp [0..]  
-set ki [0..]  
-set kd [0..]  
+set kp / ki / kd [waarde]  
+set vbocht / vrecht [m/s]  
+get (alle parameters met uitleg)  
+save / load / reset  
+cal ... cal stop  
 calibrate black  
 calibrate white  
+sensors / status  
+motor l|r [duty] [ms]  
 
-(definitieve lijst volgt met het [basisprogramma](../code/basis/readme.md))
+Volledige lijst met uitleg: [code/finaal](../code/finaal/readme.md). Alle parameters: typ `get`.
 
 ### kalibratie
+Snelste manier: typ `cal`, schuif de robot een paar keer met de hand dwars over de lijn (alle sensoren moeten wit én zwart zien) en typ `cal stop`, dan `save`. De led brandt blauw tijdens het kalibreren.
+
+Of per kleur:
 1. Zet de robot met alle sensoren op het **witte** vlak en stuur `calibrate white`.
 2. Zet de robot met alle sensoren op de **zwarte** lijn en stuur `calibrate black`.
-3. De waarden worden opgeslagen en blijven bewaard na uitschakelen. Herhaal dit bij ander licht of een andere ondergrond.
+3. Typ `save`: dan blijft de kalibratie bewaard na uitschakelen. Herhaal dit bij ander licht of een andere ondergrond.
 
 ### settings
+Startwaarden uit de [simulatie](../simulatie/resultaat_tune.md) (staan al als standaard in de firmware).
+Begin trager: `set vbocht 0.4` en `set vrecht 0.6`, en verhoog stap voor stap.
 De robot rijdt stabiel met volgende parameters:  
 (in te vullen na het afstellen op het parcours)
 

@@ -15,8 +15,8 @@ Syntheseproject HOGENT Elektromechanica: een snelle linefollower (doel ≥ 1 m/s
 | batteries | LiPo 2S 450 mAh 100C (XT30), 3,3 V via een CN3903-buck |
 | wireless communication | wifi: eigen netwerk + TCP-terminal (gsm of laptop) |
 | distance sensor - motors | 98,7 mm |
-| weight | ±115 g (schatting, wordt gewogen na de bouw) |
-| speed | doel ≥ 1 m/s (wordt gemeten op het parcours) |
+| weight | ±123 g (berekend uit de onderdelen, wordt gewogen na de bouw) |
+| speed | simulatie op parcours 3: ±0,9–1,1 m/s gemiddeld; wordt gemeten op het parcours |
 | afmetingen | 121 × 106 × 48 mm (L × B × H, met spoiler) |
 
 ## inhoud van deze repository
@@ -28,6 +28,7 @@ Syntheseproject HOGENT Elektromechanica: een snelle linefollower (doel ≥ 1 m/s
 | [technische tekeningen](technische%20tekeningen/readme.md) | elektrisch schema, bekabelingsplan, boormal, 3D-model, samenstellingstekening |
 | [instructable](instructable/readme.md) | stappenplan om de robot te bouwen |
 | [code](code/readme.md) | proof of concepts, basisprogramma en finale code |
+| [simulatie](simulatie/readme.md) | de robot virtueel op parcours 3, met dezelfde regelcode: PID vooraf afgesteld |
 | [gebruiksaanwijzing](gebruiksaanwijzing/readme.md) | opladen, verbinden, commando's, kalibreren |
 | [datasheets](datasheets/readme.md) | datasheets van alle onderdelen |
 | [parcours](parcours/readme.md) | testparcours |

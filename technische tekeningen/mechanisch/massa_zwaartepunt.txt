@@ -1,0 +1,5 @@
+massa_g=122.8
+cg_x_mm=22.4
+cg_z_mm=24.8
+aandeel_wielen=0.733
+a_steiger=8.88
