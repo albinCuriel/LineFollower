@@ -86,6 +86,10 @@ class Plan:
                 for c in range(self.C):
                     if r0 <= r <= r1 and c0 <= c <= c1:
                         blok.add((r, c))
+        for (r0, c0, r1, c1, *_rest) in getattr(self.cfg, "UITSPARINGEN", []):  # weggesneden: geen gat meer
+            for r in range(r0, r1 + 1):
+                for c in range(c0, c1 + 1):
+                    blok.add((r, c))
         for (rb, cb, d_mm, _l) in self.cfg.BOORGATEN:   # rond een boorgat/bout/moer: geen draad
             straal = d_mm / self.cfg.BOARD["pitch"] / 2 + 0.9
             for r in range(self.R):
@@ -191,6 +195,12 @@ class Plan:
                                    hatch="////" if onder else None))
             ax.text((c0 + c1) / 2, (r0 + r1) / 2, label, ha="center", va="center", fontsize=6,
                     color="#455a64", zorder=1.6, rotation=90 if (r1 - r0) > 2.5 * (c1 - c0) else 0)
+        # uitsparingen (wegsnijden, bv. doorvoer encoderkabel)
+        for (r0, c0, r1, c1, label, *_rest) in getattr(cfg, "UITSPARINGEN", []):
+            ax.add_patch(Rectangle((c0 - 0.45, r0 - 0.45), c1 - c0 + 0.9, r1 - r0 + 0.9, fc="white",
+                                   ec="#c62828", lw=1.4, hatch="xxx", zorder=5.5))
+            ax.text((c0 + c1) / 2, _rest[0] if _rest else r0 - 0.9, label, ha="center", va="center",
+                    fontsize=5.5, fontweight="bold", color="#c62828", zorder=5.6)
         # boorgaten
         for (r, c, d_mm, label) in cfg.BOORGATEN:
             ax.add_patch(Circle((c, r), d_mm / cfg.BOARD["pitch"] / 2 + 0.15, fc="white", ec="#e65100", lw=1.3, zorder=6))

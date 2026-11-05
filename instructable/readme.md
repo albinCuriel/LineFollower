@@ -45,13 +45,14 @@ Meet na met een schuifmaat. Wijkt een maat meer dan 1 mm af, pas dan `MATEN` aan
 | LiPo 2S 450 mAh | L × B × H, gewicht | 60 × 17 × 15 mm | |
 
 ### stap 4: print inkorten en boren
-1. Zaag de gaatjesprint in op **47 × 35 gaten (120 × 90 mm)** langs een gatenrij. Vijl de rand glad. **Bewaar het afgezaagde stuk: dat wordt de spoiler.**
+1. De print van 9 × 15 cm heeft **33 × 54 gaten**. Kort hem in de lengte in tot **47 gaten** (≈ 120 mm): laat de padstrook aan de achterkant zitten en kerf/breek langs de gatenrij net na gat 47. De breedte (90 mm, 33 gaten) blijft. Vijl de rand glad. **Bewaar het afgezaagde stuk: dat wordt de spoiler.**
 2. Zet de stiftstreepjes bij elke 5e rij en kolom.
 3. Plak de boormal erop en prik de oranje kruisen aan.
 4. Boor 4× 2,2 mm (motorbeugels), 2× 2,2 mm (caster, dwars), 2× 2,2 mm (QTR, voorrand) en 2× 3,2 mm (spoiler, achteraan).
-5. Spoiler: zaag het reststuk op 25 × 86 mm en boor er 2 gaten van 3,2 mm in, 68 mm uit elkaar.
+5. Snij de 2 **uitsparingen** voor de encoderkabels (rood gekruist op de boormal, 4 × 2 gaten, rij M–N en T–U, kolom 3–6): boor elk gat van de uitsparing op 2,5 mm, verbind ze met een stanleymes of naaldvijl en vijl de rand glad.
+6. Spoiler: zaag het reststuk op 25 × 86 mm en boor er 2 gaten van 3,2 mm in, 68 mm uit elkaar.
 
-6. **Monteer de ball caster nu al**, vóór de ESP32 erop komt: hij zit onder de ESP32 (op 84 mm voor de wielas, vlak achter de sensor). Steek 2× M2-bout **met lage kop** (≤ 1,5 mm) van boven door de print. Onderaan: de 2 meegeleverde afstandsringen + M2-moeren tot 12,4 mm, dan de caster. De print moet waterpas staan.
+7. **Monteer de ball caster nu al**, vóór de ESP32 erop komt: hij zit onder de ESP32 (op 84 mm voor de wielas, vlak achter de sensor). Steek 2× M2-bout **met lage kop** (≤ 1,5 mm) van boven door de print. Onderaan: de 2 meegeleverde afstandsringen + M2-moeren tot 12,4 mm, dan de caster. De print moet waterpas staan.
 
 **Test:** beugels en caster passen zonder forceren; de boutkoppen steken minder dan 2,5 mm uit (de ESP32 staat 2,5 mm hoog op zijn pinheader).
 
@@ -97,19 +98,19 @@ TB6612 met PWMA in gat **T10**, de stuurpinnen naar het midden. Volg de **opdruk
 ### stap 9: motoren, beugels, wielen, encoders
 1. Soldeer 100 nF rechtstreeks over de motorklemmen M1/M2 op het motorprintje.
 2. Motor in de Pololu-beugel, beugel met 2× M2×8 aan de **onderkant** van de print. Tandwielkast naar buiten.
-3. Knip de motorkabel op lengte en steek elk draadje **van onderen** in zijn gat: motor L in **N2–N7**, motor R in **V2–V7** (zie [kabels](../technische%20tekeningen/elektronisch/kabels/readme.md)).
+3. Leid de encoderkabel door de **uitsparing** achter de motor naar boven (niet onder de motor door: dan sleept hij over de grond). Knip op lengte en steek elk draadje **van boven** in zijn gat: motor L in **O2–O7**, motor R in **S2–S7** (zie [kabels](../technische%20tekeningen/elektronisch/kabels/readme.md)).
 4. Wielen op de D-as, 1 mm speling tot de print.
 5. Draden **28–39**.
 
 ![stap 9](../technische%20tekeningen/elektronisch/bekabelingsplan_p05_stap09.png)
 
-**Test:** wielen vrij, poc_hbridge: eerst links, dan rechts, beide vooruit en achteruit. Draait een wiel verkeerd om, wissel dan de draden in N2/N7 (of V2/V7). Draai een wiel 1 toer met de hand: de encoder telt **280** (7 PPR × 4 × 10:1).
+**Test:** wielen vrij, poc_hbridge: eerst links, dan rechts, beide vooruit en achteruit. Draait een wiel verkeerd om, wissel dan de draden in O2/O7 (of S2/S7). Draai een wiel 1 toer met de hand: de encoder telt **280** (7 PPR × 4 × 10:1).
 
 ### stap 10: sensor
 1. Soldeer de jumper **"3.3V BYPASS"** op de QTR-8A dicht.
 2. Soldeer 11 draadjes aan de QTR (OUT1–8, LEDON, VCC, GND). Sensor 1 = robot **links**.
-3. QTR onder de voorrand met 2× M2×25. Stel met de moeren **3 mm** tussen sensoren en grond af (boortje van 3 mm als voeler).
-4. Steek de 11 draadjes van onderen in **Y46–AI46** (zie [kabels](../technische%20tekeningen/elektronisch/kabels/readme.md)).
+3. QTR onder de voorrand met messing M2-afstandhouders (20 mm + eventueel 5 of 10 mm) en M2×5-schroefjes. Stel de hoogte zo af dat er **3 mm** tussen sensoren en grond zit (boortje van 3 mm als voeler).
+4. Steek de 11 draadjes van onderen in **W46–AG46** (zie [kabels](../technische%20tekeningen/elektronisch/kabels/readme.md)).
 5. Draden **40–50**.
 
 ![stap 10](../technische%20tekeningen/elektronisch/bekabelingsplan_p06_stap10.png)

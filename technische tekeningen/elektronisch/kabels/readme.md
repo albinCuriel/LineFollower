@@ -1,6 +1,6 @@
 # Kabels
 
-Alles wat niet op de gaatjesprint zelf ligt: de batterij-pigtail, de 2 motorkabels (motor + encoder) en de 11 draadjes van de sensor. De gaten (E17, N2, Y46, ...) zijn dezelfde als in het [bekabelingsplan](../bekabelingsplan.pdf).
+Alles wat niet op de gaatjesprint zelf ligt: de batterij-pigtail, de 2 motorkabels (motor + encoder) en de 11 draadjes van de sensor. De gaten (D17, O2, W46, ...) zijn dezelfde als in het [bekabelingsplan](../bekabelingsplan.pdf).
 
 ![kabels](kabels.png)
 

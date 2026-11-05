@@ -1,6 +1,6 @@
 # Kabels van de linefollower (alles wat NIET op de gaatjesprint zelf ligt).
 # Maak de tekening:  wireviz kabels.yml   (vereist Graphviz)
-# Gaten (E17, N2, ...) = gatcoordinaten van ../bekabelingsplan.pdf
+# Gaten (D17, O2, ...) = gatcoordinaten van ../bekabelingsplan.pdf
 
 metadata:
   title: Linefollower - kabels
@@ -19,7 +19,7 @@ connectors:
   PRINT_BAT:
     type: gaatjesprint
     subtype: gaten
-    pinlabels: [E17 XT30+, G17 XT30-]
+    pinlabels: [D17 XT30+, F17 XT30-]
   ML:
     type: motor LINKS - encoderprintje
     subtype: ZH1.5 6-pin (opdruk controleren!)
@@ -28,7 +28,7 @@ connectors:
   PRINT_ML:
     type: gaatjesprint
     subtype: aansluitpunten motor L
-    pinlabels: [N2 M1, N3 GND, N4 A, N5 B, N6 VCC, N7 M2]
+    pinlabels: [O2 M1, O3 GND, O4 A, O5 B, O6 VCC, O7 M2]
   MR:
     type: motor RECHTS - encoderprintje
     subtype: ZH1.5 6-pin (opdruk controleren!)
@@ -37,7 +37,7 @@ connectors:
   PRINT_MR:
     type: gaatjesprint
     subtype: aansluitpunten motor R
-    pinlabels: [V2 M1, V3 GND, V4 A, V5 B, V6 VCC, V7 M2]
+    pinlabels: [S2 M1, S3 GND, S4 A, S5 B, S6 VCC, S7 M2]
   QTR:
     type: Pololu QTR-8A
     subtype: header (volgens opdruk), sensor 1 = robot links
@@ -46,7 +46,7 @@ connectors:
   PRINT_QTR:
     type: gaatjesprint
     subtype: aansluitpunten sensor (kolom 46)
-    pinlabels: [Y46 S1, Z46 S2, AA46 S3, AB46 S4, AC46 S5, AD46 S6, AE46 S7, AF46 S8, AG46 LEDON, AH46 VCC, AI46 GND]
+    pinlabels: [W46 S1, X46 S2, Y46 S3, Z46 S4, AA46 S5, AB46 S6, AC46 S7, AD46 S8, AE46 LEDON, AF46 VCC, AG46 GND]
 
 cables:
   W_BAT:

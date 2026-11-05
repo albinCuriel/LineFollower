@@ -1,4 +1,4 @@
-"""Bekabelingsplan linefollower (plan B, gaatjesprint 120 x 90 mm) - projectgegevens voor perfplan.py.
+"""Bekabelingsplan linefollower (plan B, gaatjesprint 120 x 90 mm, 47 x 33 gaten) - projectgegevens voor perfplan.py.
 
 Maak het plan:  py -3 perfplan.py bekabeling_config.py
 Gat (r, c): r = rij 0.. (A = robot LINKS in bovenaanzicht), c = kolom 0.. (kolom 1 = achterrand, 47 = voorrand).
@@ -9,16 +9,17 @@ afgerond op het raster.
 BOARD = dict(
     titel="Linefollower - gaatjesprint",
     prefix="bekabelingsplan",
-    rijen=35, kolommen=47, pitch=2.54, voorkant="rechts",
+    rijen=33, kolommen=47, pitch=2.54, voorkant="rechts",
     voettekst="HOGENT Elektromechanica - linefollower plan B - gemaakt met perfplan.py",
     plaatsing_uitleg="Kijk op de componentenkant. Kolom 1 = achterkant (batterij), kolom 47 = voorkant (sensor). "
                      "Rij A = robot links. Rood omcirkeld = pin 1 / referentiepin.",
     plaatsing_notities=[
-        "Zaag de print eerst op 47 x 35 gaten (120 x 90 mm).",
+        "Zaag de print in de lengte op 47 gaten (breedte 90 mm\nblijft: 33 gaten). Rij A = eerste gatenrij links.",
         "Markeer met stift elke 5e rij en kolom: dan vind je\nelk gat snel terug.",
         "Oranje kruisen = boorgaten (beugels, caster, QTR, spoiler).",
         "Gestreept grijs = onderdelen aan de ONDERkant\n(motoren, beugels, caster): daar komen geen draden.",
-        "Kabels van motoren en sensor komen van onderen:\nsteek de draadjes van onderen in hun gat.",
+        "Rood gekruist = uitsparing: wegsnijden (doorvoer encoderkabels).",
+        "Motorkabels komen door de uitsparing naar boven; de\nQTR-kabel komt van onderen in zijn gat.",
     ],
 )
 
@@ -29,7 +30,7 @@ ESP_J3 = ["GND", "43", "44", "1", "2", "42", "41", "40", "39", "38", "37", "36",
           "47", "21", "20", "19", "GND", "GND"]
 ESP_PINS, ESP_LAB, ESP_OFF = {}, {}, {}
 for k in range(22):
-    for rij, lijst, r, dy in (("J1", ESP_J1, 22, -0.95), ("J3", ESP_J3, 12, 0.95)):
+    for rij, lijst, r, dy in (("J1", ESP_J1, 21, -0.95), ("J3", ESP_J3, 11, 0.95)):
         pin = f"{rij}-{k + 1}"
         ESP_PINS[pin] = (r, 22 + k)
         ESP_LAB[pin] = lijst[k] if not lijst[k].isdigit() else "IO" + lijst[k]
@@ -46,8 +47,8 @@ def gpio(n):
 
 TB_LOGIC = ["PWMA", "AIN2", "AIN1", "STBY", "BIN1", "BIN2", "PWMB", "GND"]
 TB_POWER = ["VM", "VCC", "GND2", "AO1", "AO2", "BO2", "BO1", "GND3"]
-TB_PINS = {n: (19, 9 + i) for i, n in enumerate(TB_LOGIC)}
-TB_PINS.update({n: (26, 9 + i) for i, n in enumerate(TB_POWER)})
+TB_PINS = {n: (18, 9 + i) for i, n in enumerate(TB_LOGIC)}
+TB_PINS.update({n: (25, 9 + i) for i, n in enumerate(TB_POWER)})
 TB_OFF = {n: (0, -0.95) for n in TB_LOGIC}
 TB_OFF.update({n: (0, 0.95) for n in TB_POWER})
 TB_LAB = {"GND2": "GND", "GND3": "GND"}
@@ -57,67 +58,74 @@ QTR = ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "LEDON", "VCC", "GND"]
 
 PARTS = [
     # stap 5 - voeding
-    dict(naam="SW1", kort="SW1", label="SW1 aan/uit", stap=5, kleur="#1e88e5", omtrek=(0, 9.6, 0.4, 12.4),
-         pins={"1": (0, 10), "2": (0, 11), "3": (0, 12)}, pinlabels={"1": "VBAT", "2": "BATT+", "3": "-"},
-         pinlabel_offset=(0, 0.95), pin1="2", labelpos=(11, 1.9)),
-    dict(naam="XT30", kort="XT30", label="XT30\npigtail", stap=5, kleur="#f9a825", omtrek=(3.6, 15.6, 6.4, 18.4),
-         pins={"+": (4, 16), "-": (6, 16)}, pinlabels={"+": "+ rood", "-": "- zwart"}, pinlabel_offset=(1.6, 0),
-         pin1="+", labelpos=(18.6, 5)),
-    dict(naam="BUCK", kort="buck", label="CN3903\nbuck 3,3V", stap=5, kleur="#1565c0", omtrek=(9, 8, 15, 16),
-         pins={"IN+": (9, 8), "IN-": (15, 8), "OUT+": (9, 16), "OUT-": (15, 16)}, pinlabel_offset=(0, 0.95),
+    dict(naam="SW1", kort="SW1", label="SW1 aan/uit", stap=5, kleur="#1e88e5", omtrek=(0, 10.6, 0.4, 13.4),
+         pins={"1": (0, 11), "2": (0, 12), "3": (0, 13)}, pinlabels={"1": "VBAT", "2": "BATT+", "3": "-"},
+         pinlabel_offset=(0, 0.95), pin1="2", labelpos=(12, 1.9)),
+    dict(naam="XT30", kort="XT30", label="XT30\npigtail", stap=5, kleur="#f9a825", omtrek=(2.6, 15.6, 5.4, 18.4),
+         pins={"+": (3, 16), "-": (5, 16)}, pinlabels={"+": "+ rood", "-": "- zwart"}, pinlabel_offset=(1.6, 0),
+         pin1="+", labelpos=(18.6, 4)),
+    dict(naam="BUCK", kort="buck", label="CN3903\nbuck 3,3V", stap=5, kleur="#1565c0", omtrek=(8, 8, 14, 16),
+         pins={"IN+": (8, 8), "IN-": (14, 8), "OUT+": (8, 16), "OUT-": (14, 16)}, pinlabel_offset=(0, 0.95),
          pin1="IN+"),
-    dict(naam="R3", kort="R3", label="R3 330", stap=5, kleur="#8d6e63", omtrek=(2, 18, 2, 22),
-         pins={"a": (2, 18), "b": (2, 22)}, pinlabels={"a": "", "b": ""}, labelpos=(20, 1.1)),
-    dict(naam="D1", kort="D1", label="D1", stap=5, kleur="#43a047", omtrek=(2, 23, 2, 24),
-         pins={"A": (2, 23), "K": (2, 24)}, pinlabels={"A": "+", "K": "-"}, labelpos=(23.5, 1.1), pin1="A"),
+    dict(naam="R3", kort="R3", label="R3 330", stap=5, kleur="#8d6e63", omtrek=(1, 18, 1, 22),
+         pins={"a": (1, 18), "b": (1, 22)}, pinlabels={"a": "", "b": ""}, labelpos=(20, 0.1)),
+    dict(naam="D1", kort="D1", label="D1", stap=5, kleur="#43a047", omtrek=(1, 23, 1, 24),
+         pins={"A": (1, 23), "K": (1, 24)}, pinlabels={"A": "+", "K": "-"}, labelpos=(23.5, 0.1), pin1="A"),
     # stap 6 - batterijmeting
-    dict(naam="R1", kort="R1", label="R1 100k", stap=6, kleur="#8d6e63", omtrek=(25, 30, 25, 34),
-         pins={"a": (25, 30), "b": (25, 34)}, pinlabels={"a": "", "b": ""}, labelpos=(32, 26.1)),
-    dict(naam="R2", kort="R2", label="R2 33k", stap=6, kleur="#8d6e63", omtrek=(25, 35, 25, 39),
-         pins={"a": (25, 35), "b": (25, 39)}, pinlabels={"a": "", "b": ""}, labelpos=(37, 26.1)),
+    dict(naam="R1", kort="R1", label="R1 100k", stap=6, kleur="#8d6e63", omtrek=(24, 30, 24, 34),
+         pins={"a": (24, 30), "b": (24, 34)}, pinlabels={"a": "", "b": ""}, labelpos=(32, 25.1)),
+    dict(naam="R2", kort="R2", label="R2 33k", stap=6, kleur="#8d6e63", omtrek=(24, 35, 24, 39),
+         pins={"a": (24, 35), "b": (24, 39)}, pinlabels={"a": "", "b": ""}, labelpos=(37, 25.1)),
     # stap 7 - ESP32
     dict(naam="ESP", kort="ESP", label="ESP32-S3 devkit (USB vooraan)", stap=7, kleur="#283593",
-         omtrek=(11, 21, 23, 46), pins=ESP_PINS, pinlabels=ESP_LAB, pinlabel_offsets=ESP_OFF, pinlabel_rot=90,
-         pin1="J1-1", labelpos=(34, 17)),
-    dict(naam="C2", kort="C2", label="C2", stap=7, kleur="#3949ab", omtrek=(25, 22, 25, 23),
-         pins={"+": (25, 22), "-": (25, 23)}, pinlabel_offset=(0, 0.95), pin1="+", labelpos=(22.5, 26.4)),
+         omtrek=(10, 21, 22, 46), pins=ESP_PINS, pinlabels=ESP_LAB, pinlabel_offsets=ESP_OFF, pinlabel_rot=90,
+         pin1="J1-1", labelpos=(34, 16)),
+    dict(naam="C2", kort="C2", label="C2", stap=7, kleur="#3949ab", omtrek=(24, 22, 24, 23),
+         pins={"+": (24, 22), "-": (24, 23)}, pinlabel_offset=(0, 0.95), pin1="+", labelpos=(22.5, 25.4)),
     # stap 8 - H-brug
-    dict(naam="TB", kort="TB6612", label="TB6612FNG", stap=8, kleur="#e53935", omtrek=(19, 9, 26, 16),
+    dict(naam="TB", kort="TB6612", label="TB6612FNG", stap=8, kleur="#e53935", omtrek=(18, 9, 25, 16),
          pins=TB_PINS, pinlabels=TB_LAB, pinlabel_offsets=TB_OFF, pinlabel_rot=90, pin1="PWMA",
-         labelpos=(12.5, 22.5)),
-    dict(naam="C1", kort="C1", label="C1", stap=8, kleur="#3949ab", omtrek=(29, 9, 29, 10),
-         pins={"+": (29, 9), "-": (29, 10)}, pinlabel_offset=(0, 0.95), pin1="+", labelpos=(11.6, 29)),
+         labelpos=(12.5, 21.5)),
+    dict(naam="C1", kort="C1", label="C1", stap=8, kleur="#3949ab", omtrek=(28, 9, 28, 10),
+         pins={"+": (28, 9), "-": (28, 10)}, pinlabel_offset=(0, 0.95), pin1="+", labelpos=(11.6, 28)),
     # stap 9 - motoren (aansluitpunten: kabel komt van onderen)
-    dict(naam="ML", kort="motor L", label="kabel\nmotor L", stap=9, kleur="#6d4c41", omtrek=(13, 1, 13, 6),
-         pins={n: (13, 1 + i) for i, n in enumerate(MOTOR)}, pinlabel_offset=(0, -0.95), pinlabel_rot=90,
-         pin1="M1", labelpos=(3.5, 15.2)),
-    dict(naam="MR", kort="motor R", label="kabel\nmotor R", stap=9, kleur="#6d4c41", omtrek=(21, 1, 21, 6),
-         pins={n: (21, 1 + i) for i, n in enumerate(MOTOR)}, pinlabel_offset=(0, 0.95), pinlabel_rot=90,
-         pin1="M1", labelpos=(3.5, 18.8)),
+    dict(naam="ML", kort="motor L", label="kabel\nmotor L", stap=9, kleur="#6d4c41", omtrek=(14, 1, 14, 6),
+         pins={n: (14, 1 + i) for i, n in enumerate(MOTOR)}, pinlabel_offset=(0, 0.95), pinlabel_rot=90,
+         pin1="M1", labelpos=(4.5, 9.5)),
+    dict(naam="MR", kort="motor R", label="kabel\nmotor R", stap=9, kleur="#6d4c41", omtrek=(18, 1, 18, 6),
+         pins={n: (18, 1 + i) for i, n in enumerate(MOTOR)}, pinlabel_offset=(0, -0.95), pinlabel_rot=90,
+         pin1="M1", labelpos=(4.5, 23.5)),
     # stap 10 - sensor (aansluitpunten: kabel van de QTR-8A)
-    dict(naam="QTR", kort="QTR", label="kabel\nQTR-8A", stap=10, kleur="#c62828", omtrek=(24, 45, 34, 45),
-         pins={n: (24 + i, 45) for i, n in enumerate(QTR)}, pinlabel_offset=(-1.3, 0), pin1="S1",
-         labelpos=(43.2, 33.2)),
+    dict(naam="QTR", kort="QTR", label="kabel\nQTR-8A", stap=10, kleur="#c62828", omtrek=(22, 45, 32, 45),
+         pins={n: (22 + i, 45) for i, n in enumerate(QTR)}, pinlabel_offset=(-1.3, 0), pin1="S1",
+         labelpos=(43.2, 31.2)),
     # stap 11 - bediening
-    dict(naam="KNOP", kort="knop", label="start/stop", stap=11, kleur="#fdd835", omtrek=(1, 31, 3, 33),
-         pins={"1": (1, 31), "2": (3, 33)}, pinlabel_offset=(0, 0), pin1="1", labelpos=(32, 4.3)),
+    dict(naam="KNOP", kort="knop", label="start/stop", stap=11, kleur="#fdd835", omtrek=(0, 31, 2, 33),
+         pins={"1": (0, 31), "2": (2, 33)}, pinlabel_offset=(0, 0), pin1="1", labelpos=(32, 3.3)),
 ]
 
 # Onderdelen aan de ONDERkant: hier geen draden (r0, c0, r1, c1, label)
 KEEPOUTS = [
-    (0, 2, 12, 7, "motor L"),
-    (22, 2, 34, 7, "motor R"),
-    (0, 0, 3, 9, ""),            # beugel links
-    (31, 0, 34, 9, ""),          # beugel rechts
-    (14, 36, 20, 40, "caster"),   # caster x=84 mm (onder de ESP32, bouten voor het solderen van de ESP)
+    (0, 2, 11, 7, "motor L"),
+    (21, 2, 32, 7, "motor R"),
+    (0, 0, 2, 9, ""),            # beugel links
+    (30, 0, 32, 9, ""),          # beugel rechts
+    (13, 36, 19, 40, "caster"),   # caster x=84 mm (onder de ESP32, bouten voor het solderen van de ESP)
 ]
+# Uitsparingen (r0, c0, r1, c1, label, labelrij): wegsnijden. Encoderkabel N20 (achterkant motor, binnenkant)
+# gaat hier recht naar boven i.p.v. onder de motor door (hangt anders tegen de grond).
+UITSPARINGEN = [
+    (12, 2, 13, 5, "uitsparing", 11.1),
+    (19, 2, 20, 5, "uitsparing", 21.9),
+]
+
 # Boorgaten (r, c, diameter mm, label) - mogen tussen de rastergaten liggen
 BOORGATEN = [
-    (1.84, 1.86, 2.2, "beugel"), (1.84, 8.95, 2.2, "beugel"),
-    (32.3, 1.86, 2.2, "beugel"), (32.3, 8.95, 2.2, "beugel"),
-    (14.34, 38.5, 2.2, "caster"), (19.66, 38.5, 2.2, "caster"),
-    (3.24, 42.75, 2.2, "QTR"), (30.76, 42.75, 2.2, "QTR"),
-    (3.6, 0.68, 3.2, "spoiler"), (30.4, 0.68, 3.2, "spoiler"),
+    (0.84, 1.86, 2.2, "beugel"), (0.84, 8.95, 2.2, "beugel"),
+    (31.3, 1.86, 2.2, "beugel"), (31.3, 8.95, 2.2, "beugel"),
+    (13.34, 38.5, 2.2, "caster"), (18.66, 38.5, 2.2, "caster"),
+    (2.24, 42.75, 2.2, "QTR"), (29.76, 42.75, 2.2, "QTR"),
+    (2.6, 0.68, 3.2, "spoiler"), (29.4, 0.68, 3.2, "spoiler"),
 ]
 
 # ------------------------------------------------------------------ draden
@@ -190,12 +198,12 @@ STAPPEN = {
         ["Meet daarna: buck OUT+ -> GND = 3,25-3,35 V.", "SW1 uit = 0 V op VBAT.", "Led-poot lang = +."]),
     6: ("batterijmeting", "Spanningsdeler R1/R2: 8,4 V wordt 2,08 V op het meetpunt.",
         ["Meet: meetpunt -> GND = VBAT x 33/133."]),
-    7: ("ESP32-S3 devkit", "Devkit met de USB-poorten naar VOOR (kolom 47). Pin J1-1 (3V3) in gat W23.",
+    7: ("ESP32-S3 devkit", "Devkit met de USB-poorten naar VOOR (kolom 47). Pin J1-1 (3V3) in gat V23.",
         ["Eerst doorgangstest 3V3 <-> GND: geen kortsluiting.",
          "Test met enkel USB: poc_interrupt -> rode led."]),
-    8: ("H-brug TB6612FNG", "Module met de stuurpinnen (PWMA ... GND) naar het midden (rij T).",
+    8: ("H-brug TB6612FNG", "Module met de stuurpinnen (PWMA ... GND) naar het midden (rij S).",
         ["Pinvolgorde volgens de OPDRUK van jouw module.", "Test: 1 motor los aan AO1/AO2 + poc_hbridge."]),
-    9: ("motoren en encoders", "De 6-draadskabels komen van onderen. Steek elk draadje van onderen in zijn gat.",
+    9: ("motoren en encoders", "De 6-draadskabels gaan door de uitsparing achter de encoder naar boven. Steek elk draadje van boven in zijn gat.",
         ["Volgorde op het motorprintje controleren\n(M1, GND, A, B, VCC, M2).",
          "100 nF over M1/M2 op het motorprintje.",
          "Knip de pootjes boven af: de batterij komt erover."]),
