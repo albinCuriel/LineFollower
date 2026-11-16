@@ -137,9 +137,9 @@ Plaatsen: kabel QTR-8A
 | ☐ | 45 | QTR S6 | **AB46** | ESP J1-6 (IO6) | **V28** | paars/wit | 81 mm |  |
 | ☐ | 46 | QTR S7 | **AC46** | ESP J1-7 (IO7) | **V29** | paars/wit | 81 mm |  |
 | ☐ | 47 | QTR S8 | **AD46** | ESP J1-12 (IO8) | **V34** | paars/wit | 61 mm |  |
-| ☐ | 48 | QTR LEDON | **AE46** | ESP J1-17 (IO11) | **V39** | paars/wit | 61 mm |  |
+| ☐ | 48 | QTR LEDON | **AE46** | ESP J1-17 (IO11) | **V39** | paars/wit | 66 mm |  |
 | ☐ | 49 | QTR VCC | **AF46** | ESP J1-2 (3V3) | **V24** | oranje | 96 mm |  |
-| ☐ | 50 | QTR GND | **AG46** | ESP J1-22 (GND) | **V44** | zwart | 53 mm |  |
+| ☐ | 50 | QTR GND | **AG46** | ESP J1-22 (GND) | **V44** | zwart | 58 mm |  |
 
 Let op:
 - Jumper 3.3V BYPASS op de QTR dicht.

@@ -8,6 +8,12 @@
 
 namespace hw {
 
+// Richtingen omkeren zonder te hersolderen (commando "invert ...", bewaard in flash):
+// sensorvolgorde, draairichting motor L/R, telrichting encoder L/R.
+enum { OMK_SENSOR, OMK_MOTOR_L, OMK_MOTOR_R, OMK_ENC_L, OMK_ENC_R, N_OMK };
+static uint8_t omkeer[N_OMK] = {0, 0, 0, 0, 0};
+static const char *OMK_NAAM[N_OMK] = {"sensor", "motorl", "motorr", "encl", "encr"};
+
 // ---------------------------------------------------------------- sensoren (QTR-8A)
 // Meet elke sensor met de IR-leds UIT en AAN. reflectie = uit - aan (hoog = wit), omgevingslicht valt weg.
 static uint16_t adc_aan[lf::N_SENSOR], adc_uit[lf::N_SENSOR];
@@ -30,6 +36,13 @@ inline void sensoren_lees(float refl[lf::N_SENSOR], bool led_diff) {
   for (int i = 0; i < lf::N_SENSOR; i++) adc_aan[i] = analogRead(PIN_SENSOR[i]);
   for (int i = 0; i < lf::N_SENSOR; i++)
     refl[i] = lf::Sensor::reflectie(adc_aan[i], led_diff ? adc_uit[i] : 4095, led_diff);
+  if (omkeer[OMK_SENSOR])                  // sensor 1 zit rechts i.p.v. links: volgorde omdraaien
+    for (int i = 0; i < lf::N_SENSOR / 2; i++) {
+      int j = lf::N_SENSOR - 1 - i;
+      float f = refl[i]; refl[i] = refl[j]; refl[j] = f;
+      uint16_t a = adc_aan[i]; adc_aan[i] = adc_aan[j]; adc_aan[j] = a;
+      uint16_t u = adc_uit[i]; adc_uit[i] = adc_uit[j]; adc_uit[j] = u;
+    }
 }
 
 // ---------------------------------------------------------------- motoren (TB6612FNG)
@@ -48,8 +61,8 @@ inline void motor(uint8_t pwm, uint8_t in1, uint8_t in2, float duty) {   // duty
 
 inline void motoren(float links, float rechts, bool aan) {
   digitalWrite(PIN_STBY, aan);
-  motor(PIN_PWMA, PIN_AIN1, PIN_AIN2, aan ? links : 0);
-  motor(PIN_PWMB, PIN_BIN1, PIN_BIN2, aan ? rechts : 0);
+  motor(PIN_PWMA, PIN_AIN1, PIN_AIN2, aan ? (omkeer[OMK_MOTOR_L] ? -links : links) : 0);
+  motor(PIN_PWMB, PIN_BIN1, PIN_BIN2, aan ? (omkeer[OMK_MOTOR_R] ? -rechts : rechts) : 0);
 }
 
 // ---------------------------------------------------------------- encoders (hardware-teller PCNT, kwadratuur x4)
@@ -89,7 +102,11 @@ inline void encoders_init() {
   encoder_maak(1, PIN_ENC_R_A, PIN_ENC_R_B, true);   // rechter motor staat gespiegeld
 }
 
-inline int encoder_tellen(int i) { int c = 0; pcnt_unit_get_count(enc_unit[i], &c); return c; }
+inline int encoder_tellen(int i) {
+  int c = 0;
+  pcnt_unit_get_count(enc_unit[i], &c);
+  return omkeer[OMK_ENC_L + i] ? -c : c;
+}
 
 // Roep elke cyclus 1x aan. Geeft wielsnelheden in m/s (gemiddeld over ENC_VENSTER cycli).
 inline void encoders_snelheid(float dt, float &v_links, float &v_rechts) {

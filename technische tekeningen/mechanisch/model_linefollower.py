@@ -20,7 +20,7 @@ UIT.mkdir(exist_ok=True)
 # ----------------------------------------------------------------------------- maten (mm)
 MATEN = {
     # onderdeel: (waarden, bron)
-    "print":      (dict(L=120.0, B=90.0, t=1.6), "bestelling 9x15 cm, ingekort tot 120 mm (zie bouwplan)"),
+    "print":      (dict(L=150.0, B=90.0, t=1.6), "bestelling 9x15 cm (33 x 54 gaten), volledige lengte"),
     "wiel":       (dict(D=32.0, b=7.0), "Pololu #1087"),
     "n20":        (dict(b=12.0, h=10.0, tandwiel=9.0, motor=15.0, encoder=7.0, as_d=3.0, as_l=10.0), "typisch GA12-N20 + Hall-encoder"),
     "beugel":     (dict(L=22.0, b=9.0, t=1.3, gat_afst=18.0), "Pololu #989 (gatafstand typisch)"),
@@ -34,21 +34,21 @@ MATEN = {
     "ss12d00":    (dict(L=8.6, B=3.6, H=3.5, hendel=4.0), "typisch SS12D00"),
     "knop":       (dict(L=6.0, B=6.0, H=5.0), "6x6 mm drukknop"),
     "elco":       (dict(D=6.3, H=11.0), "100 uF 16 V"),
-    "spoiler":    (dict(L=86.0, B=25.0, hoogte=20.0, bout="M3x30"), "afgezaagd stuk gaatjesprint"),
+    "spoiler":    (dict(L=86.0, B=25.0, hoogte=20.0, bout="M3x30"), "plaatje 86 x 25 mm (restje print of kunststof)"),
 }
 M = {k: v[0] for k, v in MATEN.items()}
 
 # ----------------------------------------------------------------------------- afgeleide posities
 R_WIEL = M["wiel"]["D"] / 2                       # wielas op 16 mm
-P_ACHTER = -15.0                                  # achterrand print (x)
+P_ACHTER = -18.0                                  # achterrand print (x): wielas ter hoogte van gatenrij AW/AX
 P_VOOR = P_ACHTER + M["print"]["L"]               # voorrand print
 Z_ONDER = R_WIEL + M["n20"]["h"] / 2 + M["beugel"]["t"] + 0.2   # onderkant print
 Z_BOVEN = Z_ONDER + M["print"]["t"]
 Y_RAND = M["print"]["B"] / 2
 Y_WIEL_IN = Y_RAND + 1.0                          # 1 mm speling print <-> wiel
 Y_TANDWIEL = Y_WIEL_IN - 3.0                      # as steekt 3 mm vrij voor de naaf
-X_SENSOR = P_VOOR - M["qtr"]["B"] / 2             # sensorlijn = midden QTR
-X_CASTER = 84.0                                   # vlak achter de QTR: 75 % gewicht op de wielen (zie tekening)
+X_SENSOR = 98.7                                   # sensorlijn = midden QTR (gatenrij J, 32 mm achter de voorrand)
+X_CASTER = 86.0                                   # vlak achter de QTR: 75 % gewicht op de wielen (zie tekening)
 
 
 def box(lx, ly, lz, x, y, z):
@@ -134,7 +134,7 @@ x30 = M["xt30"]
 onderdelen["XT30"] = box(x30["L"], x30["B"], x30["H"], P_ACHTER + 1 + lp["B"] + 5, 27, Z_BOVEN)
 
 e = M["esp32"]
-x_esp = P_VOOR - 2 - e["L"]
+x_esp = 38.0                                      # pinrijen in rij K..AF, USB naar voren
 z_esp = Z_BOVEN + e["header"]
 onderdelen["ESP32-S3_devkit"] = Compound(children=[
     box(e["L"], e["B"], e["t"], x_esp, -e["B"] / 2, z_esp),
@@ -146,9 +146,9 @@ onderdelen["ESP32-S3_devkit"] = Compound(children=[
 
 tb = M["tb6612"]
 x_elek = P_ACHTER + 1 + lp["B"] + 5     # vrije strook x 3..8 voor de motorkabels
-onderdelen["TB6612FNG"] = box(tb["L"], tb["B"], tb["t"], x_elek, -4 - tb["B"], Z_BOVEN + tb["header"])   # rechts, naast ESP32-rij J1
+onderdelen["TB6612FNG"] = box(tb["L"], tb["B"], tb["t"], 20.0, -38.0, Z_BOVEN + tb["header"])   # rechts, naast ESP32-rij J1
 bk = M["buck"]
-onderdelen["buck_CN3903_3V3"] = box(bk["L"], bk["B"], bk["h"], x_elek, 4, Z_BOVEN)                              # links
+onderdelen["buck_CN3903_3V3"] = box(bk["L"], bk["B"], bk["h"], 44.0, 24.5, Z_BOVEN)                              # links
 
 sw = M["ss12d00"]
 onderdelen["aan_uit_schakelaar"] = Compound(children=[
@@ -156,11 +156,11 @@ onderdelen["aan_uit_schakelaar"] = Compound(children=[
     box(1.5, sw["hendel"], 1.5, x_elek + 2 + sw["L"] / 2 - 0.75, Y_RAND, Z_BOVEN + 1)])
 kn = M["knop"]
 onderdelen["start_stop_knop"] = Compound(children=[
-    box(kn["L"], kn["B"], 3.5, x_esp + 20, Y_RAND - kn["B"] - 1, Z_BOVEN),
-    cyl_z(1.75, kn["H"] - 3.5, x_esp + 23, Y_RAND - kn["B"] / 2 - 1, Z_BOVEN + 3.5)])
+    box(kn["L"], kn["B"], 3.5, 84.0, Y_RAND - kn["B"] - 4, Z_BOVEN),
+    cyl_z(1.75, kn["H"] - 3.5, 87.0, Y_RAND - kn["B"] / 2 - 4, Z_BOVEN + 3.5)])
 el = M["elco"]
 onderdelen["elco_100uF"] = Compound(children=[
-    cyl_z(el["D"] / 2, el["H"], x_elek + tb["L"] + 5, -30, Z_BOVEN),     # C1 bij VM van de TB6612
+    cyl_z(el["D"] / 2, el["H"], 45.0, -36, Z_BOVEN),     # C1 bij VM van de TB6612
     cyl_z(el["D"] / 2, el["H"], x_esp - 2.5, -19, Z_BOVEN)])             # C2 bij 3V3 van de ESP32
 
 # spoiler (specs): het afgezaagde stuk gaatjesprint (30 x 90) op 2 M3-bouten achteraan

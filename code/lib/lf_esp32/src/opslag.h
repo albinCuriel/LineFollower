@@ -30,4 +30,19 @@ inline void bewaar(const lf::Params &p, const lf::Kalibratie &k) {
   pref.end();
 }
 
+// Omkeer-instellingen van de hardware (hw::omkeer): apart bewaard, los van de regelparameters.
+inline void laad_omkeer(uint8_t *omkeer, int n) {
+  Preferences pref;
+  pref.begin("lf", true);
+  if (pref.getBytesLength("omkeer") == (size_t)n) pref.getBytes("omkeer", omkeer, n);
+  pref.end();
+}
+
+inline void bewaar_omkeer(const uint8_t *omkeer, int n) {
+  Preferences pref;
+  pref.begin("lf", false);
+  pref.putBytes("omkeer", omkeer, n);
+  pref.end();
+}
+
 }  // namespace opslag

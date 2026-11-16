@@ -17,8 +17,8 @@ STL = HIER / "3d"
 
 # naam -> (kleur, stuklijstnr, omschrijving)
 ONDERDELEN = {
-    "gaatjesprint":           ("#2e7d32", 1,  "Gaatjesprint 120x90 mm (chassis, ingekort)"),
-    "ESP32-S3_devkit":        ("#283593", 2,  "ESP32-S3 devkit N8R2 (dual USB-C)"),
+    "gaatjesprint":           ("#2e7d32", 1,  "Gaatjesprint 150x90 mm (chassis)"),
+    "ESP32-S3_devkit":        ("#283593", 2,  "ESP32-S3 devkit N16R8 (dual USB-C)"),
     "QTR-8A":                 ("#c62828", 3,  "Pololu QTR-8A sensorarray"),
     "M2_bevestiging_sensor":  ("#9e9e9e", 4,  "M2x25 + moeren (sensorhoogte 3 mm)"),
     "TB6612FNG":              ("#e53935", 5,  "TB6612FNG-module"),
@@ -36,7 +36,7 @@ ONDERDELEN = {
     "aan_uit_schakelaar":     ("#1e88e5", 14, "Aan/uit-schakelaar SS12D00"),
     "start_stop_knop":        ("#fdd835", 15, "Start/stop-drukknop 6x6"),
     "elco_100uF":             ("#3949ab", 16, "Elco 100 uF (2x)"),
-    "spoiler":                ("#ff6f00", 17, "Spoiler (afgezaagd stuk print)"),
+    "spoiler":                ("#ff6f00", 17, "Spoiler (plaatje 86x25 mm)"),
     "spoiler_bouten":         ("#9e9e9e", 18, "2x M3x30 + moeren (spoiler)"),
 }
 
@@ -120,7 +120,7 @@ DRAAD_TIN_G = 6.0          # draadjes + soldeer, verdeeld over de print
 zw = {n: mesh[n].reshape(-1, 3).mean(0) for n in ONDERDELEN}
 m_tot = sum(MASSA_G.values()) + DRAAD_TIN_G
 cg = (sum(MASSA_G[n] * zw[n] for n in ONDERDELEN) + DRAAD_TIN_G * zw["gaatjesprint"]) / m_tot
-X_CASTER = 84.0
+X_CASTER = 86.0
 aandeel_wielen = 1 - cg[0] / X_CASTER          # momentenevenwicht rond de wielas
 a_steiger = 9.81 * cg[0] / cg[2]               # boven deze versnelling komt de neus (caster) los
 with open(HIER / "massa_zwaartepunt.txt", "w", encoding="utf-8") as f:
@@ -157,7 +157,7 @@ ax = aanzicht(14, 142, (-28, 140), (-62, 66), "BOVENAANZICHT  1:1", BOVEN)
 maat(ax, (mn[0], mn[1]), (mx[0], mn[1]), f"{mx[0]-mn[0]:.0f}", off=(0, -6))
 maat(ax, (mx[0], mn[1]), (mx[0], mx[1]), f"{mx[1]-mn[1]:.0f}", off=(9, 0))
 maat(ax, (0, -2), (98.7, -2), "98,7", kleur="#b71c1c")
-maat(ax, (0, 12), (84, 12), "84 (caster)", kleur="#b71c1c")
+maat(ax, (0, 12), (86, 12), "86 (caster)", kleur="#b71c1c")
 maat(ax, (98.7, -37.45), (98.7, 37.45), "74,9 (QTR)", off=(-6, 0), kleur="#b71c1c")
 maat(ax, (0, -49.5), (0, 49.5), "99", off=(-14, 0), kleur="#b71c1c")
 ax.plot(0, 0, "+", color="k", ms=10); ax.text(1.5, 2, "wielas", fontsize=6.5)
@@ -235,7 +235,7 @@ for regel in [
     f"L x B x H  {mx[0]-mn[0]:.0f} x {mx[1]-mn[1]:.0f} x {mx[2]:.0f} mm",
     "spoor 99 mm, wiel Ø32 x 7",
     "sensor 98,7 voor de as, 3 boven grond",
-    "print 22,5 boven grond, caster op 84",
+    "print 22,5 boven grond, caster op 86",
     "",
     "ZWAARTEPUNT Z (berekend)",
     f"{cg[0]:.1f} mm voor de as, {cg[2]:.1f} mm hoog",
@@ -249,7 +249,7 @@ ax.add_patch(Rectangle((0, 0.0), 1, 0.11, fill=False, lw=1))
 ax.text(0.03, 0.088, "HOGENT - Elektromechanica", fontsize=7.5, fontweight="bold")
 ax.text(0.03, 0.062, "Linefollower - samenstelling plan B", fontsize=7.5)
 ax.text(0.03, 0.036, "Maten in mm | schaal 1:1 (A3) | ISO E", fontsize=7)
-ax.text(0.03, 0.011, "Getekend: Albin | rev 1.2 | 2026-10-19", fontsize=7)
+ax.text(0.03, 0.011, "Getekend: Albin | rev 1.3 | 2026-11-16", fontsize=7)
 for ext in ("pdf", "png"):
     fig.savefig(HIER / f"tekening_linefollower.{ext}", dpi=170)
 print(f"massa {m_tot:.0f} g, zwaartepunt x={cg[0]:.1f} z={cg[2]:.1f} mm, "

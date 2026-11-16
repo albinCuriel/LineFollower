@@ -19,7 +19,7 @@ Syntheseproject HOGENT Elektromechanica: een snelle linefollower (doel ≥ 1 m/s
 | distance sensor - motors | 98,7 mm |
 | weight | ±123 g (berekend uit de onderdelen, wordt gewogen na de bouw) |
 | speed | simulatie op parcours 3: ±0,9–1,1 m/s gemiddeld; wordt gemeten op het parcours |
-| afmetingen | 121 × 106 × 48 mm (L × B × H, met spoiler) |
+| afmetingen | 150 × 106 × 48 mm (L × B × H, met spoiler) |
 
 ## status (16/11/2026)
 

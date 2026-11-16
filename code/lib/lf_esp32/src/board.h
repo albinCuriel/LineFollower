@@ -1,4 +1,4 @@
-// board.h - hardwarelaag linefollower (ESP32-S3 devkit N8R2, plan B gaatjesprint)
+// board.h - hardwarelaag linefollower (ESP32-S3 devkit N16R8, plan B gaatjesprint)
 // Pinverdeling = KiCad-schema "technische tekeningen/elektronisch/kicad" + bedradingslijst.md.
 // Wissel je ooit naar het backupbord (ATmega32U4), dan verandert enkel dit bestand.
 #pragma once

@@ -15,18 +15,18 @@
 
 | | |
 |---|---|
-| L × B × H | 121 × 106 × 48 mm (chronobrug: max. 110 breed) |
-| Print (chassis) | gaatjesprint 120 × 90 × 1,6 mm (ingekort van 150 mm) |
+| L × B × H | 150 × 106 × 48 mm (chronobrug: 120 breed × 120 hoog, robot max. 110 breed) |
+| Print (chassis) | gaatjesprint 150 × 90 × 1,6 mm (33 × 54 gaten, niet ingekort) |
 | Spoorbreedte | 99 mm (wielmidden) |
 | Wielas | 16 mm boven de grond (wiel Ø32) |
 | Bodemvrijheid print | 22,5 mm |
 | Sensorlijn | 98,7 mm voor de wielas, 3 mm boven de grond |
-| Ball caster | 84 mm voor de wielas, vlak achter de sensor (onder de ESP32) |
-| Massa (schatting) | 123 g, zwaartepunt 22 mm voor de as en 25 mm hoog |
-| Gewicht op de aandrijfwielen | 73 % (met de caster op 34 mm was dat maar 37 %) |
-| Neus komt los | boven 8,9 m/s² versnelling |
+| Ball caster | 86 mm voor de wielas, vlak achter de sensor (onder de ESP32) |
+| Massa (schatting) | 123 g, zwaartepunt 25 mm voor de as en 25 mm hoog |
+| Gewicht op de aandrijfwielen | 70 % (met de caster op 34 mm was dat maar 37 %) |
+| Neus komt los | boven 10,1 m/s² versnelling |
 | Batterij | dwars boven de wielas |
-| Spoiler | afgezaagd stuk print 25 × 86 mm, 20 mm boven de print op 2× M3×30 |
+| Spoiler | plaatje 25 × 86 mm (restje print of kunststof), 20 mm boven de print op 2× M3×30 |
 
 ## Maten van de onderdelen
 

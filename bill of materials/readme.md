@@ -2,33 +2,35 @@
 <br />
 
 Plan B (gaatjesprint als chassis). Motivatie per onderdeel: zie [ontwerpkeuzes/onderdelenkeuze.md](../ontwerpkeuzes/onderdelenkeuze.md).
-Prijzen = werkelijk betaalde prijzen (bestelling 19/10/2026).
+Prijzen = werkelijk betaalde prijzen (bestelling 19/10/2026). De kolom *aankoopbron* linkt naar het product. Voor AliExpress is dat een zoeklink, omdat de links van losse verkopers snel verdwijnen: kies de variant uit de kolom *omschrijving*.
 
-|volgnummer|naam|omschrijving|nieuw/recup|kostprijs/stuk|aantal|subtotaal|
-|----------|----|------------|-----------|---------|------|---------|
-|         1|ESP32-S3 devkit (geleverd: N16R8)|dual USB-C, wifi, headers gesoldeerd, 16 MB flash, 8 MB PSRAM|nieuw|€6,89|1|€6,89|
-|         2|Pololu QTR-8A|8 analoge reflectiesensoren, LEDON|nieuw|€19,05|1|€19,05|
-|         3|TB6612FNG module|H-brug, stuurt beide motoren|nieuw|€2,10|1|€2,10|
-|         4|N20 6V 10:1 met encoder|1500 rpm, Hall-encoder 7PPR|nieuw|€7,52|2|€15,04|
-|         5|Pololu wiel 32×7 mm|siliconen band, paar|nieuw|€3,20|1|€3,20|
-|         6|Pololu motorbeugel|paar|nieuw|€2,15|1|€2,15|
-|         7|Pololu ball caster 3/8″|steunpunt vooraan|nieuw|€5,90|1|€5,90|
-|         8|LiPo 2S 450 mAh 100C|XT30, JST-XH balans|nieuw|€11,95|1|€11,95|
-|         9|CN3903 buck 3,3V|5–30V in, 3A|nieuw|€1,60|1|€1,60|
-|        10|gaatjesprint 9×15 cm|chassis + bedrading, ingekort tot 12 cm|nieuw|€3,21|1|€3,21|
-|        11|SS12D00 schuifschakelaar|aan/uit|nieuw|€0,12|1|€0,12|
-|        12|XT30-pigtail (male)|batterijaansluiting|nieuw|€2,98|1|€2,98|
-|        13|drukknop 6×6 mm (SW2)|start/stop, aan GPIO21|recup|€0,00|1|€0,00|
-|        14|weerstand 10 kΩ (R1)|spanningsdeler batterijmeting|recup|€0,00|1|€0,00|
-|        15|weerstand 5,1 kΩ (R2)|spanningsdeler batterijmeting|recup|€0,00|1|€0,00|
-|        16|weerstand 330 Ω (R3)|voorschakelweerstand power-led|recup|€0,00|1|€0,00|
-|        17|led 3 mm rood (D1)|power-led|recup|€0,00|1|€0,00|
-|        18|elco 100 µF / 16 V (C1, C2)|buffer op VM en op 3V3|recup|€0,00|2|€0,00|
-|        19|condensator 100 nF (C3, C4)|ontstoring over de motorklemmen|recup|€0,00|2|€0,00|
-|        20|dupont-draad|bedrading, geknipt en gesoldeerd|recup|€0,00|1|€0,00|
-|        21|boutjes en moeren|8× M2×8, 2× M2×25, ±10 M2-moeren, 2× M3×30 + 6 M3-moeren|nieuw (lokaal)|€1,50|1|€1,50|
-|        22|spoiler|afgezaagd stuk van de gaatjesprint (25 × 86 mm)|recup|€0,00|1|€0,00|
-| | | | | | **totaal robot** | **±€75** |
+De richtprijs uit de specificaties is ±€50. Deze robot kost meer door de keuze voor de originele Pololu-sensor (€19) en een LiPo met hoge ontlaadstroom (€12); de motivatie staat in de ontwerpkeuzes. Een CSV-versie staat in [bom_planB.csv](bom_planB.csv).
+
+|volgnummer|naam|omschrijving|nieuw/recup|kostprijs/stuk|aantal|subtotaal|aankoopbron|
+|----------|----|------------|-----------|---------|------|---------|-----------|
+|         1|ESP32-S3 devkit N16R8|dual USB-C, wifi, headers gesoldeerd, 16 MB flash, 8 MB PSRAM|nieuw|€6,89|1|€6,89|[AliExpress](https://www.aliexpress.com/w/wholesale-ESP32-S3-N16R8-dual-type-c-devkit.html)|
+|         2|Pololu QTR-8A|8 analoge reflectiesensoren, LEDON|nieuw|€19,05|1|€19,05|[Opencircuit](https://opencircuit.shop/product/qtr-8a-reflectance-sensor-array)|
+|         3|TB6612FNG module|H-brug, stuurt beide motoren|nieuw|€2,10|1|€2,10|[AliExpress](https://www.aliexpress.com/w/wholesale-TB6612FNG-module.html)|
+|         4|N20 6V 10:1 met encoder|1500 rpm, Hall-encoder 7 PPR|nieuw|€7,52|2|€15,04|[AliExpress](https://www.aliexpress.com/w/wholesale-GA12-N20-6V-1500RPM-encoder.html)|
+|         5|Pololu wiel 32×7 mm|siliconen band, paar|nieuw|€3,20|1|€3,20|[Opencircuit](https://opencircuit.shop/product/pololu-wheel-32-7mm-pair-white)|
+|         6|Pololu motorbeugel|paar, met M2-bouten en moeren|nieuw|€2,15|1|€2,15|[Opencircuit](https://opencircuit.shop/product/pololu-micro-metal-gearmotor-bracket-pair)|
+|         7|Pololu ball caster 3/8″|steunpunt vooraan|nieuw|€5,90|1|€5,90|[Opencircuit](https://opencircuit.shop/product/pololu-ball-caster-with-3-8-plastic-ball)|
+|         8|LiPo DOGCOM 2S 450 mAh 100C|XT30, JST-XH balans|nieuw|€11,95|1|€11,95|[Droneshop](https://droneshop.nl/dogcom-450mah-100c-2s-74v-lipo-xt30)|
+|         9|CN3903 buck 3,3 V|5–30 V in, 3 A|nieuw|€1,60|1|€1,60|[AliExpress](https://www.aliexpress.com/w/wholesale-CN3903-3.3V-buck-module.html)|
+|        10|gaatjesprint 9×15 cm|dubbelzijdig, 33 × 54 gaten: chassis + bedrading|nieuw|€3,21|1|€3,21|[AliExpress](https://www.aliexpress.com/w/wholesale-double-sided-prototype-pcb-9x15.html)|
+|        11|SS12D00 schuifschakelaar (SW1)|aan/uit|nieuw|€0,12|1|€0,12|[AliExpress](https://www.aliexpress.com/w/wholesale-SS12D00-slide-switch.html)|
+|        12|XT30-pigtail male 20AWG|batterijaansluiting|nieuw|€2,48|1|€2,48|[Droneshop](https://droneshop.nl/flywoo-xt30up-m-pigtail-2pcs-20awg-pink)|
+|        13|drukknop 6×6 mm (SW2)|start/stop, aan GPIO21|recup|€0,00|1|€0,00|Arduino-kit ([AliExpress](https://www.aliexpress.com/w/wholesale-tactile-switch-6x6.html))|
+|        14|weerstand 10 kΩ (R1)|spanningsdeler batterijmeting|recup|€0,00|1|€0,00|Arduino-kit|
+|        15|weerstand 5,1 kΩ (R2)|spanningsdeler batterijmeting|recup|€0,00|1|€0,00|Arduino-kit|
+|        16|weerstand 330 Ω (R3)|voorschakelweerstand power-led|recup|€0,00|1|€0,00|Arduino-kit|
+|        17|led 3 mm rood (D1)|power-led|recup|€0,00|1|€0,00|Arduino-kit|
+|        18|elco 100 µF / 16 V (C1, C2)|buffer op VM en op 3V3|recup|€0,00|2|€0,00|Arduino-kit|
+|        19|condensator 100 nF (C3, C4)|ontstoring over de motorklemmen|recup|€0,00|2|€0,00|Arduino-kit|
+|        20|dupont-draad|bedrading, geknipt en gesoldeerd|recup|€0,00|1|€0,00|Arduino-kit|
+|        21|boutjes, moeren, afstandhouders|8× M2×8, 2× M2×25, ±10 M2-moeren, messing M2-afstandhouders (sensor), 2× M3×30 + 6 M3-moeren|nieuw|€1,50|1|€1,50|doe-het-zelfzaak / [Amazon](https://www.amazon.com.be/s?k=M2+afstandhouders+messing+set)|
+|        22|spoiler|plaatje 25 × 86 mm (restje print of kunststof)|recup|€0,00|1|€0,00|restmateriaal|
+| | | | | | **totaal robot** | **€75,19** | |
 
 Niet in de robot, wel nodig: B3-balanslader, lipo-bag, 2e lipo en reserveonderdelen (zie bestelling hieronder).
 Plan A (eigen PCB, enkel ontworpen in KiCad) vervangt 1, 3, 9, 10 en de modules door losse componenten.
@@ -42,7 +44,7 @@ Gebouwd op een gaatjesprint die tegelijk het chassis is. Geen eigen PCB of 3D-pr
 
 | Onderdeel | Variant | Aantal | Prijs/st |
 |---|---|---|---|
-| ESP32-S3 dual Type-C devkit | N8R2 weld (headers gesoldeerd) | 2 (1 reserve) | €6,89 |
+| ESP32-S3 dual Type-C devkit | besteld als N8R2 weld, geleverd als N16R8 (headers gesoldeerd) | 2 (1 reserve, niet geleverd) | €6,89 |
 | GA12-N20 6V met Hall-encoder 7PPR | 1500 RPM (10:1) | 2 | €7,52 |
 | TB6612FNG module | TB6612 | 2 (1 reserve) | €2,10 |
 | CN3903 buck 5–30V → 3,3V 3A | 3.3V | 2 (1 reserve) | €1,60 |
@@ -62,7 +64,7 @@ Gebouwd op een gaatjesprint die tegelijk het chassis is. Geen eigen PCB of 3D-pr
 | Onderdeel | Aantal | Prijs/st |
 |---|---|---|
 | DOGCOM 450 mAh 2S 100C XT30 | 2 | €11,95 |
-| Flywoo XT30UP-M pigtail 20AWG (2 st.) | 1 | €4,95 |
+| Flywoo XT30UP-M pigtail 20AWG (2 st., €2,48 per stuk) | 1 | €4,95 |
 | Droneshop LiPo Safe Bag medium | 1 | €5,95 |
 
 Zelf al in huis (Arduino-kit): weerstanden (10 kΩ, 5,1 kΩ, 330 Ω), led, drukknoppen, elco's, breadboard, dupont-draadjes, 100 nF condensatoren.

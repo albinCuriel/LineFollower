@@ -23,6 +23,7 @@ static float vbat = 7.4f, v_links = 0, v_rechts = 0;
 static uint32_t t_vorige = 0, cyclus_max_us = 0, n_cycli = 0;
 static float t_kwijt = 0, t_laagbat = 0;
 static char tekst[1200];
+static bool te_bewaren = false;   // parameter gewijzigd tijdens het rijden: bewaren zodra de robot stopt
 
 static const char *HELP =
   "commando's:\n"
@@ -30,11 +31,14 @@ static const char *HELP =
   "  get [naam]               parameters tonen\n"
   "  set <naam> <waarde>      parameter zetten (bv. set kp 0.03, set debug on)\n"
   "  save | load | reset      bewaren in flash / terughalen / standaardwaarden\n"
+  "                           (elke 'set' wordt ook automatisch bewaard)\n"
   "  cal | cal stop           kalibreren: robot over de lijn heen en weer schuiven\n"
   "  calibrate white | black  kalibreren: alle sensoren op wit / op zwart\n"
   "  sensors                  ruwe en genormaliseerde sensorwaarden\n"
   "  status                   batterij, positie, snelheden, cyclustijd\n"
-  "  motor <l|r> <duty> [ms]  motortest (duty -1..1, standaard 500 ms)\n";
+  "  motor <l|r> <duty> [ms]  motortest (duty -1..1, standaard 500 ms)\n"
+  "  invert <wat>             richting omkeren zonder solderen: sensor | motorl | motorr | encl | encr\n"
+  "  debug                    cyclustijd + langste rekentijd; debug on|off = meetwaarden (CSV)\n";
 
 static void start() {
   if (vbat < regelaar.p.vbat_min) { comms::schrijf("batterij te laag\n"); return; }
@@ -51,6 +55,7 @@ static void stop(const char *reden) {
   hw::motoren(0, 0, false);
   snprintf(tekst, sizeof(tekst), "STOP (%s)\n", reden);
   comms::overal(tekst);
+  if (te_bewaren) { opslag::bewaar(regelaar.p, regelaar.sensor.kal); te_bewaren = false; }
 }
 
 static void toon_sensoren() {
@@ -72,19 +77,45 @@ static void commando(char *regel) {
   char *w[6];
   int n = lf::splits(regel, w, 6);
   if (n == 0) return;
-  if (lf::param_commando(regelaar.p, n, w, tekst, sizeof(tekst))) { comms::schrijf(tekst); return; }
+  if (lf::param_commando(regelaar.p, n, w, tekst, sizeof(tekst))) {
+    comms::schrijf(tekst);
+    if (!strcmp(w[0], "set")) {            // EEPROM: elke wijziging meteen bewaren (tijdens het rijden: bij het stoppen)
+      if (toestand == RIJDEN) te_bewaren = true;
+      else opslag::bewaar(regelaar.p, regelaar.sensor.kal);
+    }
+    return;
+  }
   if (!strcmp(w[0], "help")) comms::schrijf(HELP);
   else if (!strcmp(w[0], "start")) start();
   else if (!strcmp(w[0], "stop")) stop("commando");
-  else if (!strcmp(w[0], "debug")) { regelaar.p.debug = (n > 1 && !strcmp(w[1], "on")); comms::schrijf("ok\n"); }
+  else if (!strcmp(w[0], "debug") && n > 1) { regelaar.p.debug = !strcmp(w[1], "on"); comms::schrijf("ok\n"); }
+  else if (!strcmp(w[0], "debug")) {       // zoals in de cursus: cyclustijd + langste rekentijd sinds de vorige 'debug'
+    snprintf(tekst, sizeof(tekst), "cycle time: %lu us | calculation time (max): %lu us\n",
+             (unsigned long)regelaar.p.cyclus_us, (unsigned long)cyclus_max_us);
+    cyclus_max_us = 0;
+    comms::schrijf(tekst);
+  }
+  else if (!strcmp(w[0], "invert")) {
+    int k = -1;
+    for (int i = 0; i < hw::N_OMK; i++) if (n > 1 && !strcmp(w[1], hw::OMK_NAAM[i])) k = i;
+    if (k >= 0) { hw::omkeer[k] = !hw::omkeer[k]; opslag::bewaar_omkeer(hw::omkeer, hw::N_OMK); }
+    int pos = snprintf(tekst, sizeof(tekst), "omgekeerd:");
+    for (int i = 0; i < hw::N_OMK; i++) pos += snprintf(tekst + pos, sizeof(tekst) - pos, " %s=%d", hw::OMK_NAAM[i], hw::omkeer[i]);
+    snprintf(tekst + pos, sizeof(tekst) - pos, "%s\n", k < 0 ? "  (gebruik: invert sensor|motorl|motorr|encl|encr)" : "  (bewaard)");
+    comms::schrijf(tekst);
+  }
   else if (!strcmp(w[0], "save")) { opslag::bewaar(regelaar.p, regelaar.sensor.kal); comms::schrijf("bewaard\n"); }
   else if (!strcmp(w[0], "load")) comms::schrijf(opslag::laad(regelaar.p, regelaar.sensor.kal) ? "geladen\n" : "niets bewaard\n");
   else if (!strcmp(w[0], "reset")) { regelaar.p = lf::Params(); regelaar.sensor.kal.standaard(); comms::schrijf("standaardwaarden (nog niet bewaard)\n"); }
-  else if (!strcmp(w[0], "cal") && n > 1 && !strcmp(w[1], "stop")) { toestand = STIL; comms::schrijf("kalibratie klaar, 'save' om te bewaren\n"); }
+  else if (!strcmp(w[0], "cal") && n > 1 && !strcmp(w[1], "stop")) {
+    toestand = STIL;
+    opslag::bewaar(regelaar.p, regelaar.sensor.kal);
+    comms::schrijf("kalibratie klaar en bewaard\n");
+  }
   else if (!strcmp(w[0], "cal")) { stop("kalibreren"); regelaar.sensor.kal_start(); toestand = KALIBREREN;
                                    comms::schrijf("schuif de robot over de lijn, daarna 'cal stop'\n"); }
-  else if (!strcmp(w[0], "calibrate") && n > 1 && !strcmp(w[1], "white")) { regelaar.sensor.kal_wit(refl); comms::schrijf("wit ok\n"); }
-  else if (!strcmp(w[0], "calibrate") && n > 1 && !strcmp(w[1], "black")) { regelaar.sensor.kal_zwart(refl); comms::schrijf("zwart ok\n"); }
+  else if (!strcmp(w[0], "calibrate") && n > 1 && !strcmp(w[1], "white")) { regelaar.sensor.kal_wit(refl); opslag::bewaar(regelaar.p, regelaar.sensor.kal); comms::schrijf("wit ok (bewaard)\n"); }
+  else if (!strcmp(w[0], "calibrate") && n > 1 && !strcmp(w[1], "black")) { regelaar.sensor.kal_zwart(refl); opslag::bewaar(regelaar.p, regelaar.sensor.kal); comms::schrijf("zwart ok (bewaard)\n"); }
   else if (!strcmp(w[0], "sensors")) toon_sensoren();
   else if (!strcmp(w[0], "status")) {
     snprintf(tekst, sizeof(tekst), "vbat %.2f V | positie %.1f mm | v_links %.2f v_rechts %.2f m/s | "
@@ -114,6 +145,7 @@ void setup() {
   hw::encoders_init();
   hw::knop_init();
   if (!opslag::laad(regelaar.p, regelaar.sensor.kal)) Serial.println("geen bewaarde instellingen: standaardwaarden");
+  opslag::laad_omkeer(hw::omkeer, hw::N_OMK);
   hw::led(20, 0, 0);
   t_vorige = micros();
   Serial.println("linefollower klaar. Typ 'help'.");

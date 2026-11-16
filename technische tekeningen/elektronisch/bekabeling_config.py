@@ -1,7 +1,7 @@
-"""Bekabelingsplan linefollower (plan B, gaatjesprint 120 x 90 mm, 47 x 33 gaten) - projectgegevens voor perfplan.py.
+"""Bekabelingsplan linefollower (plan B, gaatjesprint 150 x 90 mm, 54 x 33 gaten, niet ingekort) - projectgegevens voor perfplan.py.
 
 Maak het plan:  py -3 perfplan.py bekabeling_config.py
-Gat (r, c): r = rij 0.. (A = robot LINKS in bovenaanzicht), c = kolom 0.. (kolom 1 = achterrand, 47 = voorrand).
+Gat (r, c): r = rij 0.. (A = robot LINKS in bovenaanzicht), c = kolom 0.. (kolom 1 = achterrand, 54 = voorrand).
 Elk gat ligt 2,54 mm uit elkaar. Posities komen overeen met het 3D-model (mechanisch/model_linefollower.py),
 afgerond op het raster.
 """
@@ -9,12 +9,12 @@ afgerond op het raster.
 BOARD = dict(
     titel="Linefollower - gaatjesprint",
     prefix="bekabelingsplan",
-    rijen=33, kolommen=47, pitch=2.54, voorkant="rechts",
+    rijen=33, kolommen=54, pitch=2.54, voorkant="rechts",
     voettekst="HOGENT Elektromechanica - linefollower plan B - gemaakt met perfplan.py",
-    plaatsing_uitleg="Kijk op de componentenkant. Kolom 1 = achterkant (batterij), kolom 47 = voorkant (sensor). "
+    plaatsing_uitleg="Kijk op de componentenkant. Kolom 1 = achterkant (batterij), kolom 54 = voorkant. De sensor hangt onder kolom 44-46. "
                      "Rij A = robot links. Rood omcirkeld = pin 1 / referentiepin.",
     plaatsing_notities=[
-        "Zaag de print in de lengte op 47 gaten (breedte 90 mm\nblijft: 33 gaten). Rij A = eerste gatenrij links.",
+        "De print blijft volledig: 54 x 33 gaten (150 x 90 mm).\nKolom 48-54 (voor de sensor) blijft vrij.",
         "Markeer met stift elke 5e rij en kolom: dan vind je\nelk gat snel terug.",
         "Oranje kruisen = boorgaten (beugels, caster, QTR, spoiler).",
         "Gestreept grijs = onderdelen aan de ONDERkant\n(motoren, beugels, caster): daar komen geen draden.",
