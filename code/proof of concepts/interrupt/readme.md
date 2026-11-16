@@ -2,6 +2,8 @@
 minimale hard- en software die de correcte werking van een start/stop drukknop aantoont, gebruik makend van een hardware interrupt
 
 ### hardware
+![deelschema](deelschema_interrupt.png)
+
 Drukknop tussen **GPIO21** en **GND**. De interne pull-up staat aan, dus er is geen weerstand nodig. Status op de ingebouwde RGB-led van de devkit.
 
 ### werking

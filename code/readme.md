@@ -7,8 +7,9 @@ Elke push wordt automatisch gecompileerd door een [GitHub Action](../.github/wor
 
 | Sketch | Flashgebruik |
 |---|---|
-| basis/basis | 896 093 bytes (68 %) |
-| finaal/linefollower | 925 352 bytes (70 %) |
+| basis/basis | 896 301 bytes (68 %) |
+| finaal/linefollower | 926 576 bytes (70 %) |
+| poc_blink | 298 746 bytes (22 %) |
 | poc_sensor | 313 578 bytes (23 %) |
 | poc_hbridge | 309 745 bytes (23 %) |
 | poc_interrupt | 304 850 bytes (23 %) |
@@ -20,7 +21,8 @@ Testen op de robot gebeurt per bouwstap (zie de testtabel in [finaal](finaal/rea
 |---|---|---|
 | [board.h](board.h) | pinverdeling: de enige plaats om pinnen te wijzigen | klaar |
 | [lib](lib/readme.md) | `lf_core` (regelkern, ook gebruikt door de simulatie) + `lf_esp32` (hardwarelaag) | klaar, 133 unit tests |
-| [proof of concepts](proof%20of%20concepts/readme.md) | 4 kleine programma's die elk één onderdeel testen | compileren |
+| [proof of concepts](proof%20of%20concepts/readme.md) | 5 kleine programma's die elk één onderdeel testen (blink, sensor, H-brug, interrupt, wifi) | compileren |
+| [upload.ps1](upload.ps1) | compileert en uploadt een sketch: `.\upload.ps1 finaal -Monitor` | PowerShell |
 | [basis](basis/readme.md) | basisprogramma volgens de cursus: commando's, flash, cyclus, interrupt, wifi | compileert |
 | [finaal](finaal/readme.md) | volledige linefollower: kalibratie, PID, boost/rem, encoders, testcommando's per bouwstap | compileert |
 | [sync_board.py](sync_board.py) | kopieert `board.h` naar de sketchmappen en `lib/lf_esp32` | `py -3 sync_board.py` |

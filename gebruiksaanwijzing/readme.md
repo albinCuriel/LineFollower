@@ -23,19 +23,21 @@ De buck voedt de ESP32 via de 3V3-pin. Zit de USB-kabel erin terwijl de robot aa
 4. Typ een commando en druk op enter. Het antwoord verschijnt in de terminal.
 
 #### commando's
-debug [on/off]  
+debug [on/off] (meetwaarden doorsturen); `debug` alleen = cyclustijd + rekentijd  
 start  
 stop  
 set cycle [µs]  
 set kp / ki / kd [waarde]  
 set vbocht / vrecht [m/s]  
 get (alle parameters met uitleg)  
-save / load / reset  
+save / load / reset (elke `set` wordt ook automatisch bewaard)  
 cal ... cal stop  
 calibrate black  
 calibrate white  
 sensors / status  
 motor l|r [duty] [ms]  
+invert sensor|motorl|motorr|encl|encr (richting omkeren zonder solderen)  
+help  
 
 Volledige lijst met uitleg: [code/finaal](../code/finaal/readme.md). Alle parameters: typ `get`.
 

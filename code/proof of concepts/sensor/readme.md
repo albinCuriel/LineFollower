@@ -3,6 +3,8 @@
 minimale hard- en software die aantoont dat minimaal 6 sensoren onafhankelijk van elkaar kunnen uitgelezen worden (geen calibratie, normalisatie of interpolatie). Hierbij moet een zo groot mogelijk bereik van de AD converter benut worden (indien van toepassing)
 
 ### hardware
+![deelschema](deelschema_sensor.png)
+
 | QTR-8A | ESP32-S3 |
 |---|---|
 | OUT1 … OUT8 | GPIO1 … GPIO8 (ADC1) |

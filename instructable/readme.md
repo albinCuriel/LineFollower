@@ -14,7 +14,7 @@ Werk stap per stap en doe de **test** aan het einde van elke stap vóór je verd
 | [Kabels (WireViz)](../technische%20tekeningen/elektronisch/kabels/readme.md) | batterij-, motor- en sensorkabel pin per pin |
 | [Samenstellingstekening (PDF)](../technische%20tekeningen/mechanisch/tekening_linefollower.pdf) | maten van de robot |
 
-**Zo lees je het bekabelingsplan:** elk gat heeft een naam zoals **F22** = rij F, kolom 22. De letters en cijfers staan op alle randen van de tekening. Kolom 1 = achterkant (batterij), kolom 47 = voorkant (sensor), rij A = robot links. Zet met een stift een streepje bij elke 5e rij en kolom op je print, dan vind je elk gat meteen terug.
+**Zo lees je het bekabelingsplan:** elk gat heeft een naam zoals **F22** = rij F, kolom 22. De letters en cijfers staan op alle randen van de tekening. Kolom 1 = achterkant (batterij), kolom 54 = voorkant (de sensor hangt onder kolom 44–46), rij A = robot links. Zet met een stift een streepje bij elke 5e rij en kolom op je print, dan vind je elk gat meteen terug.
 
 ![plaatsing](../technische%20tekeningen/elektronisch/bekabelingsplan_p00_plaatsing.png)
 
@@ -39,20 +39,20 @@ Meet na met een schuifmaat. Wijkt een maat meer dan 1 mm af, pas dan `MATEN` aan
 | ESP32-S3 devkit | lengte × breedte | 63,5 × 28,0 mm | |
 | ESP32-S3 devkit | afstand tussen de 2 pinrijen | 25,4 mm = 10 gaten | |
 | ESP32-S3 devkit | pin van de RGB-led (opdruk) | GPIO48 | |
-| TB6612-module | pinvolgorde + afstand tussen de pinrijen | 7 gaten | |
+| TB6612-module | pinvolgorde + afstand tussen de pinrijen | 6 gaten (15,24 mm) | |
 | CN3903 buck | ligging IN/OUT-pads | IN links, OUT rechts, 8 gaten uit elkaar | |
 | N20-encoder | volgorde van de 6 draden | M1, GND, A, B, VCC, M2 | |
 | LiPo 2S 450 mAh | L × B × H, gewicht | 60 × 17 × 15 mm | |
 
-### stap 4: print inkorten en boren
-1. De print van 9 × 15 cm heeft **33 × 54 gaten**. Kort hem in de lengte in tot **47 gaten** (≈ 120 mm): laat de padstrook aan de achterkant zitten en kerf/breek langs de gatenrij net na gat 47. De breedte (90 mm, 33 gaten) blijft. Vijl de rand glad. **Bewaar het afgezaagde stuk: dat wordt de spoiler.**
+### stap 4: print boren
+1. De print van 9 × 15 cm heeft **33 × 54 gaten** en blijft volledig (niet inkorten). Kolom 48–54, voor de sensor, blijft vrij.
 2. Zet de stiftstreepjes bij elke 5e rij en kolom.
 3. Plak de boormal erop en prik de oranje kruisen aan.
 4. Boor 4× 2,2 mm (motorbeugels), 2× 2,2 mm (caster, dwars), 2× 2,2 mm (QTR, voorrand) en 2× 3,2 mm (spoiler, achteraan).
 5. Snij de 2 **uitsparingen** voor de encoderkabels (rood gekruist op de boormal, 4 × 2 gaten, rij M–N en T–U, kolom 3–6): boor elk gat van de uitsparing op 2,5 mm, verbind ze met een stanleymes of naaldvijl en vijl de rand glad.
-6. Spoiler: zaag het reststuk op 25 × 86 mm en boor er 2 gaten van 3,2 mm in, 68 mm uit elkaar.
+6. Spoiler: zaag een plaatje van 25 × 86 mm (restje print of kunststof) en boor er 2 gaten van 3,2 mm in, 68 mm uit elkaar.
 
-7. **Monteer de ball caster nu al**, vóór de ESP32 erop komt: hij zit onder de ESP32 (op 84 mm voor de wielas, vlak achter de sensor). Steek 2× M2-bout **met lage kop** (≤ 1,5 mm) van boven door de print. Onderaan: de 2 meegeleverde afstandsringen + M2-moeren tot 12,4 mm, dan de caster. De print moet waterpas staan.
+7. **Monteer de ball caster nu al**, vóór de ESP32 erop komt: hij zit onder de ESP32 (op 86 mm voor de wielas, vlak achter de sensor). Steek 2× M2-bout **met lage kop** (≤ 1,5 mm) van boven door de print. Onderaan: de 2 meegeleverde afstandsringen + M2-moeren tot 12,4 mm, dan de caster. De print moet waterpas staan.
 
 **Test:** beugels en caster passen zonder forceren; de boutkoppen steken minder dan 2,5 mm uit (de ESP32 staat 2,5 mm hoog op zijn pinheader).
 
@@ -91,7 +91,7 @@ R1 10 kΩ en R2 5,1 kΩ, met een soldeerbrug ertussen (= meetpunt). Draden **7�
 ### stap 8: H-brug
 TB6612 met PWMA in gat **S10**, de stuurpinnen naar het midden. Volg de **opdruk** van je module ([pinout](../datasheets/TB6612FNG_module.md)). Plaats C1 vlak bij VM. Draden **15–27**.
 
-> **Let op:** de pinrijen van de rode TB6612-module liggen **6 gaten** (0,6″) uit elkaar; het plan hierboven is daarop aangepast (VM in Y10). De tekening zoals de robot echt gebouwd is (andere gatentelling: letter = rij vanaf voor, cijfer = gat vanaf links, al geplaatste delen in grijs) staat in [stap8_albin_telling.png](../technische%20tekeningen/elektronisch/stap8_albin_telling.png); idem voor [stap 5–6](../technische%20tekeningen/elektronisch/stap5_6_albin_telling.png) en [stap 7](../technische%20tekeningen/elektronisch/stap7_albin_telling.png).
+> **Let op:** de pinrijen van de rode TB6612-module liggen **6 gaten** (0,6″) uit elkaar (VM in Y10). Monteer de module met de opdruk naar boven.
 
 ![stap 8](../technische%20tekeningen/elektronisch/bekabelingsplan_p04_stap08.png)
 
@@ -140,15 +140,41 @@ Knop aan de linkerrand, pootjes in **B32** en **D34** (schuin tegenover elkaar =
 - [ ] gewicht ±110–120 g
 - [ ] de 4 PoC's werken op de afgewerkte robot
 
-### stap 13: compileren en uploaden
-1. Arduino IDE 2 of [arduino-cli](https://arduino.github.io/arduino-cli/) met de core **esp32 by Espressif** (3.x).
-2. Bord **ESP32S3 Dev Module**, USB CDC On Boot = Enabled, PSRAM = QSPI.
-3. USB-C-poort met opdruk **USB** (native). Lukt uploaden niet: BOOT ingedrukt houden, kort RST, BOOT los.
-4. Command line:
+### stap 13: software installeren, compileren en uploaden
+1. Installeer [arduino-cli](https://arduino.github.io/arduino-cli/) (of Arduino IDE 2) en de core van Espressif:
    ```
-   arduino-cli compile --fqbn esp32:esp32:esp32s3 "code/proof of concepts/sensor/poc_sensor"
-   arduino-cli upload  --fqbn esp32:esp32:esp32s3 -p COM5 "code/proof of concepts/sensor/poc_sensor"
-   arduino-cli compile --fqbn esp32:esp32:esp32s3 --library code/lib/lf_core --library code/lib/lf_esp32 code/finaal/linefollower
-   arduino-cli upload  --fqbn esp32:esp32:esp32s3 -p COM5 code/finaal/linefollower
+   arduino-cli core update-index --additional-urls https://espressif.github.io/arduino-esp32/package_esp32_index.json
+   arduino-cli core install esp32:esp32@3.3.12 --additional-urls https://espressif.github.io/arduino-esp32/package_esp32_index.json
    ```
-   De COM-poort vind je met `arduino-cli board list`.
+2. Zet **SW1 uit** (nooit USB en batterij tegelijk) en sluit de USB-C-poort met opdruk **COM** aan met een datakabel. Met de standaardinstellingen van het bord *ESP32S3 Dev Module* loopt de seriële monitor over die poort (115200 baud).
+3. Uploaden met het script (Windows PowerShell, vanuit de map `code`):
+   ```
+   .\upload.ps1 blink              eerst testen of uploaden werkt (led knippert blauw)
+   .\upload.ps1 finaal -Monitor    finale code + seriële monitor
+   ```
+   Andere keuzes: `basis`, `sensor`, `hbridge`, `interrupt`, `wifi`. Het script zoekt zelf de COM-poort en voegt de bibliotheken `lf_core` en `lf_esp32` toe. Een vaste poort: `.\upload.ps1 finaal COM7`.
+4. Arduino IDE in plaats van het script: kopieer de mappen `code/lib/lf_core` en `code/lib/lf_esp32` naar `Documenten/Arduino/libraries`, open de sketch, kies bord *ESP32S3 Dev Module* en de COM-poort. Alle andere instellingen blijven standaard.
+5. Lukt uploaden niet: BOOT ingedrukt houden, kort op RST drukken, BOOT loslaten, opnieuw uploaden.
+6. Typ `help` in de seriële monitor. Alle commando's staan in de [gebruiksaanwijzing](../gebruiksaanwijzing/readme.md).
+
+### stap 14: eerste rit
+1. Batterij aan, robot op het parcours. Verbind je gsm met het wifinetwerk **linefollower** en open een TCP-terminal naar 192.168.4.1 poort 23 (zie de [gebruiksaanwijzing](../gebruiksaanwijzing/readme.md)).
+2. `status`: de batterijspanning klopt met de multimeter.
+3. `cal`, schuif de robot een paar keer dwars over de lijn, `cal stop`. `sensors` toont nu een positie rond 0 mm als de robot midden op de lijn staat.
+4. Traag beginnen: `set vbocht 0.4`, `set vrecht 0.4`, `set ki 0`, `set kd 0`. Druk op de knop.
+5. Rijdt hij 3 toeren, verhoog dan stap voor stap `vbocht` en `vrecht` en zet `ki` en `kd` terug (`reset` geeft de waarden uit de simulatie).
+6. `debug` toont de cyclustijd en de langste rekentijd. Is de rekentijd groter dan de cyclustijd, verhoog dan `set cycle`.
+
+### bouwtekeningen zoals gebouwd
+De robot op de foto's gebruikt een andere gatentelling: letter = rij vanaf de voorkant, nummer = gat vanaf links. Per stap is er een tekening met de al geplaatste delen in grijs. Ze worden gemaakt door [als_gebouwd.py](../technische%20tekeningen/elektronisch/als_gebouwd.py).
+
+| Stap | Tekening |
+|---|---|
+| 5–6 voeding en batterijmeting | [stap5_6_albin_telling.png](../technische%20tekeningen/elektronisch/stap5_6_albin_telling.png) |
+| 7 ESP32 | [stap7_albin_telling.png](../technische%20tekeningen/elektronisch/stap7_albin_telling.png) |
+| 8 H-brug | [stap8_albin_telling.png](../technische%20tekeningen/elektronisch/stap8_albin_telling.png) |
+| 9 motoren en encoders | [stap9_albin_telling.png](../technische%20tekeningen/elektronisch/stap9_albin_telling.png) |
+| 10 sensor | [stap10_albin_telling.png](../technische%20tekeningen/elektronisch/stap10_albin_telling.png) |
+| 11 knop en power-led | [stap11_albin_telling.png](../technische%20tekeningen/elektronisch/stap11_albin_telling.png) |
+
+Draait een motor, een encoder of de sensor verkeerd om, gebruik dan het commando `invert` (zie [finale code](../code/finaal/readme.md)). Hersolderen hoeft niet.

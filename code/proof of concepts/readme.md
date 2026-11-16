@@ -13,9 +13,14 @@ De elektronische schakelingen van de proof of concepts komen bij voorkeur overee
 
 | Proof of concept | Test | Sketch |
 |---|---|---|
+| [blink](blink/readme.md) | programmeeromgeving, uploaden en klok werken | `blink/poc_blink` |
 | [sensor](sensor/readme.md) | 8 sensoren apart uitlezen, met en zonder IR-licht | `sensor/poc_sensor` |
 | [H-brug](hbridge/readme.md) | 2 motoren traploos, beide richtingen | `hbridge/poc_hbridge` |
 | [start/stop-interrupt](interrupt/readme.md) | drukknop via interrupt met ontdendering | `interrupt/poc_interrupt` |
 | [draadloze communicatie](wireless%20communication/readme.md) | duplex tussen robot en gsm via wifi | `wireless communication/poc_wifi` |
+
+Elke proof of concept heeft een eigen **deelschema** (afbeelding in de map, gemaakt door [deelschemas.py](deelschemas.py)). Samen vormen ze het [volledige schema](../../technische%20tekeningen/elektronisch/elektrisch_schema.pdf).
+
+Uploaden: `.\upload.ps1 blink` (of `sensor`, `hbridge`, `interrupt`, `wifi`) vanuit de map `code`.
 
 Alle sketches compileren voor de ESP32-S3 (`esp32:esp32:esp32s3`) en gebruiken dezelfde pinnen als de robot (`board.h`). Ze draaien dus zonder aanpassing op de afgewerkte robot.

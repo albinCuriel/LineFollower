@@ -53,7 +53,7 @@ struct Kalibratie {
 struct ParamDef { const char *naam; float Params::*veld; float min, max; const char *uitleg; };
 
 static const ParamDef PARAM_DEFS[] = {
-  {"cycle",    &Params::cyclus_us,   200, 20000, "regelcyclus (us)"},
+  {"cycle",    &Params::cyclus_us,   200, 1000000, "regelcyclus (us)"},
   {"debug",    &Params::debug,       0, 1,       "meetwaarden doorsturen"},
   {"kp",       &Params::kp,          0, 1,       "P (m/s per mm)"},
   {"ki",       &Params::ki,          0, 10,      "I"},

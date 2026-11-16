@@ -22,6 +22,7 @@ jobs:
             - source-path: ./code/lib/lf_core
             - source-path: ./code/lib/lf_esp32
           sketch-paths: |
+            - code/proof of concepts/blink/poc_blink
             - code/basis/basis
             - code/finaal/linefollower
             - code/proof of concepts/sensor/poc_sensor
