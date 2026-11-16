@@ -2,7 +2,7 @@
 minimale hard- en software waarmee aangetoond wordt dat duplex kan gecommuniceerd worden tussen de microcontroller en een smartphone of laptop, gebruik makend van een raw-TCP-terminal over wifi (Serial WiFi Terminal of PuTTY)
 
 ### configuratie
-De ESP32-S3 maakt zijn eigen wifinetwerk (access point) **linefollower**. Pas `WIFI_WACHTWOORD` aan in [poc_wifi.ino](poc_wifi/poc_wifi.ino) vóór je uploadt (minstens 8 tekens). Een TCP-server luistert op **192.168.4.1, poort 23**.
+De ESP32-S3 maakt zijn eigen wifinetwerk (access point) **linefollower**. Wachtwoord: **lijnvolger2026** (`WIFI_WACHTWOORD` in [poc_wifi.ino](poc_wifi/poc_wifi.ino), minstens 8 tekens; verander het daar als je wil). Een TCP-server luistert op **192.168.4.1, poort 23**.
 
 ### opmerkingen
 - Geen router nodig: werkt overal, ook op de wedstrijd.

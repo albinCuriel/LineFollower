@@ -6,7 +6,7 @@
 #include "board.h"
 
 const char *WIFI_NAAM = "linefollower";
-const char *WIFI_WACHTWOORD = "verander-mij";   // min. 8 tekens, pas aan voor gebruik
+const char *WIFI_WACHTWOORD = "lijnvolger2026";   // min. 8 tekens, pas aan voor gebruik
 WiFiServer server(23);
 WiFiClient client;
 

@@ -6,7 +6,7 @@ Prijzen = werkelijk betaalde prijzen (bestelling 19/10/2026).
 
 |volgnummer|naam|omschrijving|nieuw/recup|kostprijs/stuk|aantal|subtotaal|
 |----------|----|------------|-----------|---------|------|---------|
-|         1|ESP32-S3 devkit N8R2|dual USB-C, wifi, headers gesoldeerd|nieuw|€6,89|1|€6,89|
+|         1|ESP32-S3 devkit (geleverd: N16R8)|dual USB-C, wifi, headers gesoldeerd, 16 MB flash, 8 MB PSRAM|nieuw|€6,89|1|€6,89|
 |         2|Pololu QTR-8A|8 analoge reflectiesensoren, LEDON|nieuw|€19,05|1|€19,05|
 |         3|TB6612FNG module|H-brug, stuurt beide motoren|nieuw|€2,10|1|€2,10|
 |         4|N20 6V 10:1 met encoder|1500 rpm, Hall-encoder 7PPR|nieuw|€7,52|2|€15,04|
@@ -18,14 +18,21 @@ Prijzen = werkelijk betaalde prijzen (bestelling 19/10/2026).
 |        10|gaatjesprint 9×15 cm|chassis + bedrading, ingekort tot 12 cm|nieuw|€3,21|1|€3,21|
 |        11|SS12D00 schuifschakelaar|aan/uit|nieuw|€0,12|1|€0,12|
 |        12|XT30-pigtail (male)|batterijaansluiting|nieuw|€2,98|1|€2,98|
-|        13|drukknop 6×6, weerstanden, led, condensatoren|start/stop, R 100k/33k/330, 100µF, 100nF|recup|€0,00|1|€0,00|
-|        14|dupont-draad|bedrading, geknipt en gesoldeerd|recup|€0,00|1|€0,00|
-|        15|boutjes en moeren|8× M2×8, 2× M2×25, ±10 M2-moeren, 2× M3×30 + 6 M3-moeren|nieuw (lokaal)|€1,50|1|€1,50|
-|        16|spoiler|afgezaagd stuk van de gaatjesprint (25 × 86 mm)|recup|€0,00|1|€0,00|
+|        13|drukknop 6×6 mm (SW2)|start/stop, aan GPIO21|recup|€0,00|1|€0,00|
+|        14|weerstand 10 kΩ (R1)|spanningsdeler batterijmeting|recup|€0,00|1|€0,00|
+|        15|weerstand 5,1 kΩ (R2)|spanningsdeler batterijmeting|recup|€0,00|1|€0,00|
+|        16|weerstand 330 Ω (R3)|voorschakelweerstand power-led|recup|€0,00|1|€0,00|
+|        17|led 3 mm rood (D1)|power-led|recup|€0,00|1|€0,00|
+|        18|elco 100 µF / 16 V (C1, C2)|buffer op VM en op 3V3|recup|€0,00|2|€0,00|
+|        19|condensator 100 nF (C3, C4)|ontstoring over de motorklemmen|recup|€0,00|2|€0,00|
+|        20|dupont-draad|bedrading, geknipt en gesoldeerd|recup|€0,00|1|€0,00|
+|        21|boutjes en moeren|8× M2×8, 2× M2×25, ±10 M2-moeren, 2× M3×30 + 6 M3-moeren|nieuw (lokaal)|€1,50|1|€1,50|
+|        22|spoiler|afgezaagd stuk van de gaatjesprint (25 × 86 mm)|recup|€0,00|1|€0,00|
 | | | | | | **totaal robot** | **±€75** |
 
 Niet in de robot, wel nodig: B3-balanslader, lipo-bag, 2e lipo en reserveonderdelen (zie bestelling hieronder).
 Plan A (eigen PCB, enkel ontworpen in KiCad) vervangt 1, 3, 9, 10 en de modules door losse componenten.
+De datasheets van alle onderdelen staan in [datasheets](../datasheets/readme.md).
 
 ## Bestelling plan B (19/10/2026)
 
@@ -58,6 +65,6 @@ Gebouwd op een gaatjesprint die tegelijk het chassis is. Geen eigen PCB of 3D-pr
 | Flywoo XT30UP-M pigtail 20AWG (2 st.) | 1 | €4,95 |
 | Droneshop LiPo Safe Bag medium | 1 | €5,95 |
 
-Zelf al in huis (Arduino-kit): weerstanden (100 kΩ, 33 kΩ, 330 Ω), led, drukknoppen, elco's, breadboard, dupont-draadjes, 100 nF condensatoren.
+Zelf al in huis (Arduino-kit): weerstanden (10 kΩ, 5,1 kΩ, 330 Ω), led, drukknoppen, elco's, breadboard, dupont-draadjes, 100 nF condensatoren.
 
 Hoe alles gemonteerd en bedraad wordt: zie de [instructable](../instructable/readme.md).

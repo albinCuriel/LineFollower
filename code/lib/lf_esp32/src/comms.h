@@ -8,7 +8,7 @@
 namespace comms {
 
 static const char *WIFI_NAAM = "linefollower";
-static const char *WIFI_WACHTWOORD = "verander-mij";   // min. 8 tekens: AANPASSEN voor gebruik
+static const char *WIFI_WACHTWOORD = "lijnvolger2026";   // min. 8 tekens: AANPASSEN voor gebruik
 static WiFiServer server(23);
 static WiFiClient client;
 static char buf_s[96], buf_w[96];

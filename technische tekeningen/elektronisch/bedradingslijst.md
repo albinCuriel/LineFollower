@@ -16,13 +16,15 @@ Draad: dupont-draadjes (stekkers eraf), voeding liefst dikker (pigtail 20AWG). R
 | C2 100 µF | 3V3 ↔ GND, vlak bij de ESP32 | | let op polariteit |
 | R3 330 Ω + D1 (power-led) | 3V3 → R3 → led anode, kathode → GND | LED_PWR | |
 
+> **Let op: nooit USB én batterij tegelijk.** De buck voedt de ESP32 via de 3V3-pin. Zit de USB-kabel erin terwijl SW1 aan staat, dan voeden de buck en de USB-regelaar van het devkit samen dezelfde 3,3 V-lijn en kan een van beide stuk gaan. Zet SW1 **uit** als je via USB programmeert of de seriële monitor gebruikt. Wil je toch met batterij én USB testen (motoren draaien tijdens het debuggen), knip dan de rode draad (5 V) in een USB-kabel door, of gebruik de wifi-terminal en draadloos uploaden (OTA).
+
 ## Batterijmeting
 
 | Van | Naar | Net |
 |---|---|---|
-| VBAT | R1 100 kΩ | |
-| R1 / R2-knoop | ESP32 **GPIO9** | VBAT_SENSE (8,4 V → 2,08 V) |
-| R2 33 kΩ | GND | |
+| VBAT | R1 10 kΩ | |
+| R1 / R2-knoop | ESP32 **GPIO9** | VBAT_SENSE (8,4 V → 2,84 V) |
+| R2 5,1 kΩ | GND | |
 
 ## Sensor (QTR-8A)
 
@@ -32,7 +34,7 @@ Draad: dupont-draadjes (stekkers eraf), voeding liefst dikker (pigtail 20AWG). R
 | LEDON | GPIO11 |
 | VCC / GND | 3V3 / GND |
 
-Soldeer de jumper **"3.3V BYPASS"** op de QTR-8A dicht, anders branden de IR-leds te zwak op 3,3 V.
+Soldeer de jumper **"3.3V BYPASS"** op de QTR-8A dicht, anders branden de IR-leds te zwak op 3,3 V. Volgens de [Pololu-handleiding](../../datasheets/QTR-8A_gebruikershandleiding.pdf) (hoofdstuk 5 "Module Connections", Vcc, GND and 3.3V BYPASS) overbrugt deze jumper één trap van de voorschakelweerstanden van de IR-leds, zodat ze op 3,3 V even fel branden als op 5 V. **Nooit dichtsolderen als de QTR op 5 V hangt.**
 
 ## Motorsturing (TB6612FNG, 1 module voor beide motoren)
 

@@ -8,10 +8,15 @@
 - Spanning: vol = 8,4 V, nominaal 7,4 V. **Stop met rijden onder 6,6 V** (de robot meet dit zelf via GPIO9). Onder 6,0 V raakt de batterij beschadigd.
 - Een opgezwollen of beschadigde batterij niet meer gebruiken of laden.
 
+### USB en batterij: nooit tegelijk
+De buck voedt de ESP32 via de 3V3-pin. Zit de USB-kabel erin terwijl de robot aan staat (SW1), dan voeden twee bronnen dezelfde 3,3 V-lijn en kan het devkit of de buck stuk gaan.
+- Code uploaden of de seriële monitor gebruiken via USB: **SW1 uit**.
+- Testen met de motoren aan: gebruik de wifi-terminal (hieronder), of een USB-kabel waarvan de rode draad (5 V) doorgeknipt is.
+
 ### draadloze communicatie
 #### verbinding maken
 1. Zet de robot aan (SW1).
-2. Verbind je gsm of laptop met het wifinetwerk **linefollower**. Het wachtwoord staat in de code (`WIFI_WACHTWOORD`).
+2. Verbind je gsm of laptop met het wifinetwerk **linefollower**. Wachtwoord: **lijnvolger2026** (staat in [comms.h](../code/lib/lf_esp32/src/comms.h) als `WIFI_WACHTWOORD`; verander het daar als je wil).
 3. Open een raw-TCP-terminal naar **192.168.4.1**, poort **23**:
    - Android: app "Serial WiFi Terminal"
    - laptop: PuTTY, verbindingstype "Raw"
@@ -45,8 +50,20 @@ Of per kleur:
 ### settings
 Startwaarden uit de [simulatie](../simulatie/resultaat_tune.md) (staan al als standaard in de firmware).
 Begin trager: `set vbocht 0.4` en `set vrecht 0.6`, en verhoog stap voor stap.
-De robot rijdt stabiel met volgende parameters:  
-(in te vullen na het afstellen op het parcours)
+De robot rijdt stabiel met volgende parameters (resultaat van de simulatie op parcours 3, staan als standaard in de firmware; worden bijgesteld na de testritten):
+
+| Parameter | Commando | Waarde | Betekenis |
+|---|---|---|---|
+| cyclustijd | `set cycle` | 1000 µs | regelcyclus 1 kHz |
+| P | `set kp` | 0.0267 | m/s stuurcorrectie per mm afwijking |
+| I | `set ki` | 0.0214 | wegwerken blijvende afwijking |
+| D | `set kd` | 0.00145 | demping (m/s per mm/s) |
+| snelheid bocht | `set vbocht` | 0.74 m/s | |
+| snelheid rechtdoor | `set vrecht` | 2.1 m/s | boost op rechte stukken |
+| P wielsnelheid | `set kpv` | 0.6 | snelheidsregeling per wiel (encoders) |
+| I wielsnelheid | `set kiv` | 8.0 | |
+
+Eerste ritten: `set vbocht 0.4` en `set vrecht 0.6`, daarna stap voor stap naar de waarden hierboven. Verwachte gemiddelde snelheid met deze waarden: ±0,82 m/s (simulatie, 90 % marge). Typ `save` om te bewaren.
 
 ### start/stop button
 - De start/stop-knop zit aan de **linkerrand**, ter hoogte van de ESP32.

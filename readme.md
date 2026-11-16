@@ -2,13 +2,15 @@
 
 Syntheseproject HOGENT Elektromechanica: een snelle linefollower (doel ≥ 1 m/s) met een ESP32-S3. De robot is gebouwd op een gaatjesprint die tegelijk het chassis is (plan B). De eigen print (plan A) wordt enkel ontworpen.
 
+[![compileer firmware](https://github.com/albinCuriel/LineFollower/actions/workflows/compile.yml/badge.svg)](https://github.com/albinCuriel/LineFollower/actions/workflows/compile.yml)
+
 ![3D-model linefollower](technische%20tekeningen/mechanisch/3d_iso_voor_links.png)
 
 ## specifications
 
 | | |
 |---|---|
-| microcontroller | ESP32-S3 devkit N8R2 (dual USB-C), backup ATmega32U4 ([waarom](ontwerpkeuzes/onderdelenkeuze.md)) |
+| microcontroller | ESP32-S3 devkit N16R8 (dual USB-C), backup ATmega32U4 ([waarom](ontwerpkeuzes/onderdelenkeuze.md)) |
 | motors | 2× GA12-N20 6V 10:1 (±1500 rpm) met Hall-encoder 7 PPR |
 | h-bridge | TB6612FNG (1 module voor beide motoren) |
 | sensors | Pololu QTR-8A (8 analoge reflectiesensoren, LEDON) |
@@ -18,6 +20,17 @@ Syntheseproject HOGENT Elektromechanica: een snelle linefollower (doel ≥ 1 m/s
 | weight | ±123 g (berekend uit de onderdelen, wordt gewogen na de bouw) |
 | speed | simulatie op parcours 3: ±0,9–1,1 m/s gemiddeld; wordt gemeten op het parcours |
 | afmetingen | 121 × 106 × 48 mm (L × B × H, met spoiler) |
+
+## status (16/11/2026)
+
+| Onderdeel | Status |
+|---|---|
+| ontwerp, BOM, schema, bekabelingsplan, 3D-model | klaar |
+| proof of concepts (H-brug, sensor, interrupt, wifi) | klaar, compileren |
+| basisprogramma + finale code | klaar, compileren (GitHub Action), 133 unit tests op de regelkern |
+| simulatie + PID-afstelling | klaar (±0,82 m/s verwacht) |
+| bouw op de gaatjesprint | bezig: stap 1–7 van de [instructable](instructable/readme.md) gesoldeerd, stap 8 (H-brug) bezig |
+| testritten, gemeten snelheid en gewicht | na de bouw |
 
 ## inhoud van deze repository
 

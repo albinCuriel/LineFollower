@@ -9,4 +9,4 @@ Hardwarelaag voor de ESP32-S3 (plan B). Wissel je naar het backupbord (ATmega32U
 | [comms.h](src/comms.h) | commando's via USB en wifi tegelijk (eigen netwerk "linefollower", TCP-poort 23) |
 | [opslag.h](src/opslag.h) | parameters en kalibratie bewaren in het flashgeheugen (Preferences/NVS) |
 
-Wachtwoord van het wifinetwerk: `WIFI_WACHTWOORD` in [comms.h](src/comms.h) - aanpassen vóór gebruik.
+Wachtwoord van het wifinetwerk: `WIFI_WACHTWOORD` in [comms.h](src/comms.h), standaard **lijnvolger2026**.

@@ -27,9 +27,9 @@ Let op:
 
 ## Stap 6 - batterijmeting
 
-Spanningsdeler R1/R2: 8,4 V wordt 2,08 V op het meetpunt.
+Spanningsdeler R1/R2: 8,4 V wordt 2,84 V op het meetpunt.
 
-Plaatsen: R1 100k, R2 33k
+Plaatsen: R1 10k, R2 5,1k
 
 ![stap 6](bekabelingsplan_p02_stap06.png)
 
@@ -40,7 +40,7 @@ Plaatsen: R1 100k, R2 33k
 | ☐ | 9 | R2 b | **Y40** | buck IN- | **O9** | zwart | 114 mm |  |
 
 Let op:
-- Meet: meetpunt -> GND = VBAT x 33/133.
+- Meet: meetpunt -> GND = VBAT x 5,1/15,1.
 
 ## Stap 7 - ESP32-S3 devkit
 

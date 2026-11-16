@@ -21,4 +21,6 @@ De ADC staat op 12 bit en 11 dB demping (0 tot ±3,1 V). Zo gebruikt de meting h
 
 ### resultaat
 - [ ] elke sensor reageert apart
-- [ ] wit: lage waarde, zwart: hoge waarde (in te vullen: ___ / ___)
+- [ ] wit: lage waarde, zwart: hoge waarde
+
+Verwacht volgens de [QTR-8A-handleiding](../../../datasheets/QTR-8A_gebruikershandleiding.pdf) bij 3 mm hoogte (12 bit, verschil leds aan − uit): wit ±100–400, zwart ±2500–3500. Gemeten: wordt aangevuld zodra de sensor gesoldeerd is (stap 10 van de [instructable](../../../instructable/readme.md)).

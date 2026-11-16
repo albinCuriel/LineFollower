@@ -72,24 +72,26 @@ Plaats SW1, de XT30-pigtail, de buck, R3 en de power-led D1. Draden **1–6**.
 - [ ] SW1 uit = 0 V op VBAT
 
 ### stap 6: batterijmeting
-R1 100 kΩ en R2 33 kΩ, met een soldeerbrug ertussen (= meetpunt). Draden **7–9**.
+R1 10 kΩ en R2 5,1 kΩ, met een soldeerbrug ertussen (= meetpunt). Draden **7–9**.
 
 ![stap 6](../technische%20tekeningen/elektronisch/bekabelingsplan_p02_stap06.png)
 
-**Test:** meetpunt ↔ GND = 2,08 V bij 8,4 V (VBAT × 33/133).
+**Test:** meetpunt ↔ GND = 2,84 V bij 8,4 V (VBAT × 5,1/15,1).
 
 ### stap 7: ESP32-S3 devkit
 1. Doorgangstest: 3V3 en GND zijn **niet** kortgesloten.
-2. Devkit met de USB-poorten naar voren. Pin J1-1 (3V3) in gat **W23**. Soldeer alle pinnen. Plaats C2 (streepje = min).
+2. Devkit met de USB-poorten naar voren. Pin J1-1 (3V3) in gat **V23**. Soldeer alle pinnen. Plaats C2 (streepje = min).
 3. Draden **10–14**.
 4. Enkel USB aangesloten (SW1 uit): laad [poc_interrupt](../code/proof%20of%20concepts/interrupt/readme.md).
 
 ![stap 7](../technische%20tekeningen/elektronisch/bekabelingsplan_p03_stap07.png)
 
-**Test:** de RGB-led brandt rood. Met batterij en SW1 aan geeft `analogReadMilliVolts(9) * 133 / 33` dezelfde spanning als de multimeter op VBAT (± 0,1 V).
+**Test:** de RGB-led brandt rood. Met batterij en SW1 aan geeft `analogReadMilliVolts(9) * 15.1 / 5.1` dezelfde spanning als de multimeter op VBAT (± 0,1 V).
 
 ### stap 8: H-brug
-TB6612 met PWMA in gat **T10**, de stuurpinnen naar het midden. Volg de **opdruk** van je module. Plaats C1 vlak bij VM. Draden **15–27**.
+TB6612 met PWMA in gat **S10**, de stuurpinnen naar het midden. Volg de **opdruk** van je module ([pinout](../datasheets/TB6612FNG_module.md)). Plaats C1 vlak bij VM. Draden **15–27**.
+
+> **Let op:** de pinrijen van de rode TB6612-module liggen **6 gaten** (0,6″) uit elkaar, niet 7 zoals in het oorspronkelijke plan. De tekening zoals de robot echt gebouwd is (andere gatentelling: letter = rij vanaf voor, cijfer = gat vanaf links, al geplaatste delen in grijs) staat in [stap8_albin_telling.png](../technische%20tekeningen/elektronisch/stap8_albin_telling.png); idem voor [stap 5–6](../technische%20tekeningen/elektronisch/stap5_6_albin_telling.png) en [stap 7](../technische%20tekeningen/elektronisch/stap7_albin_telling.png).
 
 ![stap 8](../technische%20tekeningen/elektronisch/bekabelingsplan_p04_stap08.png)
 

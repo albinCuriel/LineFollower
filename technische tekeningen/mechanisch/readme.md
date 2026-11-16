@@ -39,7 +39,7 @@ Elk onderdeel heeft de maat van wat effectief besteld is. Alle maten staan in de
 | Pololu wiel 32×7 | Ø32 × 7, D-as 3 mm | Pololu #1087 |
 | Pololu motorbeugel | voor motoren 10 × 12 mm, M2/#2-bouten | Pololu #989 |
 | GA12-N20 + encoder | 12 × 10; tandwielkast 9 + motor 15 + encoder 7; as Ø3 × 10 | typisch, **nameten** |
-| ESP32-S3 devkit N8R2 | 63,5 × 28; pinrijen 25,4 uit elkaar | typisch, **nameten** |
+| ESP32-S3 devkit N16R8 | 63,5 × 28; pinrijen 25,4 uit elkaar | typisch, **nameten** |
 | TB6612-module | 20,3 × 20,3 | typisch, **nameten** |
 | CN3903-buck | 22 × 17 × 4 | typisch, **nameten** |
 | LiPo DOGCOM 2S 450 mAh | 60 × 17 × 15 | typisch, **nameten** |

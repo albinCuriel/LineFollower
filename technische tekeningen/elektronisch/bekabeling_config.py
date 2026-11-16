@@ -72,9 +72,9 @@ PARTS = [
     dict(naam="D1", kort="D1", label="D1", stap=5, kleur="#43a047", omtrek=(1, 23, 1, 24),
          pins={"A": (1, 23), "K": (1, 24)}, pinlabels={"A": "+", "K": "-"}, labelpos=(23.5, 0.1), pin1="A"),
     # stap 6 - batterijmeting
-    dict(naam="R1", kort="R1", label="R1 100k", stap=6, kleur="#8d6e63", omtrek=(24, 30, 24, 34),
+    dict(naam="R1", kort="R1", label="R1 10k", stap=6, kleur="#8d6e63", omtrek=(24, 30, 24, 34),
          pins={"a": (24, 30), "b": (24, 34)}, pinlabels={"a": "", "b": ""}, labelpos=(32, 25.1)),
-    dict(naam="R2", kort="R2", label="R2 33k", stap=6, kleur="#8d6e63", omtrek=(24, 35, 24, 39),
+    dict(naam="R2", kort="R2", label="R2 5,1k", stap=6, kleur="#8d6e63", omtrek=(24, 35, 24, 39),
          pins={"a": (24, 35), "b": (24, 39)}, pinlabels={"a": "", "b": ""}, labelpos=(37, 25.1)),
     # stap 7 - ESP32
     dict(naam="ESP", kort="ESP", label="ESP32-S3 devkit (USB vooraan)", stap=7, kleur="#283593",
@@ -196,8 +196,8 @@ KLEUREN = {  # soort -> (kleur op tekening, draadkleur)
 STAPPEN = {
     5: ("voeding", "XT30-pigtail, aan/uit-schakelaar SW1, buck 3,3 V, power-led. Nog GEEN ESP32, TB6612 of motoren.",
         ["Meet daarna: buck OUT+ -> GND = 3,25-3,35 V.", "SW1 uit = 0 V op VBAT.", "Led-poot lang = +."]),
-    6: ("batterijmeting", "Spanningsdeler R1/R2: 8,4 V wordt 2,08 V op het meetpunt.",
-        ["Meet: meetpunt -> GND = VBAT x 33/133."]),
+    6: ("batterijmeting", "Spanningsdeler R1/R2: 8,4 V wordt 2,84 V op het meetpunt.",
+        ["Meet: meetpunt -> GND = VBAT x 5,1/15,1."]),
     7: ("ESP32-S3 devkit", "Devkit met de USB-poorten naar VOOR (kolom 47). Pin J1-1 (3V3) in gat V23.",
         ["Eerst doorgangstest 3V3 <-> GND: geen kortsluiting.",
          "Test met enkel USB: poc_interrupt -> rode led."]),

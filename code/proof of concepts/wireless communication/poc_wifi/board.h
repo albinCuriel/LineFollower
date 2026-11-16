@@ -8,9 +8,9 @@
 static const uint8_t PIN_SENSOR[8] = {1, 2, 3, 4, 5, 6, 7, 8};
 static const uint8_t PIN_LEDON     = 11;   // IR-leds van de QTR aan/uit
 
-// --- Batterijmeting: deler 100k / 33k ---
+// --- Batterijmeting: deler 10k / 5,1k ---
 static const uint8_t PIN_VBAT      = 9;
-static const float   VBAT_DELER    = (100.0f + 33.0f) / 33.0f;  // 8,4 V -> 2,08 V
+static const float   VBAT_DELER    = (10.0f + 5.1f) / 5.1f;    // 8,4 V -> 2,84 V
 
 // --- TB6612FNG ---
 static const uint8_t PIN_PWMA = 12, PIN_AIN1 = 13, PIN_AIN2 = 14;   // motor links

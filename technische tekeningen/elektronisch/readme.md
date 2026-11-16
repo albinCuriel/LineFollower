@@ -15,7 +15,6 @@
 | [kicad/](kicad/readme.md) | KiCad 10-project van het schema | KiCad |
 | [bekabeling_config.py](bekabeling_config.py) | **de gegevens**: plaats van elk onderdeel (gat per pin), boorgaten, verboden zones, alle draden per stap | aanpassen |
 | [perfplan.py](perfplan.py) | **de motor**: routeert de draden door vrije gaten en tekent alle pagina's | `py -3 perfplan.py bekabeling_config.py` |
-| [easyeda_linefollower_planB.json](easyeda_linefollower_planB.json) | voorbeeldschema van de docent (Pro Micro, DRV8833), enkel ter referentie | EasyEDA |
 
 ## Overzicht
 
@@ -23,7 +22,7 @@
 |---|---|---|
 | Voeding | LiPo 2S 450 mAh → XT30 → SW1 (SS12D00) | VBAT 6,4–8,4 V |
 | 3,3 V | CN3903-buck | ESP32, QTR-8A, TB6612-logica, encoders |
-| Batterijmeting | 100 kΩ / 33 kΩ | GPIO9 |
+| Batterijmeting | 10 kΩ / 5,1 kΩ | GPIO9 |
 | Sensor | QTR-8A | OUT1–8 → GPIO1–8, LEDON → GPIO11 |
 | Motorsturing | TB6612FNG | PWMA/AIN1/AIN2 → 12/13/14, PWMB/BIN1/BIN2 → 15/16/17, STBY → 18 |
 | Encoders | N20 Hall | links 39/40, rechts 41/42 |

@@ -1,6 +1,20 @@
 # Code
 
-Arduino-code voor de ESP32-S3 (core **esp32 by Espressif 3.x**, bord *ESP32S3 Dev Module*). Alles compileert; testen op de robot volgt na de levering.
+Arduino-code voor de ESP32-S3 (core **esp32 by Espressif 3.3.12**, bord *ESP32S3 Dev Module*, PSRAM "OPI PSRAM" voor de N16R8).
+
+[![compileer firmware](https://github.com/albinCuriel/LineFollower/actions/workflows/compile.yml/badge.svg)](https://github.com/albinCuriel/LineFollower/actions/workflows/compile.yml)
+Elke push wordt automatisch gecompileerd door een [GitHub Action](../.github/workflows/compile.yml). Lokaal resultaat (16/11/2026, `arduino-cli compile --fqbn esp32:esp32:esp32s3 --library code/lib/lf_core --library code/lib/lf_esp32 <map>`):
+
+| Sketch | Flashgebruik |
+|---|---|
+| basis/basis | 896 093 bytes (68 %) |
+| finaal/linefollower | 925 352 bytes (70 %) |
+| poc_sensor | 313 578 bytes (23 %) |
+| poc_hbridge | 309 745 bytes (23 %) |
+| poc_interrupt | 304 850 bytes (23 %) |
+| poc_wifi | 860 264 bytes (65 %) |
+
+Testen op de robot gebeurt per bouwstap (zie de testtabel in [finaal](finaal/readme.md)).
 
 | Map / bestand | Inhoud | Status |
 |---|---|---|

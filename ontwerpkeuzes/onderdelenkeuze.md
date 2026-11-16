@@ -134,7 +134,7 @@ Software:
   │              │                   ├──► encoders (Hall)
   │              │                   ├──► 8× RGB-led (sensorweergave)
   │              │                   └──► power-led
-  │              └─ deler 100k/33k ──► ADC (batterijspanning, 8,4V → 2,08V)
+  │              └─ deler 10k/5,1k ──► ADC (batterijspanning, 8,4V → 2,84V)
 ```
 
 Rood (onbeveiligde batterijspanning) gaat enkel naar de H-brug, de buck en de spanningsdeler, net zoals in het blokschema van de cursus.
@@ -144,7 +144,7 @@ Rood (onbeveiligde batterijspanning) gaat enkel naar de H-brug, de buck en de sp
 | Functie | GPIO | Opmerking |
 |---|---|---|
 | Sensor 1–8 | 1–8 | ADC1_CH0–7 (werkt met wifi aan) |
-| Batterijspanning | 9 | ADC1_CH8, deler 100k/33k |
+| Batterijspanning | 9 | ADC1_CH8, deler 10k/5,1k |
 | Sensor-leds aan/uit (LEDON) | 11 | omgevingslicht wegfilteren |
 | Motor L: PWM / IN1 / IN2 | 12 / 13 / 14 | beide TB6612-kanalen parallel, PWM 20 kHz (LEDC) |
 | Motor R: PWM / IN1 / IN2 | 15 / 16 / 17 | idem |
