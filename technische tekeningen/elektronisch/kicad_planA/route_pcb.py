@@ -21,19 +21,24 @@ def mm(v):
 
 board = pcbnew.LoadBoard(PCB)
 
-# bredere sporen voor voeding en motoren
+# netklassen: signalen 0,3 mm (standaard), USB 0,25 mm, voeding 0,5 mm, vermogen 0,6 mm, batterij 1,0 mm
 ds = board.GetDesignSettings()
 ns = ds.m_NetSettings
-voeding = ns.GetNetClassByName("Voeding") if ns.HasNetclass("Voeding") else None
-if voeding is None:
-    voeding = pcbnew.NETCLASS("Voeding")
-    voeding.SetTrackWidth(mm(0.6))
-    voeding.SetClearance(mm(0.2))
-    voeding.SetViaDiameter(mm(0.8))
-    voeding.SetViaDrill(mm(0.4))
-    ns.SetNetclass("Voeding", voeding)
-for net in ["VBAT", "BATT+", "+3V3", "SW_BUCK", "MOT_L1", "MOT_L2", "MOT_R1", "MOT_R2"]:
-    ns.SetNetclassPatternAssignment(net, "Voeding")
+KLASSEN = {
+    "Batterij": (1.0, ["BATT+"]),
+    "Vermogen": (0.6, ["VBAT", "SW_BUCK", "MOT_L1", "MOT_L2", "MOT_R1", "MOT_R2"]),
+    "Voeding": (0.5, ["+3V3"]),
+    "USB": (0.25, ["USB_DP", "USB_DN", "CC1", "CC2", "VBUS"]),   # USB-C: pads 0,3 mm op 0,5 mm steek
+}
+for naam, (breedte, netten) in KLASSEN.items():
+    k = pcbnew.NETCLASS(naam)
+    k.SetTrackWidth(mm(breedte))
+    k.SetClearance(mm(0.2))
+    k.SetViaDiameter(mm(0.8))
+    k.SetViaDrill(mm(0.4))
+    ns.SetNetclass(naam, k)
+    for net in netten:
+        ns.SetNetclassPatternAssignment(net, naam)
 board.SynchronizeNetsAndNetClasses(True)
 
 # GND-vlakken (uit bouw_pcb.py) tijdelijk weg: Freerouting trekt dan ook GND als sporen,

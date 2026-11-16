@@ -1,8 +1,12 @@
 ** Drc report for linefollower_planA.kicad_pcb **
-** Created on 2026-11-16T04:13:33 **
+** Created on 2026-11-16T15:30:33 **
 ** Report includes: Errors, Warnings **
 
 ** Found 3 DRC violations **
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(97.0000 mm, 130.0000 mm): Segment on Edge.Cuts
+    @(76.0000 mm, 129.5000 mm): Reference field of J4
 [silk_edge_clearance]: Silkscreen clipped by board edge
     Rule: board setup constraints silk; warning
     @(97.0000 mm, 130.0000 mm): Segment on Edge.Cuts
@@ -11,10 +15,6 @@
     Rule: board setup constraints silk; warning
     @(97.0000 mm, 130.0000 mm): Segment on Edge.Cuts
     @(57.5600 mm, 130.8900 mm): Segment of J1 on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: board setup constraints silk; warning
-    @(97.0000 mm, 130.0000 mm): Segment on Edge.Cuts
-    @(76.0000 mm, 129.5000 mm): Reference field of J4
 
 ** Found 0 unconnected pads **
 

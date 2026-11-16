@@ -180,7 +180,7 @@ Niet gebruiken: 0, 3, 45, 46 (strapping; GPIO3 enkel als analoge ingang), 26–3
 - **Plan A:** de PCB is zelf het chassis. De motoren zitten met beugels op de print, de sensoren staan vooraan op dezelfde print (of op een tweede printje met een vaste connector).
 - **Wielen:** 32–34 mm met zachte siliconen banden, voor grip in de 10 cm-bochten.
 - **Doelgewicht: ±100–120 g** (vorig jaar 200–265 g voor de snelle robots; wedstrijdrobots 70–100 g). Kleine lipo (300–450 mAh, ±20–25 g).
-- Spoiler: niet vergeten (specs). Uitgewerkt: het afgezaagde stuk gaatjesprint op 2× M3×30 achteraan (zie [mechanisch](../technische%20tekeningen/mechanisch/readme.md)).
+- Spoiler: niet vergeten (specs). Uitgewerkt: een plaatje van 25 × 86 mm op 2× M3×30 achteraan (zie [mechanisch](../technische%20tekeningen/mechanisch/readme.md)).
 
 ## 5. Richtbudget plan A
 

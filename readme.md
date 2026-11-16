@@ -18,7 +18,7 @@ Syntheseproject HOGENT Elektromechanica: een snelle linefollower (doel ≥ 1 m/s
 | wireless communication | wifi: eigen netwerk + TCP-terminal (gsm of laptop) |
 | distance sensor - motors | 98,7 mm |
 | weight | ±123 g (berekend uit de onderdelen, wordt gewogen na de bouw) |
-| speed | simulatie op parcours 3: ±0,9–1,1 m/s gemiddeld; wordt gemeten op het parcours |
+| speed | simulatie op parcours 3: ±0,82 m/s gemiddeld met de veilige startwaarden; wordt gemeten op het parcours |
 | afmetingen | 150 × 106 × 48 mm (L × B × H, met spoiler) |
 
 ## status (16/11/2026)
@@ -30,7 +30,7 @@ Syntheseproject HOGENT Elektromechanica: een snelle linefollower (doel ≥ 1 m/s
 | basisprogramma + finale code | klaar, compileren (GitHub Action), 133 unit tests op de regelkern |
 | simulatie + PID-afstelling | klaar (±0,82 m/s verwacht) |
 | bouw op de gaatjesprint | bezig: stap 1–7 van de [instructable](instructable/readme.md) gesoldeerd, stap 8 (H-brug) bezig |
-| plan A (eigen print) | ontworpen: schema + BOM met packages + gerouteerde print, DRC 0 fouten, gerbers klaar ([kicad_planA](technische%20tekeningen/elektronisch/kicad_planA/readme.md)); niet besteld |
+| plan A (eigen print) | ontworpen: schema, BOM met packages, gerouteerde print als chassis (DRC 0 fouten), gerbers en maattekening ([kicad_planA](technische%20tekeningen/elektronisch/kicad_planA/readme.md)); niet besteld |
 | testritten, gemeten snelheid en gewicht | na de bouw |
 
 ## inhoud van deze repository

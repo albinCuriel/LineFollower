@@ -163,7 +163,7 @@ onderdelen["elco_100uF"] = Compound(children=[
     cyl_z(el["D"] / 2, el["H"], 45.0, -36, Z_BOVEN),     # C1 bij VM van de TB6612
     cyl_z(el["D"] / 2, el["H"], x_esp - 2.5, -19, Z_BOVEN)])             # C2 bij 3V3 van de ESP32
 
-# spoiler (specs): het afgezaagde stuk gaatjesprint (30 x 90) op 2 M3-bouten achteraan
+# spoiler (specs): plaatje 25 x 86 mm op 2 M3-bouten achteraan
 sp = M["spoiler"]
 SPOILER_B, SPOILER_L, SPOILER_Z = sp["B"], sp["L"], Z_BOVEN + sp["hoogte"]
 onderdelen["spoiler"] = box(SPOILER_B, SPOILER_L, p["t"], P_ACHTER, -SPOILER_L / 2, SPOILER_Z)

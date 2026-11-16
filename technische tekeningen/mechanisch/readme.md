@@ -11,7 +11,13 @@
 | [teken_aanzichten.py](teken_aanzichten.py) | maakt de tekening (schaal 1:1, positienummers, stuklijst met massa, zwaartepunt) en de renders uit de STL's | `py -3 teken_aanzichten.py` |
 | [massa_zwaartepunt.txt](massa_zwaartepunt.txt) | berekende massa en gewichtsverdeling, ingelezen door de [simulatie](../../simulatie/readme.md) | tekst |
 
-## Kernmaten
+## Plan A (eigen print)
+
+![maattekening plan A](tekening_planA.png)
+
+[tekening_planA.pdf](tekening_planA.pdf): maattekening van de print van plan A (100 × 130 mm). De print is het chassis: wieluitsparingen, gaten voor de motorbeugels, de ball caster en de spoiler. Details: [kicad_planA](../elektronisch/kicad_planA/readme.md).
+
+## Kernmaten plan B
 
 | | |
 |---|---|

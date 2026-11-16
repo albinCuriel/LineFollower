@@ -282,10 +282,67 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.25,
+        "track_width": 0.3,
         "tuning_profile": "",
         "via_diameter": 0.6,
         "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Batterij",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": -1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 1.0,
+        "tuning_profile": "",
+        "via_diameter": 0.8,
+        "via_drill": 0.4,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": -1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.25,
+        "tuning_profile": "",
+        "via_diameter": 0.8,
+        "via_drill": 0.4,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Vermogen",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": -1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.6,
+        "tuning_profile": "",
+        "via_diameter": 0.8,
+        "via_drill": 0.4,
         "wire_width": 6
       },
       {
@@ -301,7 +358,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": -1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.6,
+        "track_width": 0.5,
         "tuning_profile": "",
         "via_diameter": 0.8,
         "via_drill": 0.4,
@@ -315,36 +372,56 @@
     "netclass_assignments": null,
     "netclass_patterns": [
       {
-        "netclass": "Voeding",
+        "netclass": "Batterij",
+        "pattern": "BATT+"
+      },
+      {
+        "netclass": "Vermogen",
         "pattern": "VBAT"
       },
       {
-        "netclass": "Voeding",
-        "pattern": "BATT+"
+        "netclass": "Vermogen",
+        "pattern": "SW_BUCK"
+      },
+      {
+        "netclass": "Vermogen",
+        "pattern": "MOT_L1"
+      },
+      {
+        "netclass": "Vermogen",
+        "pattern": "MOT_L2"
+      },
+      {
+        "netclass": "Vermogen",
+        "pattern": "MOT_R1"
+      },
+      {
+        "netclass": "Vermogen",
+        "pattern": "MOT_R2"
       },
       {
         "netclass": "Voeding",
         "pattern": "+3V3"
       },
       {
-        "netclass": "Voeding",
-        "pattern": "SW_BUCK"
+        "netclass": "USB",
+        "pattern": "USB_DP"
       },
       {
-        "netclass": "Voeding",
-        "pattern": "MOT_L1"
+        "netclass": "USB",
+        "pattern": "USB_DN"
       },
       {
-        "netclass": "Voeding",
-        "pattern": "MOT_L2"
+        "netclass": "USB",
+        "pattern": "CC1"
       },
       {
-        "netclass": "Voeding",
-        "pattern": "MOT_R1"
+        "netclass": "USB",
+        "pattern": "CC2"
       },
       {
-        "netclass": "Voeding",
-        "pattern": "MOT_R2"
+        "netclass": "USB",
+        "pattern": "VBUS"
       }
     ]
   },

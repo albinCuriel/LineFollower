@@ -15,6 +15,7 @@
 | [kicad/](kicad/readme.md) | KiCad 10-project van het schema (plan B, modules) | KiCad |
 | [kicad_planA/](kicad_planA/readme.md) | **plan A**: eigen print 100 × 130 mm met SMD-onderdelen, schema + PCB + BOM met packages | KiCad |
 | [elektrisch_schema_planA.pdf](elektrisch_schema_planA.pdf) / [pcb_planA.pdf](pcb_planA.pdf) / [pcb_planA_onderkant.pdf](pcb_planA_onderkant.pdf) | schema en print (boven/onder) van plan A | PDF |
+| [als_gebouwd.py](als_gebouwd.py) + `stapN_albin_telling.png` | bouwtekeningen zoals gebouwd (stap 5–11), in de telling van de bouwer, al geplaatste delen in grijs | afbeelding |
 | [bekabeling_config.py](bekabeling_config.py) | **de gegevens**: plaats van elk onderdeel (gat per pin), boorgaten, verboden zones, alle draden per stap | aanpassen |
 | [perfplan.py](perfplan.py) | **de motor**: routeert de draden door vrije gaten en tekent alle pagina's | `py -3 perfplan.py bekabeling_config.py` |
 
@@ -38,7 +39,7 @@ Dezelfde pinverdeling staat in [code/board.h](../../code/board.h).
 ![stap 8](bekabelingsplan_p04_stap08.png)
 
 - Elk gat heeft een naam: **rij (letter) + kolom (nummer)**, bv. **T10**. De letters en nummers staan op alle 4 randen.
-- Kolom 1 = achterkant, kolom 47 = voorkant. Rij A = robot links.
+- Kolom 1 = achterkant, kolom 54 = voorkant (de sensor hangt onder kolom 44–46). Rij A = robot links.
 - De stappagina's tonen de **soldeerkant**, gespiegeld: rij A ligt daar onderaan. Zo zie je het als je de print omdraait rond de lange as.
 - Nieuwe draden van de stap: dik, in kleur, met een nummer. Vorige stappen: grijs. Rood kader = onderdeel dat je in deze stap plaatst.
 - Gestreept grijs = onderdelen aan de onderkant (motoren, beugels, caster): daar loopt geen draad.

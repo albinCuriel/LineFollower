@@ -25,6 +25,6 @@ Gemaakt door [model_linefollower.py](../model_linefollower.py). Assen: X = rijri
 | [aan_uit_schakelaar.stl](aan_uit_schakelaar.stl) | SS12D00 |
 | [start_stop_knop.stl](start_stop_knop.stl) | drukknop 6×6 |
 | [elco_100uF.stl](elco_100uF.stl) | C1 en C2 |
-| [spoiler.stl](spoiler.stl), [spoiler_bouten.stl](spoiler_bouten.stl) | spoiler uit het afgezaagde stuk print, op 2× M3×30 |
+| [spoiler.stl](spoiler.stl), [spoiler_bouten.stl](spoiler_bouten.stl) | spoiler (plaatje 25 × 86 mm), op 2× M3×30 |
 
 Niets wordt 3D-geprint. Het model dient om te controleren of alles past en om de tekeningen te maken.
