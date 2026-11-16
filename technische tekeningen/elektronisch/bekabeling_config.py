@@ -198,7 +198,7 @@ STAPPEN = {
         ["Meet daarna: buck OUT+ -> GND = 3,25-3,35 V.", "SW1 uit = 0 V op VBAT.", "Led-poot lang = +."]),
     6: ("batterijmeting", "Spanningsdeler R1/R2: 8,4 V wordt 2,84 V op het meetpunt.",
         ["Meet: meetpunt -> GND = VBAT x 5,1/15,1."]),
-    7: ("ESP32-S3 devkit", "Devkit met de USB-poorten naar VOOR (kolom 47). Pin J1-1 (3V3) in gat V23.",
+    7: ("ESP32-S3 devkit", "Devkit met de USB-poorten naar VOOR (kolom 54). Pin J1-1 (3V3) in gat V23.",
         ["Eerst doorgangstest 3V3 <-> GND: geen kortsluiting.",
          "Test met enkel USB: poc_interrupt -> rode led."]),
     8: ("H-brug TB6612FNG", "Module met de stuurpinnen (PWMA ... GND) naar het midden (rij S).",

@@ -44,7 +44,7 @@ Let op:
 
 ## Stap 7 - ESP32-S3 devkit
 
-Devkit met de USB-poorten naar VOOR (kolom 47). Pin J1-1 (3V3) in gat V23.
+Devkit met de USB-poorten naar VOOR (kolom 54). Pin J1-1 (3V3) in gat V23.
 
 Plaatsen: ESP32-S3 devkit (USB vooraan), C2
 
