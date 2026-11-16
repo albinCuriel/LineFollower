@@ -72,11 +72,11 @@ Plaatsen: TB6612FNG, C1
 
 | ✓ | nr | van | gat | naar | gat | kleur | lengte | opmerking |
 |---|---|---|---|---|---|---|---|---|
-| ☐ | 15 | buck IN+ | **I9** | TB6612 VM | **Z10** | rood | 61 mm | motorvoeding |
-| ☐ | 16 | buck IN- | **O9** | TB6612 GND2 (GND) | **Z12** | zwart | 46 mm | motorstroom terug |
-| ☐ | 17 | TB6612 VM | **Z10** | C1 + | **AC10** | rood | 18 mm | C1 vlak bij VM |
-| ☐ | 18 | C1 - | **AC11** | TB6612 GND2 (GND) | **Z12** | zwart | 20 mm |  |
-| ☐ | 19 | ESP J1-2 (3V3) | **V24** | TB6612 VCC | **Z11** | oranje | 58 mm | logica TB6612 |
+| ☐ | 15 | buck IN+ | **I9** | TB6612 VM | **Y10** | rood | 58 mm | motorvoeding |
+| ☐ | 16 | buck IN- | **O9** | TB6612 GND2 (GND) | **Y12** | zwart | 43 mm | motorstroom terug |
+| ☐ | 17 | TB6612 VM | **Y10** | C1 + | **AC10** | rood | 20 mm | C1 vlak bij VM |
+| ☐ | 18 | C1 - | **AC11** | TB6612 GND2 (GND) | **Y12** | zwart | 23 mm |  |
+| ☐ | 19 | ESP J1-2 (3V3) | **V24** | TB6612 VCC | **Y11** | oranje | 56 mm | logica TB6612 |
 | ☐ | 20 | TB6612 GND | **S17** | buck OUT- | **O17** | zwart | 20 mm |  |
 | ☐ | 21 | TB6612 PWMA | **S10** | ESP J1-18 (IO12) | **V40** | geel | 99 mm |  |
 | ☐ | 22 | TB6612 AIN1 | **S12** | ESP J1-19 (IO13) | **V41** | groen | 117 mm |  |
@@ -100,10 +100,10 @@ Plaatsen: kabel motor L, kabel motor R
 
 | ✓ | nr | van | gat | naar | gat | kleur | lengte | opmerking |
 |---|---|---|---|---|---|---|---|---|
-| ☐ | 28 | motor L M1 | **O2** | TB6612 AO1 | **Z13** | bruin | 66 mm |  |
-| ☐ | 29 | motor L M2 | **O7** | TB6612 AO2 | **Z14** | bruin | 61 mm |  |
-| ☐ | 30 | motor R M1 | **S2** | TB6612 BO1 | **Z16** | bruin | 68 mm |  |
-| ☐ | 31 | motor R M2 | **S7** | TB6612 BO2 | **Z15** | bruin | 48 mm |  |
+| ☐ | 28 | motor L M1 | **O2** | TB6612 AO1 | **Y13** | bruin | 63 mm |  |
+| ☐ | 29 | motor L M2 | **O7** | TB6612 AO2 | **Y14** | bruin | 58 mm |  |
+| ☐ | 30 | motor R M1 | **S2** | TB6612 BO1 | **Y16** | bruin | 66 mm |  |
+| ☐ | 31 | motor R M2 | **S7** | TB6612 BO2 | **Y15** | bruin | 56 mm |  |
 | ☐ | 32 | motor L A | **O4** | ESP J3-9 (IO39) | **L31** | blauw | 101 mm |  |
 | ☐ | 33 | motor L B | **O5** | ESP J3-8 (IO40) | **L30** | blauw | 112 mm |  |
 | ☐ | 34 | motor R A | **S4** | ESP J3-7 (IO41) | **L29** | blauw | 117 mm |  |

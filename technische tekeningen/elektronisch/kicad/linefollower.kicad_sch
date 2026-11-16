@@ -3480,7 +3480,7 @@
 				)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "10k"
 			(at 82.55 64.77 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3559,7 +3559,7 @@
 				)
 			)
 		)
-		(property "Value" "33k"
+		(property "Value" "5,1k"
 			(at 82.55 80.01 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5839,7 +5839,7 @@
 		(at 167.64000000000001 125.72999999999999)
 		(uuid "341e0388-596d-4287-9bac-f353fcb42046")
 	)
-	(text "BOUWNOTITIES\n1. QTR-8A op 3,3V: soldeer de jumper '3.3V BYPASS' op de QTR-8A dicht (anders zwakke IR-leds).\n2. C3/C4 (100nF) rechtstreeks op de motorklemmen solderen (ontstoring).\n3. C1 (100uF) zo dicht mogelijk bij VM/GND van de TB6612; C2 (100uF) bij 3V3/GND van de ESP32.\n4. Encoder A/B: interne pull-ups van de ESP32 inschakelen in software.\n5. Batterijmeting: VBAT_SENSE = VBAT x 33/133 (8,4V -> 2,08V).\n6. TB6612: 1 module stuurt beide motoren (Imotor < 1,2A); 2e module = reserve.\n7. Robot uit = SW1 open: BATT+ ligt enkel nog aan de schakelaar.\n8. Statusweergave: ingebouwde RGB-led van de devkit (GPIO48), GPIO47 blijft vrij."
+	(text "BOUWNOTITIES\n1. QTR-8A op 3,3V: soldeer de jumper '3.3V BYPASS' op de QTR-8A dicht (anders zwakke IR-leds).\n2. C3/C4 (100nF) rechtstreeks op de motorklemmen solderen (ontstoring).\n3. C1 (100uF) zo dicht mogelijk bij VM/GND van de TB6612; C2 (100uF) bij 3V3/GND van de ESP32.\n4. Encoder A/B: interne pull-ups van de ESP32 inschakelen in software.\n5. Batterijmeting: VBAT_SENSE = VBAT x 5,1/15,1 (8,4V -> 2,84V).\n6. TB6612: 1 module stuurt beide motoren (Imotor < 1,2A); 2e module = reserve.\n7. Robot uit = SW1 open: BATT+ ligt enkel nog aan de schakelaar.\n8. Statusweergave: ingebouwde RGB-led van de devkit (GPIO48), GPIO47 blijft vrij.\n9. Nooit USB en batterij tegelijk: buck en USB voeden dan samen de 3V3-lijn. SW1 uit bij USB."
 		(exclude_from_sim no)
 		(at 20 175 0)
 		(effects

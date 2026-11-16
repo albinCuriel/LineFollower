@@ -48,7 +48,7 @@ def gpio(n):
 TB_LOGIC = ["PWMA", "AIN2", "AIN1", "STBY", "BIN1", "BIN2", "PWMB", "GND"]
 TB_POWER = ["VM", "VCC", "GND2", "AO1", "AO2", "BO2", "BO1", "GND3"]
 TB_PINS = {n: (18, 9 + i) for i, n in enumerate(TB_LOGIC)}
-TB_PINS.update({n: (25, 9 + i) for i, n in enumerate(TB_POWER)})
+TB_PINS.update({n: (24, 9 + i) for i, n in enumerate(TB_POWER)})  # rode module: pinrijen 0,6" = 6 gaten
 TB_OFF = {n: (0, -0.95) for n in TB_LOGIC}
 TB_OFF.update({n: (0, 0.95) for n in TB_POWER})
 TB_LAB = {"GND2": "GND", "GND3": "GND"}
@@ -83,7 +83,7 @@ PARTS = [
     dict(naam="C2", kort="C2", label="C2", stap=7, kleur="#3949ab", omtrek=(24, 22, 24, 23),
          pins={"+": (24, 22), "-": (24, 23)}, pinlabel_offset=(0, 0.95), pin1="+", labelpos=(22.5, 25.4)),
     # stap 8 - H-brug
-    dict(naam="TB", kort="TB6612", label="TB6612FNG", stap=8, kleur="#e53935", omtrek=(18, 9, 25, 16),
+    dict(naam="TB", kort="TB6612", label="TB6612FNG", stap=8, kleur="#e53935", omtrek=(18, 9, 24, 16),
          pins=TB_PINS, pinlabels=TB_LAB, pinlabel_offsets=TB_OFF, pinlabel_rot=90, pin1="PWMA",
          labelpos=(12.5, 21.5)),
     dict(naam="C1", kort="C1", label="C1", stap=8, kleur="#3949ab", omtrek=(28, 9, 28, 10),

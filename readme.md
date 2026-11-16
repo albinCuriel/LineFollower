@@ -30,6 +30,7 @@ Syntheseproject HOGENT Elektromechanica: een snelle linefollower (doel ≥ 1 m/s
 | basisprogramma + finale code | klaar, compileren (GitHub Action), 133 unit tests op de regelkern |
 | simulatie + PID-afstelling | klaar (±0,82 m/s verwacht) |
 | bouw op de gaatjesprint | bezig: stap 1–7 van de [instructable](instructable/readme.md) gesoldeerd, stap 8 (H-brug) bezig |
+| plan A (eigen print) | schema + BOM met packages + print geplaatst ([kicad_planA](technische%20tekeningen/elektronisch/kicad_planA/readme.md)); routeren volgt |
 | testritten, gemeten snelheid en gewicht | na de bouw |
 
 ## inhoud van deze repository

@@ -12,7 +12,9 @@
 | [bekabelingsplan_draadlijst.md](bekabelingsplan_draadlijst.md) | alle 52 draden als afvinklijst: van gat, naar gat, kleur, lengte | GitHub |
 | [kabels/](kabels/readme.md) | batterij-, motor- en sensorkabels (WireViz) | afbeelding |
 | [bedradingslijst.md](bedradingslijst.md) | verbindingen per onderdeel + controles vóór inschakelen | GitHub |
-| [kicad/](kicad/readme.md) | KiCad 10-project van het schema | KiCad |
+| [kicad/](kicad/readme.md) | KiCad 10-project van het schema (plan B, modules) | KiCad |
+| [kicad_planA/](kicad_planA/readme.md) | **plan A**: eigen print 100 × 130 mm met SMD-onderdelen, schema + PCB + BOM met packages | KiCad |
+| [elektrisch_schema_planA.pdf](elektrisch_schema_planA.pdf) / [pcb_planA.pdf](pcb_planA.pdf) | schema en print van plan A | PDF |
 | [bekabeling_config.py](bekabeling_config.py) | **de gegevens**: plaats van elk onderdeel (gat per pin), boorgaten, verboden zones, alle draden per stap | aanpassen |
 | [perfplan.py](perfplan.py) | **de motor**: routeert de draden door vrije gaten en tekent alle pagina's | `py -3 perfplan.py bekabeling_config.py` |
 

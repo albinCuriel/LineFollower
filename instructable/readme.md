@@ -91,7 +91,7 @@ R1 10 kΩ en R2 5,1 kΩ, met een soldeerbrug ertussen (= meetpunt). Draden **7�
 ### stap 8: H-brug
 TB6612 met PWMA in gat **S10**, de stuurpinnen naar het midden. Volg de **opdruk** van je module ([pinout](../datasheets/TB6612FNG_module.md)). Plaats C1 vlak bij VM. Draden **15–27**.
 
-> **Let op:** de pinrijen van de rode TB6612-module liggen **6 gaten** (0,6″) uit elkaar, niet 7 zoals in het oorspronkelijke plan. De tekening zoals de robot echt gebouwd is (andere gatentelling: letter = rij vanaf voor, cijfer = gat vanaf links, al geplaatste delen in grijs) staat in [stap8_albin_telling.png](../technische%20tekeningen/elektronisch/stap8_albin_telling.png); idem voor [stap 5–6](../technische%20tekeningen/elektronisch/stap5_6_albin_telling.png) en [stap 7](../technische%20tekeningen/elektronisch/stap7_albin_telling.png).
+> **Let op:** de pinrijen van de rode TB6612-module liggen **6 gaten** (0,6″) uit elkaar; het plan hierboven is daarop aangepast (VM in Y10). De tekening zoals de robot echt gebouwd is (andere gatentelling: letter = rij vanaf voor, cijfer = gat vanaf links, al geplaatste delen in grijs) staat in [stap8_albin_telling.png](../technische%20tekeningen/elektronisch/stap8_albin_telling.png); idem voor [stap 5–6](../technische%20tekeningen/elektronisch/stap5_6_albin_telling.png) en [stap 7](../technische%20tekeningen/elektronisch/stap7_albin_telling.png).
 
 ![stap 8](../technische%20tekeningen/elektronisch/bekabelingsplan_p04_stap08.png)
 

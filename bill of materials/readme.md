@@ -68,3 +68,39 @@ Gebouwd op een gaatjesprint die tegelijk het chassis is. Geen eigen PCB of 3D-pr
 Zelf al in huis (Arduino-kit): weerstanden (10 kΩ, 5,1 kΩ, 330 Ω), led, drukknoppen, elco's, breadboard, dupont-draadjes, 100 nF condensatoren.
 
 Hoe alles gemonteerd en bedraad wordt: zie de [instructable](../instructable/readme.md).
+
+## Plan A: eigen print (ontwerp)
+
+Alle onderdelen met hun package, rechtstreeks uit het [KiCad-schema van plan A](../technische%20tekeningen/elektronisch/kicad_planA/readme.md) ([csv](../technische%20tekeningen/elektronisch/kicad_planA/bom_planA.csv)). Prijzen = richtprijs LCSC per stuk (november 2026), print = 1/5 van een bestelling van 5 stuks. Motoren, wielen, ball caster en batterij zijn dezelfde als bij plan B.
+
+|volgnummer|naam|package|referenties|aantal|kostprijs/stuk|subtotaal|
+|---|---|---|---|---|---|---|
+|1|ESP32-S3-WROOM-1-N16R8|module (RF_Module:ESP32-S3-WROOM-1)|U1|1|€4,50|€4,50|
+|2|TB6612FNG|SSOP-24 5,3 × 8,2 mm|U3|1|€1,20|€1,20|
+|3|AP63203WU buck 3,3 V|TSOT-23-6|U2|1|€0,60|€0,60|
+|4|spoel 6,8 µH (Bourns SRN4018)|4 × 4 mm|L1|1|€0,15|€0,15|
+|5|QRE1113GR reflectiesensor|OnSemi CASE 100CY (SMD)|Q1–Q8|8|€0,45|€3,60|
+|6|AO3400A N-MOSFET|SOT-23|Q9|1|€0,03|€0,03|
+|7|B5819W schottky|SOD-123|D1|1|€0,03|€0,03|
+|8|led groen|0805|D2|1|€0,02|€0,02|
+|9|WS2812B|PLCC4 5 × 5 mm|D3|1|€0,10|€0,10|
+|10|USB-C (GCT USB4105)|16P SMD|J4|1|€0,60|€0,60|
+|11|XT30PW-M|THT haaks|J1|1|€0,80|€0,80|
+|12|JST-ZH 6-pins|THT 1,5 mm|J2, J3|2|€0,10|€0,20|
+|13|pinheader 1×4|2,54 mm|J5|1|€0,05|€0,05|
+|14|schuifschakelaar PCM12|SMD|SW1|1|€0,30|€0,30|
+|15|drukknop TL3342|SMD 5,2 × 5,2 mm|SW2–SW4|3|€0,15|€0,45|
+|16|condensator 10 µF 25 V|1206|C1, C10|2|€0,05|€0,10|
+|17|condensator 22 µF|1206|C3, C4|2|€0,05|€0,10|
+|18|condensator 10 µF|0805|C6|1|€0,03|€0,03|
+|19|condensator 1 µF|0805|C8|1|€0,01|€0,01|
+|20|condensator 100 nF|0805|C2, C5, C7, C9, C11, C12|6|€0,01|€0,06|
+|21|weerstand 10 kΩ|0805|R1, R4, R5|3|€0,01|€0,03|
+|22|weerstand 5,1 kΩ|0805|R2, R20, R21|3|€0,01|€0,03|
+|23|weerstand 1 kΩ / 100 Ω / 100 kΩ|0805|R3, R6, R7|3|€0,01|€0,03|
+|24|weerstand 100 Ω|0603|R10–R17|8|€0,01|€0,08|
+|25|weerstand 47 kΩ|0603|R22–R29|8|€0,01|€0,08|
+|26|print 100 × 130 mm, 2 lagen|FR4 1,6 mm||1|€1,50|€1,50|
+| | | | | | **elektronica plan A** | **±€14,7** |
+| | | | | | + motoren, wielen, caster, batterij (plan B nr. 4–8) | €38,24 |
+| | | | | | **totaal robot plan A** | **±€53** |

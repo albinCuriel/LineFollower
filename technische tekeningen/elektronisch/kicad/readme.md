@@ -8,7 +8,7 @@ Elektrisch schema van de linefollower in **KiCad 10**.
 | `linefollower.kicad_sch` | het schema |
 | `lf_modules.kicad_sym` | eigen symbolen: ESP32-S3 devkit, QTR-8A, TB6612-module, N20-motor met encoder, CN3903-buck |
 | `sym-lib-table` | koppelt de eigen symboolbibliotheek aan het project |
-| `linefollower.kicad_pcb` | lege print (plan A, PCB-ontwerp volgt) |
+| `linefollower.kicad_pcb` | niet gebruikt: de eigen print staat in [kicad_planA](../kicad_planA/readme.md) |
 | `linefollower.kicad_prl` | lokale weergave-instellingen |
 
 Geen KiCad? Bekijk het schema als [PDF](../elektrisch_schema.pdf) of [SVG](../elektrisch_schema.svg).
