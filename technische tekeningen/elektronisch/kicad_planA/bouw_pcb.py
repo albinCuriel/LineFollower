@@ -157,6 +157,8 @@ def main(xml):
         z.SetNet(net("GND"))
         z.SetLocalClearance(mm(0.3))
         z.SetMinThickness(mm(0.25))
+        z.SetPadConnection(pcbnew.ZONE_CONNECTION_FULL)          # volle verbinding: geen halve thermals
+        z.SetIslandRemovalMode(pcbnew.ISLAND_REMOVAL_MODE_ALWAYS)  # geen losse koper-eilanden
         ol = z.Outline()
         ol.NewOutline()
         for px, py in [(0.5, 0.5), (99.5, 0.5), (99.5, 129.5), (0.5, 129.5), (0.5, 66), (9, 66), (9, 44), (0.5, 44)]:

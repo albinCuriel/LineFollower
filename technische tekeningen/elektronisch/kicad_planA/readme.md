@@ -6,11 +6,15 @@ Volledige linefollower op één print van **100 × 130 mm** met losse SMD-onderd
 |---|---|
 | `linefollower_planA.kicad_pro` | het project: open dit in KiCad |
 | `linefollower_planA.kicad_sch` | schema (ERC: 0 fouten) → [pdf](../elektrisch_schema_planA.pdf) |
-| `linefollower_planA.kicad_pcb` | print: alle footprints geplaatst, GND-vlak op beide lagen → [pdf](../pcb_planA.pdf) |
+| `linefollower_planA.kicad_pcb` | print: 2 lagen, volledig gerouteerd (765 sporen), GND-vlak op beide lagen → [pdf boven](../pcb_planA.pdf), [pdf onder](../pcb_planA_onderkant.pdf) |
+| [gerbers_planA.zip](gerbers_planA.zip) | productiebestanden (gerbers + boorbestand), klaar om te uploaden bij JLCPCB/PCBWay |
+| [drc_rapport.txt](drc_rapport.txt) | ontwerpcontrole: 0 fouten, 0 open verbindingen |
 | [bom_planA.csv](bom_planA.csv) | onderdelenlijst met package per onderdeel (uit het schema) |
 | `bouw_pcb.py` | bouwt de print uit de netlijst: plaatsing van elk onderdeel, omtrek, montagegaten, GND-vlakken |
 | `route_pcb.py` | routeert de sporen met Freerouting (voeding en motoren 0,6 mm, signalen 0,25 mm) |
 | `planA_netlijst.xml` | netlijst uit het schema (invoer voor `bouw_pcb.py`) |
+
+![3D](pcb_planA_3d.png)
 
 | Bovenkant | Onderkant (sensoren) |
 |---|---|
@@ -42,6 +46,7 @@ kicad-cli pcb export gerbers -o gerbers linefollower_planA.kicad_pcb
 
 ## Status
 - Schema: klaar, ERC 0 fouten.
-- Print: alle onderdelen geplaatst, omtrek, montagegaten, GND-vlakken. DRC: geen fouten behalve de nog niet gerouteerde verbindingen.
-- Routeren (`route_pcb.py`) en gerbers: volgende stap.
+- Print: alle onderdelen geplaatst en gerouteerd met Freerouting 1.9.0, GND-vlakken met volle padverbinding.
+- DRC: **0 fouten, 0 open verbindingen**. Enkel 3 waarschuwingen: de opdruk van de XT30 steekt over de achterrand (de stekker steekt bewust uit).
+- Gerbers + boorbestand: klaar ([gerbers_planA.zip](gerbers_planA.zip)).
 - Plan A wordt enkel ontworpen, niet besteld (zie [ontwerpkeuzes](../../../ontwerpkeuzes/onderdelenkeuze.md)).

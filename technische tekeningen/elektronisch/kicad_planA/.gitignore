@@ -1,0 +1,6 @@
+planA.dsn
+planA.ses
+*-bak
+*.kicad_prl
+fp-info-cache
+logs/
